@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Instrument Serif', Georgia, Cambria, serif;
+  --font-display: 'Instrument Serif', Georgia, Cambria, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-instrument {
+  font-family: 'Instrument Serif', Georgia, serif !important;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background-color: #FDFFEB;
+  color: #4B2E1F;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, .font-display, .font-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@layer utilities {
+  .bg-cream-canvas {
+    background-color: #FDFFEB;
+  }
+  .bg-cream-card {
+    background-color: #FFFFFF;
+  }
+  .border-cream-subtle {
+    border-color: #E2DEC9;
+  }
+  .bg-brand-primary {
+    background-color: #4B2E1F;
+  }
+  .bg-brand-accent {
+    background-color: #DEE6BD;
+  }
+  .text-brand-accent {
+    color: #4B2E1F;
+  }
+  .glass-panel {
+    background: rgba(253, 255, 235, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid #E2DEC9;
+  }
+}
+
+/* Hide scrollbars for frame slider while allowing smooth scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

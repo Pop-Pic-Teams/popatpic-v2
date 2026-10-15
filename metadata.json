@@ -1,0 +1,10 @@
+{
+  "name": "Remix Pop@Pic! Photobooth",
+  "description": "Interactive digital photobooth web application with custom aesthetic frames, live webcam capture, photo filters, and instant QR sharing.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
