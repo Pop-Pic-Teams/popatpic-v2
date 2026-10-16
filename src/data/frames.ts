@@ -13,6 +13,9 @@ import circusFramePng from '../assets/frames/circus-frame.png';
 import monochromeFramePng from '../assets/frames/monochrome-frame.png';
 import tapeFramePng from '../assets/frames/tape-frame.png';
 
+const resolveImgSrc = (img: any): string =>
+  typeof img === 'object' && img?.src ? img.src : String(img || '');
+
 // Generate dynamic SVG frame data URL with Poppins typography
 function createSvgFrameDataUrl(
   title: string,
@@ -167,7 +170,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_pixel_arcade',
     name: 'Pixel Arcade',
     count: 4,
-    image: pixelFramePng,
+    image: resolveImgSrc(pixelFramePng),
     desc: 'Retro 8-bit arcade aesthetic with energetic vibrant neon accents.',
     figmaWidth: 4000,
     slots: fourSlots,
@@ -183,7 +186,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_cute_pastel',
     name: 'Cute Pastel',
     count: 4,
-    image: cuteFramePng,
+    image: resolveImgSrc(cuteFramePng),
     desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
     figmaWidth: 4000,
     slots: fourSlots,
@@ -199,7 +202,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_circus_carnival',
     name: 'Circus Carnival',
     count: 4,
-    image: circusFramePng,
+    image: resolveImgSrc(circusFramePng),
     desc: 'Joyful festival theme decorated with vintage circus ornaments.',
     figmaWidth: 4000,
     slots: fourSlots,
@@ -215,7 +218,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_monochrome_noir',
     name: 'Monochrome Noir',
     count: 4,
-    image: monochromeFramePng,
+    image: resolveImgSrc(monochromeFramePng),
     desc: 'Clean black-and-white minimalist design with modern editorial flair.',
     figmaWidth: 4000,
     slots: fourSlots,
@@ -231,7 +234,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_tape_scrapbook',
     name: 'Tape Scrapbook',
     count: 4,
-    image: tapeFramePng,
+    image: resolveImgSrc(tapeFramePng),
     desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
     figmaWidth: 4000,
     slots: fourSlots,
@@ -431,6 +434,9 @@ const STORAGE_KEY_AUDIT = 'popatpic_audit_logs';
 const STORAGE_KEY_PHOTOS = 'popatpic_guest_photos_db';
 
 export function getAllFrames(): FrameTemplate[] {
+  if (typeof window === 'undefined') {
+    return INITIAL_FRAMES;
+  }
   try {
     const raw = localStorage.getItem(STORAGE_KEY_FRAMES);
     if (raw) {
@@ -456,6 +462,7 @@ export function getAllFrames(): FrameTemplate[] {
 }
 
 export function saveAllFrames(frames: FrameTemplate[]): void {
+  if (typeof window === 'undefined') return;
   localStorage.setItem(STORAGE_KEY_FRAMES, JSON.stringify(frames));
 }
 
@@ -613,6 +620,30 @@ export function adminModerateFrame(
 
 // Audit Logs Store (F-A12, BR-012)
 export function getAuditLogs(): AuditLog[] {
+  if (typeof window === 'undefined') {
+    return [
+      {
+        id: 'log_seed_1',
+        adminId: 'usr_admin_1',
+        adminName: 'Pop@Pic! Admin',
+        action: 'APPROVE_FRAME',
+        targetType: 'frame',
+        targetId: 'frm_pixel_arcade',
+        details: 'Approved frame "Pixel Arcade" created by Karima Ulya.',
+        timestamp: '2026-03-01T10:05:00Z',
+      },
+      {
+        id: 'log_seed_2',
+        adminId: 'usr_admin_1',
+        adminName: 'Pop@Pic! Admin',
+        action: 'ACTIVATE_CREATOR',
+        targetType: 'creator',
+        targetId: 'usr_creator_1',
+        details: 'Activated Creator status for Karima Ulya.',
+        timestamp: '2026-02-15T11:00:00Z',
+      },
+    ];
+  }
   try {
     const raw = localStorage.getItem(STORAGE_KEY_AUDIT);
     if (raw) return JSON.parse(raw);
@@ -644,6 +675,7 @@ export function getAuditLogs(): AuditLog[] {
 }
 
 export function addAuditLog(log: AuditLog): void {
+  if (typeof window === 'undefined') return;
   const existing = getAuditLogs();
   const updated = [log, ...existing];
   localStorage.setItem(STORAGE_KEY_AUDIT, JSON.stringify(updated));
@@ -651,6 +683,7 @@ export function addAuditLog(log: AuditLog): void {
 
 // Guest Photos Records (F-G016, F-A11)
 export function getGuestPhotos(): GuestPhotoRecord[] {
+  if (typeof window === 'undefined') return [];
   try {
     const raw = localStorage.getItem(STORAGE_KEY_PHOTOS);
     if (raw) return JSON.parse(raw);
@@ -661,6 +694,7 @@ export function getGuestPhotos(): GuestPhotoRecord[] {
 }
 
 export function recordGuestPhoto(record: GuestPhotoRecord): void {
+  if (typeof window === 'undefined') return;
   const existing = getGuestPhotos();
   const updated = [record, ...existing.slice(0, 49)];
   localStorage.setItem(STORAGE_KEY_PHOTOS, JSON.stringify(updated));

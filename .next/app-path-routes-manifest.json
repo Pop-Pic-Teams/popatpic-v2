@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/add-filters/page": "/add-filters",
+  "/admin-dashboard/page": "/admin-dashboard",
+  "/booth/page": "/booth",
+  "/browse-frames/page": "/browse-frames",
+  "/creator-dashboard/page": "/creator-dashboard",
+  "/filters/page": "/filters",
+  "/frames/page": "/frames",
+  "/login/page": "/login",
+  "/page": "/",
+  "/result/page": "/result",
+  "/select-frame/page": "/select-frame",
+  "/session/page": "/session"
+}

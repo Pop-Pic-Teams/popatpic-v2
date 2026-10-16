@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { User } from '../types/photobooth';
 
@@ -55,6 +57,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(() => {
+    if (typeof window === 'undefined') return null;
     try {
       const stored = localStorage.getItem('popatpic_auth_user');
       return stored ? JSON.parse(stored) : null;
@@ -64,6 +67,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   });
 
   const [users, setUsers] = useState<User[]>(() => {
+    if (typeof window === 'undefined') return DEFAULT_USERS;
     try {
       const stored = localStorage.getItem('popatpic_all_users');
       if (stored) {
@@ -83,7 +87,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   });
 
   useEffect(() => {
-    localStorage.setItem('popatpic_all_users', JSON.stringify(users));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('popatpic_all_users', JSON.stringify(users));
+    }
   }, [users]);
 
   // Login handler
@@ -101,7 +107,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     ) {
       const adminUser = users.find((u) => u.username === 'admin') || DEFAULT_USERS[0];
       setCurrentUser(adminUser);
-      localStorage.setItem('popatpic_auth_user', JSON.stringify(adminUser));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('popatpic_auth_user', JSON.stringify(adminUser));
+      }
       return { success: true, role: 'Admin' };
     }
 
@@ -118,7 +126,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         };
       }
       setCurrentUser(creatorUser);
-      localStorage.setItem('popatpic_auth_user', JSON.stringify(creatorUser));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('popatpic_auth_user', JSON.stringify(creatorUser));
+      }
       return { success: true, role: 'Creator' };
     }
 
@@ -145,13 +155,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     setCurrentUser(user);
-    localStorage.setItem('popatpic_auth_user', JSON.stringify(user));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('popatpic_auth_user', JSON.stringify(user));
+    }
     return { success: true, role: user.role as 'Creator' | 'Admin' };
   };
 
   const logout = () => {
     setCurrentUser(null);
-    localStorage.removeItem('popatpic_auth_user');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('popatpic_auth_user');
+    }
   };
 
   // Creator registration: Does NOT need approval!
@@ -187,7 +201,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Auto login
     setCurrentUser(newUser);
-    localStorage.setItem('popatpic_auth_user', JSON.stringify(newUser));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('popatpic_auth_user', JSON.stringify(newUser));
+    }
     return { success: true };
   };
 
@@ -199,7 +215,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (currentUser?.id === userId) {
       const updated: User = { ...currentUser, creatorStatus: newStatus };
       setCurrentUser(updated);
-      localStorage.setItem('popatpic_auth_user', JSON.stringify(updated));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('popatpic_auth_user', JSON.stringify(updated));
+      }
     }
   };
 

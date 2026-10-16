@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/app/frames/page.tsx"],"sourcesContent":["'use client';\n\nimport { BrowseFramesPage } from '../../guest/BrowseFramesPage';\n\nexport default function FramesPage() {\n  return <BrowseFramesPage />;\n}\n"],"names":["FramesPage"],"mappings":"uDAEA,EAAA,EAAA,CAAA,CAAA,wBAEe,SAASA,EACtB,MAAO,CAAA,EAAA,EAAA,GAAA,EAAC,EAAA,CAAgB,CAAA,CAAA,EAC1B"}

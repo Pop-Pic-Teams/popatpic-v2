@@ -1,5 +1,6 @@
+'use client';
+
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 
 interface UserLayoutProps {
@@ -11,7 +12,7 @@ export const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
     <div className="min-h-screen bg-[#FAF6F0] text-[#2C211B] font-sans antialiased flex flex-col">
       <Navbar />
       <main className="flex-1">
-        {children || <Outlet />}
+        {children}
       </main>
     </div>
   );

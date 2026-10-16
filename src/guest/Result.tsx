@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from '../utils/navigation';
 import { QRCodeSVG } from 'qrcode.react';
 import confetti from 'canvas-confetti';
 import {
@@ -31,16 +33,23 @@ export const ResultPage: React.FC = () => {
   const [copiedImage, setCopiedImage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const rawState = location.state || {};
+  const rawFrameImage = rawState.frameImage || '';
+  const resolvedFrameImage: string =
+    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in (rawFrameImage as Record<string, any>)
+      ? (rawFrameImage as { src: string }).src
+      : String(rawFrameImage || '');
+
   const {
     photos = [],
-    frameImage = '',
+    frameImage = resolvedFrameImage,
     slots = [],
     figmaWidth = 4000,
     filterId = 'normal',
     frameCount = 4,
     frameName = 'Pop@Pic! Strip',
     creatorName = 'Pop@Pic! Studio',
-  } = (location.state as {
+  } = (rawState as {
     photos?: string[];
     frameImage?: string;
     slots?: FrameSlot[];

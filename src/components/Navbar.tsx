@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from '../utils/navigation';
 import { Sparkles, LogIn, LogOut, Palette, Shield, ChevronDown } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 

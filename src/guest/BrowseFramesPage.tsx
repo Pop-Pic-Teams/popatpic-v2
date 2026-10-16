@@ -1,5 +1,7 @@
-import React, { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+'use client';
+
+import React, { useState, useMemo, useEffect } from 'react';
+import { useNavigate } from '../utils/navigation';
 import {
   Search,
   Sparkles,
@@ -11,7 +13,7 @@ import {
   Hash,
   SlidersHorizontal,
 } from 'lucide-react';
-import { getApprovedActiveFrames } from '../data/frames';
+import { getApprovedActiveFrames, INITIAL_FRAMES } from '../data/frames';
 import type { FrameTemplate, FrameStyle } from '../types/photobooth';
 import { PhotoSessionStepper } from '../components/PhotoSessionStepper';
 
@@ -27,9 +29,13 @@ export const BrowseFramesPage: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [customTagInput, setCustomTagInput] = useState('');
   const [inspectingFrame, setInspectingFrame] = useState<FrameTemplate | null>(null);
+  const [allFrames, setAllFrames] = useState(() =>
+    INITIAL_FRAMES.filter((frame) => frame.status === 'approved' && frame.is_active)
+  );
 
-  // All approved & active frames
-  const allFrames = getApprovedActiveFrames();
+  useEffect(() => {
+    setAllFrames(getApprovedActiveFrames());
+  }, []);
 
   // Style categories defined by Admin
   const ADMIN_STYLES: { id: FrameStyle | 'All'; label: string }[] = [

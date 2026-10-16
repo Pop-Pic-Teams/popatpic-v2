@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from '../utils/navigation';
 import {
   Camera,
   RotateCcw,
@@ -25,8 +27,12 @@ export const BoothPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const rawFrameImage = location.state?.frameImage || pixelFramePng;
+  const frameImage: string =
+    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in (rawFrameImage as Record<string, any>)
+      ? (rawFrameImage as { src: string }).src
+      : String(rawFrameImage || '');
   const frameCount: number = location.state?.frameCount || 4;
-  const frameImage: string = location.state?.frameImage || pixelFramePng;
   const slots: FrameSlot[] = location.state?.slots || getStandardSlots(frameCount);
   const figmaWidth: number = location.state?.figmaWidth || 4000;
   const frameName: string = location.state?.frameName || 'Custom Frame';

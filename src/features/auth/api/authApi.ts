@@ -5,6 +5,7 @@ import type { User } from '../types';
  */
 export const authApi = {
   getCurrentSession: (): User | null => {
+    if (typeof window === 'undefined') return null;
     try {
       const stored = localStorage.getItem('popatpic_user');
       return stored ? JSON.parse(stored) : null;
@@ -14,10 +15,12 @@ export const authApi = {
   },
 
   saveSession: (user: User): void => {
+    if (typeof window === 'undefined') return;
     localStorage.setItem('popatpic_user', JSON.stringify(user));
   },
 
   clearSession: (): void => {
+    if (typeof window === 'undefined') return;
     localStorage.removeItem('popatpic_user');
   },
 };

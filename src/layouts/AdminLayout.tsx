@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import { AdminSidebar, type AdminView } from '../admin/AdminSidebar';
 import { getAllFrames } from '../data/frames';
 
@@ -42,7 +43,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
 
       {/* Main Content Area */}
       <div className="flex-1 h-screen overflow-y-auto">
-        {children || <Outlet />}
+        {children}
       </div>
     </div>
   );

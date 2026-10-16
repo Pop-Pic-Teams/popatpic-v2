@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from '../utils/navigation';
 import {
   Wand2,
   ArrowLeft,
@@ -21,16 +23,23 @@ export const AddFiltersPage: React.FC = () => {
   const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  const rawState = location.state || {};
+  const rawFrameImage = rawState.frameImage || '';
+  const resolvedFrameImage: string =
+    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in (rawFrameImage as Record<string, any>)
+      ? (rawFrameImage as { src: string }).src
+      : String(rawFrameImage || '');
+
   const {
     photos = [],
-    frameImage = '',
+    frameImage = resolvedFrameImage,
     slots = [],
     figmaWidth = 4000,
     frameCount = 4,
     frameName = 'Pop@Pic! Strip',
     creatorName = 'Pop@Pic! Creator',
     initialFilterId = 'normal',
-  } = (location.state as {
+  } = (rawState as {
     photos?: string[];
     frameImage?: string;
     slots?: FrameSlot[];
@@ -39,7 +48,7 @@ export const AddFiltersPage: React.FC = () => {
     frameName?: string;
     creatorName?: string;
     initialFilterId?: string;
-  }) || {};
+  });
 
   const [activeFilter, setActiveFilter] = useState<PhotoFilter>(
     PHOTO_FILTERS.find((f) => f.id === initialFilterId) || PHOTO_FILTERS[0]

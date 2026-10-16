@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import { CreatorSidebar, type CreatorView } from '../creator/CreatorSidebar';
 import { useAuth } from '../context/AuthContext';
 import { getFramesByCreator } from '../data/frames';
@@ -45,7 +46,7 @@ export const CreatorLayout: React.FC<CreatorLayoutProps> = ({
 
       {/* Main Content Area */}
       <div className="flex-1 h-screen overflow-y-auto">
-        {children || <Outlet />}
+        {children}
       </div>
     </div>
   );

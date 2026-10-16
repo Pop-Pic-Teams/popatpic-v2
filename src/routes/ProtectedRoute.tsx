@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Navigate, useLocation, Outlet } from 'react-router-dom';
+import { Navigate, useLocation } from '../utils/navigation';
 import { useAuth } from '../context/AuthContext';
 
 interface ProtectedRouteProps {
@@ -15,8 +17,8 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   const location = useLocation();
 
   if (!currentUser) {
-    return <Navigate to={redirectTo} state={{ from: location }} replace />;
+    return <Navigate to={redirectTo} state={{ from: location.pathname }} replace />;
   }
 
-  return <>{children || <Outlet />}</>;
+  return <>{children}</>;
 };

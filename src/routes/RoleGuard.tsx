@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Navigate, useNavigate, useLocation, Outlet } from 'react-router-dom';
+import { Navigate, useNavigate, useLocation } from '../utils/navigation';
 import { useAuth } from '../context/AuthContext';
 import { AlertTriangle, ArrowLeft, LogIn } from 'lucide-react';
 import type { UserRole } from '../types/photobooth';
@@ -23,9 +25,9 @@ export const RoleGuard: React.FC<RoleGuardProps> = ({
 
   if (!currentUser) {
     if (fallbackPath) {
-      return <Navigate to={fallbackPath} state={{ from: location }} replace />;
+      return <Navigate to={fallbackPath} state={{ from: location.pathname }} replace />;
     }
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
 
   const hasRole = allowedRoles.includes(currentUser.role);
@@ -68,5 +70,5 @@ export const RoleGuard: React.FC<RoleGuardProps> = ({
     );
   }
 
-  return <>{children || <Outlet />}</>;
+  return <>{children}</>;
 };

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, KeyboardEvent, ClipboardEvent } from 'react';
 import { Hash, X } from 'lucide-react';
 

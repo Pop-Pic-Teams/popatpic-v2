@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from '../utils/navigation';
 import { Sparkles, ArrowRight, Camera, QrCode, Sliders, ShieldCheck, X } from 'lucide-react';
-import { getApprovedActiveFrames } from '../data/frames';
+import { getApprovedActiveFrames, INITIAL_FRAMES } from '../data/frames';
 import type { FrameTemplate } from '../types/photobooth';
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const [inspectingFrame, setInspectingFrame] = useState<FrameTemplate | null>(null);
+  const [approvedFrames, setApprovedFrames] = useState(() =>
+    INITIAL_FRAMES.filter((frame) => frame.status === 'approved' && frame.is_active)
+  );
 
-  // Only approved and active frames for Guest (SRS BR-03, F-G02)
-  const approvedFrames = getApprovedActiveFrames();
+  useEffect(() => {
+    setApprovedFrames(getApprovedActiveFrames());
+  }, []);
+
   const trendingFrames = approvedFrames.slice(0, 4);
 
   const handleUseFrame = (frame: FrameTemplate) => {
