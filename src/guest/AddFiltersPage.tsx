@@ -119,15 +119,15 @@ export const AddFiltersPage: React.FC = () => {
         <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white text-[#4B2E1F] mb-4 border border-[#DEE6BD] shadow-xs">
           <Wand2 className="h-6 w-6 text-[#4B2E1F]" />
         </div>
-        <h2 className="text-2xl font-serif font-bold text-[#4B2E1F] mb-2">Belum Ada Foto Tersimpan</h2>
+        <h2 className="text-2xl font-serif font-bold text-[#4B2E1F] mb-2">No Saved Photos Yet</h2>
         <p className="text-xs text-[#4B2E1F]/70 max-w-sm mb-6">
-          Sesi foto belum memiliki foto yang diambil. Silakan kembali ke booth foto untuk mengambil pose Anda.
+          No photos have been taken for this session yet. Please return to the photo booth to capture your poses.
         </p>
         <button
           onClick={() => navigate('/frames')}
           className="rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-6 py-2.5 text-xs font-semibold text-[#FDFFEB] shadow-xs cursor-pointer transition-colors"
         >
-          Pilih Frame Baru
+          Choose New Frame
         </button>
       </div>
     );
@@ -157,7 +157,7 @@ export const AddFiltersPage: React.FC = () => {
           <div className="text-xs text-[#FDFFEB]/80 flex items-center gap-2">
             <span className="font-serif text-sm font-normal text-[#FDFFEB]">{frameName}</span>
             <span>•</span>
-            <span>{photos.length} Foto Siap Difilter</span>
+            <span>{photos.length} Photos Ready for Filter</span>
           </div>
         </div>
       </header>
@@ -184,14 +184,14 @@ export const AddFiltersPage: React.FC = () => {
             <div>
               <div className="flex items-center gap-2">
                 <span className="rounded-md bg-[#F4B8A5] text-[#4B2E1F] font-semibold px-2 py-0.5 text-[10px] uppercase tracking-wider border border-[#DE9784]">
-                  Fase 3: Add Filters
+                  Phase 3: Add Filters
                 </span>
                 <span className="text-xs text-[#4B2E1F]/70 font-medium">
-                  Filter Aktif: <strong className="text-[#4B2E1F]">{activeFilter.name}</strong>
+                  Active Filter: <strong className="text-[#4B2E1F]">{activeFilter.name}</strong>
                 </span>
               </div>
               <h1 className="text-lg md:text-xl font-serif font-bold text-[#4B2E1F] mt-0.5">
-                Sesuaikan Filter Warna
+                Adjust Color Filters
               </h1>
             </div>
           </div>
@@ -202,7 +202,7 @@ export const AddFiltersPage: React.FC = () => {
               className="inline-flex items-center gap-1.5 rounded-lg border border-[#DE9784] bg-[#F4B8A5] hover:bg-[#EAA996] px-3.5 py-1.5 text-xs font-semibold text-[#4B2E1F] transition-colors shadow-2xs cursor-pointer"
             >
               <RotateCcw className="h-3.5 w-3.5" />
-              <span>Ulangi Foto</span>
+              <span>Retake Photos</span>
             </button>
           </div>
         </div>
@@ -215,7 +215,7 @@ export const AddFiltersPage: React.FC = () => {
               <div className="absolute inset-0 bg-[#FDFFEB]/85 backdrop-blur-xs flex flex-col items-center justify-center rounded-2xl z-20">
                 <div className="h-8 w-8 border-3 border-[#4B2E1F] border-t-transparent rounded-full animate-spin mb-2" />
                 <p className="text-xs font-semibold text-[#4B2E1F]">
-                  Menerapkan filter {activeFilter.name}...
+                  Applying filter {activeFilter.name}...
                 </p>
               </div>
             )}
@@ -245,10 +245,10 @@ export const AddFiltersPage: React.FC = () => {
               <div className="flex items-center justify-between mb-3 border-b border-[#B8C8DB] pb-2.5">
                 <div>
                   <h2 className="text-base font-serif font-bold text-[#4B2E1F]">
-                    Koleksi Filter
+                    Filter Collection
                   </h2>
                   <p className="text-[11px] text-[#4B2E1F]/70">
-                    Pilih tone estetika untuk foto strip Anda
+                    Choose an aesthetic color tone for your photo strip
                   </p>
                 </div>
                 <span className="text-[10px] font-semibold text-[#4B2E1F] bg-[#FDFFEB] border border-[#DEE6BD] px-2 py-0.5 rounded-md">
@@ -304,7 +304,7 @@ export const AddFiltersPage: React.FC = () => {
                           {filter.label}
                         </span>
                         <span className="opacity-70">
-                          {isSelected ? 'Aktif' : 'Pilih'}
+                          {isSelected ? 'Active' : 'Select'}
                         </span>
                       </div>
                     </button>
@@ -328,7 +328,7 @@ export const AddFiltersPage: React.FC = () => {
                   className="flex-[1.4] inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#4B2E1F] hover:bg-[#3D2418] py-2.5 px-4 text-xs sm:text-sm font-bold text-[#FDFFEB] border border-[#4B2E1F] shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
                   <Sparkles className="h-4 w-4 text-[#F4B8A5]" />
-                  <span>Lanjut ke Unduh</span>
+                  <span>Proceed to Download</span>
                   <ChevronRight className="h-4 w-4 text-[#FDFFEB]" />
                 </button>
               </div>

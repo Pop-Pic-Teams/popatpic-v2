@@ -128,33 +128,91 @@ export function getLayoutGuideDownload(poseCount: number): string {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-// Standard slots generator
+// Standard slots generator (Pose 1, 2, 4, 6, 8)
+// export function getStandardSlots(poseCount: number): FrameSlot[] {
+//   if (poseCount === 1) {
+//     return [{ x: 500, y: 600, w: 3000, h: 4200 }];
+//   }
+//   if (poseCount === 2) {
+//     return [
+//       { x: 650, y: 500, w: 2700, h: 2200 },
+//       { x: 650, y: 2850, w: 2700, h: 2200 },
+//     ];
+//   }
+//   if (poseCount === 6) {
+//     return [
+//       { x: 480, y: 380, w: 1460, h: 1450 },
+//       { x: 2060, y: 380, w: 1460, h: 1450 },
+//       { x: 480, y: 1950, w: 1460, h: 1450 },
+//       { x: 2060, y: 1950, w: 1460, h: 1450 },
+//       { x: 480, y: 3520, w: 1460, h: 1450 },
+//       { x: 2060, y: 3520, w: 1460, h: 1450 },
+//     ];
+//   }
+//   if (poseCount === 8) {
+//     return [
+//       { x: 480, y: 380, w: 1460, h: 1050 },
+//       { x: 2060, y: 380, w: 1460, h: 1050 },
+//       { x: 480, y: 1530, w: 1460, h: 1050 },
+//       { x: 2060, y: 1530, w: 1460, h: 1050 },
+//       { x: 480, y: 2680, w: 1460, h: 1050 },
+//       { x: 2060, y: 2680, w: 1460, h: 1050 },
+//       { x: 480, y: 3830, w: 1460, h: 1050 },
+//       { x: 2060, y: 3830, w: 1460, h: 1050 },
+//     ];
+//   }
+//   // Default 4 poses
+//   return [
+//     { x: 480, y: 480, w: 1460, h: 1940 },
+//     { x: 2060, y: 480, w: 1460, h: 1940 },
+//     { x: 480, y: 2540, w: 1460, h: 1940 },
+//     { x: 2060, y: 2540, w: 1460, h: 1940 },
+//   ];
+// }
+
+// Standard slots generator disesuaikan dengan template presisi (Figma Width: 4000px)
 export function getStandardSlots(poseCount: number): FrameSlot[] {
   if (poseCount === 1) {
-    return [{ x: 500, y: 600, w: 3000, h: 4200 }];
+    // 1 Pose: Kotak besar di tengah
+    return [{ x: 500, y: 550, w: 3000, h: 4300 }];
   }
   if (poseCount === 2) {
+    // 2 Poses: Susunan vertikal atas & bawah
     return [
-      { x: 650, y: 500, w: 2700, h: 2200 },
-      { x: 650, y: 2850, w: 2700, h: 2200 },
+      { x: 650, y: 480, w: 2700, h: 2150 },
+      { x: 650, y: 2850, w: 2700, h: 2150 },
     ];
   }
   if (poseCount === 6) {
+    // 6 Poses: Grid 2 kolom x 3 baris
     return [
-      { x: 480, y: 380, w: 1460, h: 1450 },
-      { x: 2060, y: 380, w: 1460, h: 1450 },
-      { x: 480, y: 1950, w: 1460, h: 1450 },
-      { x: 2060, y: 1950, w: 1460, h: 1450 },
-      { x: 480, y: 3520, w: 1460, h: 1450 },
-      { x: 2060, y: 3520, w: 1460, h: 1450 },
+      { x: 480, y: 380, w: 1460, h: 1420 },
+      { x: 2060, y: 380, w: 1460, h: 1420 },
+      { x: 480, y: 1930, w: 1460, h: 1420 },
+      { x: 2060, y: 1930, w: 1460, h: 1420 },
+      { x: 480, y: 3480, w: 1460, h: 1420 },
+      { x: 2060, y: 3480, w: 1460, h: 1420 },
     ];
   }
-  // Default 4 poses
+  if (poseCount === 8) {
+    // 8 Poses: Grid 2 kolom x 4 baris rapat
+    return [
+      { x: 480, y: 350, w: 1460, h: 1040 },
+      { x: 2060, y: 350, w: 1460, h: 1040 },
+      { x: 480, y: 1510, w: 1460, h: 1040 },
+      { x: 2060, y: 1510, w: 1460, h: 1040 },
+      { x: 480, y: 2670, w: 1460, h: 1040 },
+      { x: 2060, y: 2670, w: 1460, h: 1040 },
+      { x: 480, y: 3830, w: 1460, h: 1040 },
+      { x: 2060, y: 3830, w: 1460, h: 1040 },
+    ];
+  }
+  // Default 4 Poses: Grid 2 kolom x 2 baris
   return [
-    { x: 480, y: 480, w: 1460, h: 1940 },
-    { x: 2060, y: 480, w: 1460, h: 1940 },
-    { x: 480, y: 2540, w: 1460, h: 1940 },
-    { x: 2060, y: 2540, w: 1460, h: 1940 },
+    { x: 480, y: 480, w: 1460, h: 1920 },
+    { x: 2060, y: 480, w: 1460, h: 1920 },
+    { x: 480, y: 2520, w: 1460, h: 1920 },
+    { x: 2060, y: 2520, w: 1460, h: 1920 },
   ];
 }
 
@@ -162,6 +220,7 @@ const fourSlots = getStandardSlots(4);
 const oneSlot = getStandardSlots(1);
 const twoSlots = getStandardSlots(2);
 const sixSlots = getStandardSlots(6);
+const eightSlots = getStandardSlots(8);
 
 // Pre-seeded frames adhering strictly to SRS categories: Cute, Vintage, Minimalist, Formal, Retro
 export const INITIAL_FRAMES: FrameTemplate[] = [
@@ -182,10 +241,12 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-01T10:00:00Z',
   },
+
+  // 1 Poses
   {
     id: 'frm_cute_pastel',
     name: 'Cute Pastel',
-    count: 4,
+    count: 1,
     image: resolveImgSrc(cuteFramePng),
     desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
     figmaWidth: 4000,
@@ -198,10 +259,12 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-02T12:00:00Z',
   },
+
+  // 6 Poses
   {
     id: 'frm_circus_carnival',
     name: 'Circus Carnival',
-    count: 4,
+    count: 6,
     image: resolveImgSrc(circusFramePng),
     desc: 'Joyful festival theme decorated with vintage circus ornaments.',
     figmaWidth: 4000,
@@ -214,10 +277,12 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-03T15:00:00Z',
   },
+
+  // 8 Poses
   {
     id: 'frm_monochrome_noir',
     name: 'Monochrome Noir',
-    count: 4,
+    count: 8,
     image: resolveImgSrc(monochromeFramePng),
     desc: 'Clean black-and-white minimalist design with modern editorial flair.',
     figmaWidth: 4000,
@@ -230,10 +295,12 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-04T09:00:00Z',
   },
+
+  // 2 Poses
   {
     id: 'frm_tape_scrapbook',
     name: 'Tape Scrapbook',
-    count: 4,
+    count: 2,
     image: resolveImgSrc(tapeFramePng),
     desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
     figmaWidth: 4000,
@@ -426,6 +493,22 @@ export const PHOTO_FILTERS: PhotoFilter[] = [
     previewColor: '#e2e8f0',
     description: 'Classic analog 35mm film grain and tone emulation.',
   },
+  {
+    id: 'vibrant-pop',
+    name: 'Vibrant Pop',
+    label: 'Vivid',
+    cssFilter: 'saturate(1.55) contrast(1.18) brightness(1.03)',
+    previewColor: '#fb7185',
+    description: 'Sharp, punchy saturation and vivid colors for maximum pop.',
+  },
+  {
+    id: 'teal-orange',
+    name: 'Cinematic Teal',
+    label: 'Cinematic',
+    cssFilter: 'contrast(1.25) saturate(1.35) hue-rotate(-15deg) brightness(1.02)',
+    previewColor: '#2dd4bf',
+    description: 'Modern blockbuster cinematic contrast with deep tones.',
+  },
 ];
 
 // Persistent Frames Store
@@ -517,7 +600,7 @@ export function submitFrameForReview(
   return newFrame;
 }
 
-// Creator: Update draft or rejected frame (F-C12, BR-06)
+// Creator: Update draft, rejected, or unarchive frame (F-C12, BR-06)
 export function updateCreatorFrame(
   frameId: string,
   creatorId: string,
@@ -528,14 +611,16 @@ export function updateCreatorFrame(
   if (index === -1) return false;
 
   const target = all[index];
-  if (target.status !== 'draft' && target.status !== 'rejected') {
-    return false;
-  }
+
+  // Jika ada status spesifik yang dikirim (misal 'approved'), gunakan status tersebut.
+  // Jika tidak, default-kan frame draft/rejected menjadi 'pending_review'.
+  const newStatus = updates.status || (target.status === 'draft' || target.status === 'rejected' ? 'pending_review' : target.status);
 
   all[index] = {
     ...target,
     ...updates,
-    status: 'pending_review', // Re-submit for review
+    status: newStatus,
+    is_active: newStatus === 'approved' ? true : target.is_active,
     rejection_reason: undefined,
     updated_at: new Date().toISOString(),
   };
@@ -698,4 +783,12 @@ export function recordGuestPhoto(record: GuestPhotoRecord): void {
   const existing = getGuestPhotos();
   const updated = [record, ...existing.slice(0, 49)];
   localStorage.setItem(STORAGE_KEY_PHOTOS, JSON.stringify(updated));
+}
+
+// Admin: Delete frame permanently
+export function adminDeleteFrame(frameId: string): boolean {
+  const all = getAllFrames();
+  const updated = all.filter((f) => f.id !== frameId);
+  saveAllFrames(updated);
+  return true;
 }

@@ -39,7 +39,7 @@ export const BrowseFramesPage: React.FC = () => {
 
   // Style categories defined by Admin
   const ADMIN_STYLES: { id: FrameStyle | 'All'; label: string }[] = [
-    { id: 'All', label: 'Semua Style' },
+    { id: 'All', label: 'All Styles' },
     { id: 'Cute', label: 'Cute' },
     { id: 'Vintage', label: 'Vintage' },
     { id: 'Retro', label: 'Retro' },
@@ -158,17 +158,17 @@ export const BrowseFramesPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-[#B8C8DB] pb-6">
           <div className="max-w-2xl">
             <h1 className="text-3xl md:text-5xl font-serif tracking-tight text-[#4B2E1F]">
-              Galeri Frame <span className="italic text-[#F4B8A5] font-serif">Kreator</span>
+              <span className="italic text-[#F4B8A5] font-serif">Creator</span> Frame Gallery
             </h1>
             <p className="mt-2 text-sm text-[#4B2E1F]/75 leading-relaxed">
-              Jelajahi karya desain frame dengan berbagai tema tag & hashtag. Klik kartu frame untuk melihat detail lengkap, atau klik ikon kamera untuk langsung mulai sesi pemotretan!
+              Explore frame designs with a variety of themes and hashtags. Click on a frame card to view full details, or click the camera icon to start your photo shoot session immediately!
             </p>
           </div>
 
           <div className="shrink-0 self-start sm:pt-2">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#FDFFEB] border border-[#DEE6BD] text-xs sm:text-sm font-semibold text-[#4B2E1F] shadow-2xs">
               <span className="h-2.5 w-2.5 rounded-full bg-[#DEE6BD] border border-[#C5D09D]" />
-              <span>{filteredFrames.length} Frames Tersedia</span>
+              <span>{filteredFrames.length} Frames Avaivable</span>
             </span>
           </div>
         </div>
@@ -184,7 +184,7 @@ export const BrowseFramesPage: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari frame, kreator, deskripsi, atau hashtag #cute..."
+                placeholder="Search frames, creators, descriptions, or hashtags #cute..."
                 className="w-full pl-10 pr-9 py-2.5 rounded-lg border border-[#DEE6BD] bg-white text-xs text-[#4B2E1F] placeholder:text-[#4B2E1F]/45 focus:outline-none focus:ring-1 focus:ring-[#4B2E1F] focus:border-[#4B2E1F] transition-all shadow-2xs"
               />
               {searchQuery && (
@@ -199,7 +199,7 @@ export const BrowseFramesPage: React.FC = () => {
 
             {/* Pose Dropdown Filter */}
             <div className="relative min-w-[140px]">
-              <label htmlFor="pose-dropdown" className="sr-only">Pilih Pose</label>
+              <label htmlFor="pose-dropdown" className="sr-only">Select Poses</label>
               <div className="relative">
                 <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#4B2E1F]/60">
                   <Layers className="h-3.5 w-3.5" />
@@ -213,11 +213,12 @@ export const BrowseFramesPage: React.FC = () => {
                   }}
                   className="w-full appearance-none rounded-lg border border-[#DEE6BD] bg-white py-2.5 pl-8 pr-8 text-xs font-semibold text-[#4B2E1F] hover:border-[#4B2E1F] focus:outline-none focus:ring-1 focus:ring-[#4B2E1F] transition-all cursor-pointer shadow-2xs"
                 >
-                  <option value="All">Semua Pose</option>
+                  <option value="All">All Poses</option>
                   <option value="1">1 Pose</option>
                   <option value="2">2 Poses</option>
                   <option value="4">4 Poses</option>
                   <option value="6">6 Poses</option>
+                  <option value="8">8 Poses</option>
                 </select>
                 <div className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#4B2E1F]/60">
                   <ChevronDown className="h-3.5 w-3.5" />
@@ -242,7 +243,7 @@ export const BrowseFramesPage: React.FC = () => {
                   }}
                   className="w-full appearance-none rounded-lg border border-[#DEE6BD] bg-white py-2.5 pl-8 pr-8 text-xs font-semibold text-[#4B2E1F] hover:border-[#4B2E1F] focus:outline-none focus:ring-1 focus:ring-[#4B2E1F] transition-all cursor-pointer shadow-2xs"
                 >
-                  <option value="">Pilih Tag Kreator</option>
+                  <option value="">Select Creator Tag</option>
                   {allCreatorTags.map((tag) => (
                     <option key={tag} value={tag}>
                       #{tag}
@@ -263,7 +264,7 @@ export const BrowseFramesPage: React.FC = () => {
                   type="text"
                   value={customTagInput}
                   onChange={(e) => setCustomTagInput(e.target.value)}
-                  placeholder="Ketik tag kreator..."
+                  placeholder="Type creator tag..."
                   className="w-full pl-7 pr-3 py-2.5 rounded-lg border border-[#DEE6BD] bg-white text-xs text-[#4B2E1F] placeholder:text-[#4B2E1F]/45 focus:outline-none focus:ring-1 focus:ring-[#4B2E1F] transition-all shadow-2xs"
                 />
               </div>
@@ -274,7 +275,7 @@ export const BrowseFramesPage: React.FC = () => {
                 title="Tambahkan Tag Kreator"
               >
                 <Plus className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">Tambah</span>
+                <span className="hidden sm:inline">Add</span>
               </button>
             </form>
           </div>
@@ -285,11 +286,11 @@ export const BrowseFramesPage: React.FC = () => {
             <div className="flex flex-wrap items-center gap-1.5 min-h-[26px]">
               <span className="text-[11px] font-semibold text-[#4B2E1F]/80 mr-1 flex items-center gap-1">
                 <SlidersHorizontal className="h-3 w-3 text-[#4B2E1F]/60" />
-                Tag Kreator Aktif:
+                Active Creator Tags:
               </span>
               {selectedTags.length === 0 ? (
                 <span className="text-[11px] text-[#4B2E1F]/60 italic">
-                  Semua tag (klik hashtag di bawah atau pilih dropdown tag kreator)
+                  All tags (click hashtags below or select from creator tags dropdown)
                 </span>
               ) : (
                 <>
@@ -321,7 +322,7 @@ export const BrowseFramesPage: React.FC = () => {
                 className="shrink-0 inline-flex items-center gap-1 text-[11px] font-semibold text-[#4B2E1F] hover:bg-[#EAA996] bg-[#F4B8A5] px-2.5 py-1 rounded-md transition-colors cursor-pointer border border-[#DE9784]"
               >
                 <X className="h-3 w-3" />
-                <span>Reset Semua Filter</span>
+                <span>Reset All Filters</span>
               </button>
             )}
           </div>
@@ -330,7 +331,7 @@ export const BrowseFramesPage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-1.5 pt-1">
             <span className="text-[11px] font-semibold text-[#4B2E1F]/80 mr-1 flex items-center gap-1">
               <Hash className="h-3 w-3 text-[#4B2E1F]/60" />
-              Tag Populer Kreator:
+              Popular Creator Tags:
             </span>
             {allCreatorTags.slice(0, 10).map((tag) => {
               const isActive = selectedTags.some((t) => t.toLowerCase() === tag.toLowerCase());
@@ -358,7 +359,7 @@ export const BrowseFramesPage: React.FC = () => {
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
           <span className="shrink-0 text-xs font-bold text-[#4B2E1F] flex items-center gap-1.5 mr-2 pl-0.5">
             <Sparkles className="h-3.5 w-3.5 text-[#4B2E1F]" />
-            <span>Pilih Style:</span>
+            <span>Select Style:</span>
           </span>
 
           {ADMIN_STYLES.map((style) => {
@@ -402,9 +403,9 @@ export const BrowseFramesPage: React.FC = () => {
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-[#D2DDEA] text-[#4B2E1F] mb-4 border border-[#B8C8DB]">
               <Search className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-serif text-[#4B2E1F]">Tidak ada frame yang cocok</h3>
+            <h3 className="text-lg font-serif text-[#4B2E1F]">No matching frames found</h3>
             <p className="mt-1 text-xs text-[#4B2E1F]/70">
-              Coba gunakan kata kunci lain atau hapus filter tag untuk melihat koleksi frame lainnya.
+              Try using different keywords or reset tag filters to explore other frame collections.
             </p>
             <button
               onClick={handleResetFilters}
@@ -577,7 +578,7 @@ export const BrowseFramesPage: React.FC = () => {
                       {inspectingFrame.author ? inspectingFrame.author.charAt(0).toUpperCase() : 'C'}
                     </div>
                     <div>
-                      <div className="text-xs text-[#4B2E1F]/60 font-medium">Kreator Frame</div>
+                      <div className="text-xs text-[#4B2E1F]/60 font-medium">Frame Creator</div>
                       <div className="text-sm font-bold text-[#4B2E1F]">{inspectingFrame.author}</div>
                       <div className="text-[11px] text-[#4B2E1F]/60">@{inspectingFrame.author ? inspectingFrame.author.toLowerCase().replace(/\s+/g, '') : 'username'}</div>
                     </div>
@@ -586,7 +587,7 @@ export const BrowseFramesPage: React.FC = () => {
                   {/* Keterangan / Deskripsi */}
                   <div className="mt-5">
                     <h4 className="text-xs font-semibold text-[#4B2E1F]/70 uppercase tracking-wider">
-                      Keterangan & Detail Desain
+                      Description & Design Details
                     </h4>
                     <p className="mt-1.5 text-xs md:text-sm text-[#4B2E1F]/80 leading-relaxed">
                       {inspectingFrame.desc || 'Desain frame photobooth berkualitas tinggi siap digunakan untuk mengabadikan momen spesial kamu bersama teman dan keluarga.'}
@@ -595,12 +596,12 @@ export const BrowseFramesPage: React.FC = () => {
 
                   <div className="mt-4 grid grid-cols-2 gap-2 text-[11px] text-[#4B2E1F]/70 bg-[#FDFFEB] p-3 rounded-lg border border-[#B8C8DB]">
                     <div>
-                      <span className="text-[#4B2E1F]/60 block">Resolusi:</span>
+                      <span className="text-[#4B2E1F]/60 block">Resolution:</span>
                       <strong className="text-[#4B2E1F]">4000 × 5900 px</strong>
                     </div>
                     <div>
-                      <span className="text-[#4B2E1F]/60 block">Slots Terkalibrasi:</span>
-                      <strong className="text-[#4B2E1F]">{inspectingFrame.slots.length} Foto Cutout</strong>
+                      <span className="text-[#4B2E1F]/60 block">Calibrated Slots:</span>
+                      <strong className="text-[#4B2E1F]">{inspectingFrame.slots.length} Photo Cutouts</strong>
                     </div>
                   </div>
                 </div>
@@ -612,10 +613,10 @@ export const BrowseFramesPage: React.FC = () => {
                     className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] py-3 px-6 text-sm font-semibold text-[#FDFFEB] border border-[#4B2E1F] shadow-xs transition-colors cursor-pointer"
                   >
                     <Camera className="h-4 w-4 text-[#FDFFEB]" />
-                    <span>Pakai Frame & Mulai Foto Sekarang</span>
+                    <span>Use Frame & Start Session Now</span>
                   </button>
                   <p className="text-[11px] text-[#4B2E1F]/70 text-center">
-                    Langsung masuk ke tahap pemotretan (Fase 2: Foto) dengan frame ini.
+                    Proceed directly to the photo shoot (Phase 2: Take Photos) with this frame.
                   </p>
                 </div>
               </div>
