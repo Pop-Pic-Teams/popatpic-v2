@@ -1,5 +1,7 @@
-import { LandingPage } from "../guest/LandingPage";
+'use client';
 
-export default function Home() {
+import { LandingPage } from '../guest/LandingPage';
+
+export default function HomePage() {
   return <LandingPage />;
 }

@@ -1,37 +1,51 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { AuthProvider } from "../context/AuthContext";
-import { SessionProvider } from "../context/SessionContext";
-import { AppNavbarWrapper } from "../components/AppNavbarWrapper";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Suspense } from 'react';
+import type { Metadata } from 'next';
+import './globals.css';
+import { AuthProvider } from '../context/AuthContext';
+import { SessionProvider } from '../context/SessionContext';
+import { AppNavbarWrapper } from '../components/AppNavbarWrapper';
 
 export const metadata: Metadata = {
-  title: "Pop@Pic! — Online Photobooth",
-  description:
-    "Pop@Pic! adalah photobooth online: pilih frame dari creator, ambil foto, tambahkan filter, lalu unduh atau bagikan via QR code.",
+  title: 'Remix Pop@Pic! Photobooth',
+  description: 'Interactive digital photobooth web application with custom aesthetic frames, live webcam capture, photo filters, and instant QR sharing.',
+  openGraph: {
+    title: 'Remix Pop@Pic! Photobooth',
+    description: 'Interactive digital photobooth web application with custom aesthetic frames, live webcam capture, photo filters, and instant QR sharing.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Remix Pop@Pic! Photobooth',
+    description: 'Interactive digital photobooth web application with custom aesthetic frames, live webcam capture, photo filters, and instant QR sharing.',
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen bg-[#FDFFEB] text-[#4B2E1F] font-sans antialiased">
         <AuthProvider>
           <SessionProvider>
-            <AppNavbarWrapper />
-            {children}
+            <Suspense fallback={null}>
+              <AppNavbarWrapper />
+              {children}
+            </Suspense>
           </SessionProvider>
         </AuthProvider>
       </body>

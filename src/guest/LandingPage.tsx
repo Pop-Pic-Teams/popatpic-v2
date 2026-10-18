@@ -84,34 +84,30 @@ export const LandingPage: React.FC = () => {
           <div className="flex-1 flex justify-center lg:justify-end w-full">
             <div className="w-full max-w-[340px] lg:max-w-[420px] aspect-[4/5] relative mt-4 group cursor-pointer">
               {/* Card 1: Back Left (Secondary: Soft Pistachio) */}
-              <div className="absolute top-4 left-0 w-2/3 aspect-[3/4] overflow-hidden rounded-lg shadow-lg border-[4px] border-[#DEE6BD] transform -rotate-8 transition-all duration-500 group-hover:-translate-x-6 group-hover:-translate-y-3 group-hover:-rotate-[12deg] z-10 bg-[#DEE6BD]">
+              <div className="absolute top-4 left-0 w-2/3 aspect-[3/4] overflow-hidden rounded-lg shadow-lg border-[4px] border-[#F4B8A5] transform -rotate-8 transition-all duration-500 group-hover:-translate-x-6 group-hover:-translate-y-3 group-hover:-rotate-[12deg] z-10 bg-[#DEE6BD]">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+                  src="/assets/card/left.jpg"
                   alt="Back card left"
                   className="h-full w-full object-cover"
                 />
               </div>
 
               {/* Card 2: Back Right (Primary: Powder Blue) */}
-              <div className="absolute top-8 right-0 w-2/3 aspect-[3/4] overflow-hidden rounded-lg shadow-lg border-[4px] border-[#D2DDEA] transform rotate-8 transition-all duration-500 group-hover:translate-x-6 group-hover:translate-y-2 group-hover:rotate-[12deg] z-10 bg-[#D2DDEA]">
+              <div className="absolute top-8 right-0 w-2/3 aspect-[3/4] overflow-hidden rounded-lg shadow-lg border-[4px] border-[#F4B8A5] transform rotate-8 transition-all duration-500 group-hover:translate-x-6 group-hover:translate-y-2 group-hover:rotate-[12deg] z-10 bg-[#D2DDEA]">
                 <img
-                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80"
+                  src="/assets/card/right.png"
                   alt="Back card right"
                   className="h-full w-full object-cover"
                 />
               </div>
 
               {/* Card 3: Main Foreground Center */}
-              <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[78%] aspect-[3/4] overflow-hidden rounded-lg shadow-xl border-[4px] border-[#4B2E1F] transform rotate-1 transition-all duration-500 group-hover:-translate-y-4 group-hover:rotate-0 z-20 bg-[#D2DDEA]">
+              <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[78%] aspect-[3/4] overflow-hidden rounded-lg shadow-xl border-[4px] border-[#F4B8A5] transform rotate-1 transition-all duration-500 group-hover:-translate-y-4 group-hover:rotate-0 z-20 bg-[#D2DDEA]">
                 <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80"
+                  src="/assets/card/center.jpg"
                   alt="Main card center"
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute bottom-3 left-3 right-3 rounded-md bg-[#4B2E1F]/95 px-3 py-2 text-center shadow-xs border border-[#3D2418]">
-                  <div className="text-sm font-serif italic text-[#FDFFEB]">Pop@Pic! Strips</div>
-                  <div className="text-[10px] font-medium text-[#FDFFEB]/80">High-Fidelity Canvas Export</div>
-                </div>
               </div>
             </div>
           </div>
