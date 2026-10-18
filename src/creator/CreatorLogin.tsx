@@ -64,10 +64,14 @@ export const CreatorLogin: React.FC = () => {
         signupUsername || undefined
       );
       if (res.success) {
-        setSuccessMessage('Pendaftaran berhasil! Akun Creator Anda aktif dan siap digunakan.');
+        setSuccessMessage('Pendaftaran berhasil! Silakan masuk dengan akun yang baru Anda buat.');
+        const registeredIdentifier = signupUsername.trim() || signupEmail.trim();
         setTimeout(() => {
-          navigate('/creator-dashboard');
-        }, 800);
+          setIdentifier(registeredIdentifier);
+          setPassword('');
+          setActiveTab('signin');
+          setSignupPassword('');
+        }, 1000);
       } else {
         setErrorMessage(res.error || 'Pendaftaran gagal.');
       }
@@ -92,7 +96,7 @@ export const CreatorLogin: React.FC = () => {
         </button>
 
         <div className="text-2xl font-['Instrument_Serif',serif] font-normal tracking-tight text-[#4B2E1F]">
-          Pop<span className="text-[#DEE6BD]">@</span><span className="text-[#4B2E1F] italic">Pic!</span>
+          Pop<span className="text-[#F4B8A5]">@</span><span className="text-[#4B2E1F] italic">Pic!</span>
         </div>
       </div>
 
