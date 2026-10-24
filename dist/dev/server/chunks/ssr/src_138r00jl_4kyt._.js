@@ -395,10 +395,10 @@ function getStandardSlots(poseCount) {
         // 1 Pose: Kotak besar di tengah
         return [
             {
-                x: 500,
-                y: 550,
-                w: 3000,
-                h: 4300
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 4904
             }
         ];
     }
@@ -406,16 +406,16 @@ function getStandardSlots(poseCount) {
         // 2 Poses: Susunan vertikal atas & bawah
         return [
             {
-                x: 650,
-                y: 480,
-                w: 2700,
-                h: 2150
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 2365
             },
             {
-                x: 650,
-                y: 2850,
-                w: 2700,
-                h: 2150
+                x: 200,
+                y: 2749,
+                w: 3601,
+                h: 2365
             }
         ];
     }
@@ -423,40 +423,40 @@ function getStandardSlots(poseCount) {
         // 6 Poses: Grid 2 kolom x 3 baris
         return [
             {
-                x: 480,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 200,
+                y: 3556,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 2085,
+                y: 3556,
+                w: 1715,
+                h: 1558
             }
         ];
     }
@@ -464,85 +464,85 @@ function getStandardSlots(poseCount) {
         // 8 Poses: Grid 2 kolom x 4 baris rapat
         return [
             {
-                x: 480,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 200,
+                y: 3952,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 2085,
+                y: 3952,
+                w: 1715,
+                h: 1162
             }
         ];
     }
     // Default 4 Poses: Grid 2 kolom x 2 baris
     return [
         {
-            x: 480,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 201,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 2086,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 480,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 200,
+            y: 2749,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 2085,
+            y: 2749,
+            w: 1715,
+            h: 2365
         }
     ];
 }
 const fourSlots = getStandardSlots(4);
-const oneSlot = getStandardSlots(1);
+const oneSlots = getStandardSlots(1);
 const twoSlots = getStandardSlots(2);
 const sixSlots = getStandardSlots(6);
 const eightSlots = getStandardSlots(8);
@@ -578,7 +578,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -601,7 +601,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Joyful festival theme decorated with vintage circus ornaments.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: sixSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -624,7 +624,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Clean black-and-white minimalist design with modern editorial flair.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: eightSlots,
         category: 'Minimalist',
         tags: [
             'Minimalist',
@@ -647,7 +647,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: twoSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -667,10 +667,10 @@ const INITIAL_FRAMES = [
         id: 'frm_solo_spotlight',
         name: 'Sweet Solo',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlots),
         desc: 'Single portrait frame with gentle warm blush accents.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -689,10 +689,10 @@ const INITIAL_FRAMES = [
         id: 'frm_formal_mono',
         name: 'Formal Elegance',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlots),
         desc: 'Minimalist executive frame tailored for professional portraits and celebrations.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Formal',
         tags: [
             'Formal',
@@ -952,14 +952,13 @@ function updateCreatorFrame(frameId, creatorId, updates) {
     const index = all.findIndex((f)=>f.id === frameId && f.creator_id === creatorId);
     if (index === -1) return false;
     const target = all[index];
-    // Jika ada status spesifik yang dikirim (misal 'approved'), gunakan status tersebut.
-    // Jika tidak, default-kan frame draft/rejected menjadi 'pending_review'.
-    const newStatus = updates.status || (target.status === 'draft' || target.status === 'rejected' ? 'pending_review' : target.status);
+    if (target.status !== 'draft' && target.status !== 'rejected') {
+        return false;
+    }
     all[index] = {
         ...target,
         ...updates,
-        status: newStatus,
-        is_active: newStatus === 'approved' ? true : target.is_active,
+        status: 'pending_review',
         rejection_reason: undefined,
         updated_at: new Date().toISOString()
     };
@@ -1195,7 +1194,7 @@ const AddFiltersPage = ()=>{
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                     className: "text-2xl font-serif font-bold text-[#4B2E1F] mb-2",
-                    children: "No Saved Photos Yet"
+                    children: "Belum Ada Foto Tersimpan"
                 }, void 0, false, {
                     fileName: "[project]/src/guest/AddFiltersPage.tsx",
                     lineNumber: 122,
@@ -1203,7 +1202,7 @@ const AddFiltersPage = ()=>{
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-xs text-[#4B2E1F]/70 max-w-sm mb-6",
-                    children: "No photos have been taken for this session yet. Please return to the photo booth to capture your poses."
+                    children: "Sesi foto belum memiliki foto yang diambil. Silakan kembali ke booth foto untuk mengambil pose Anda."
                 }, void 0, false, {
                     fileName: "[project]/src/guest/AddFiltersPage.tsx",
                     lineNumber: 123,
@@ -1212,7 +1211,7 @@ const AddFiltersPage = ()=>{
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     onClick: ()=>navigate('/frames'),
                     className: "rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-6 py-2.5 text-xs font-semibold text-[#FDFFEB] shadow-xs cursor-pointer transition-colors",
-                    children: "Choose New Frame"
+                    children: "Pilih Frame Baru"
                 }, void 0, false, {
                     fileName: "[project]/src/guest/AddFiltersPage.tsx",
                     lineNumber: 126,
@@ -1307,7 +1306,7 @@ const AddFiltersPage = ()=>{
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: [
                                         photos.length,
-                                        " Photos Ready for Filter"
+                                        " Foto Siap Difilter"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/AddFiltersPage.tsx",
@@ -1367,7 +1366,7 @@ const AddFiltersPage = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "rounded-md bg-[#F4B8A5] text-[#4B2E1F] font-semibold px-2 py-0.5 text-[10px] uppercase tracking-wider border border-[#DE9784]",
-                                                    children: "Phase 3: Add Filters"
+                                                    children: "Fase 3: Add Filters"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                                     lineNumber: 186,
@@ -1376,14 +1375,14 @@ const AddFiltersPage = ()=>{
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "text-xs text-[#4B2E1F]/70 font-medium",
                                                     children: [
-                                                        "Active Filter: ",
+                                                        "Filter Aktif: ",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                                             className: "text-[#4B2E1F]",
                                                             children: activeFilter.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                                             lineNumber: 190,
-                                                            columnNumber: 34
+                                                            columnNumber: 33
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
@@ -1399,7 +1398,7 @@ const AddFiltersPage = ()=>{
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                             className: "text-lg md:text-xl font-serif font-bold text-[#4B2E1F] mt-0.5",
-                                            children: "Adjust Color Filters"
+                                            children: "Sesuaikan Filter Warna"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                             lineNumber: 193,
@@ -1430,7 +1429,7 @@ const AddFiltersPage = ()=>{
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            children: "Retake Photos"
+                                            children: "Ulangi Foto"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                             lineNumber: 205,
@@ -1472,7 +1471,7 @@ const AddFiltersPage = ()=>{
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-xs font-semibold text-[#4B2E1F]",
                                                 children: [
-                                                    "Applying filter ",
+                                                    "Menerapkan filter ",
                                                     activeFilter.name,
                                                     "..."
                                                 ]
@@ -1555,7 +1554,7 @@ const AddFiltersPage = ()=>{
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                                 className: "text-base font-serif font-bold text-[#4B2E1F]",
-                                                                children: "Filter Collection"
+                                                                children: "Koleksi Filter"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                                                 lineNumber: 247,
@@ -1563,7 +1562,7 @@ const AddFiltersPage = ()=>{
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 className: "text-[11px] text-[#4B2E1F]/70",
-                                                                children: "Choose an aesthetic color tone for your photo strip"
+                                                                children: "Pilih tone estetika untuk foto strip Anda"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                                                 lineNumber: 250,
@@ -1664,7 +1663,7 @@ const AddFiltersPage = ()=>{
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         className: "opacity-70",
-                                                                        children: isSelected ? 'Active' : 'Select'
+                                                                        children: isSelected ? 'Aktif' : 'Pilih'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                                                         lineNumber: 306,
@@ -1735,7 +1734,7 @@ const AddFiltersPage = ()=>{
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            children: "Proceed to Download"
+                                                            children: "Lanjut ke Unduh"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/AddFiltersPage.tsx",
                                                             lineNumber: 331,

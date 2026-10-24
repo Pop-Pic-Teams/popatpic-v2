@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from '../utils/navigation';
 import {
   Search,
@@ -13,7 +13,7 @@ import {
   Hash,
   SlidersHorizontal,
 } from 'lucide-react';
-import { getApprovedActiveFrames } from '../data/frames';
+import { getApprovedActiveFrames, INITIAL_FRAMES } from '../data/frames';
 import type { FrameTemplate, FrameStyle } from '../types/photobooth';
 import { PhotoSessionStepper } from '../components/PhotoSessionStepper';
 
@@ -214,6 +214,7 @@ export const BrowseFramesPage: React.FC = () => {
                   <option value="2">2 Poses</option>
                   <option value="4">4 Poses</option>
                   <option value="6">6 Poses</option>
+                  <option value="8">8 Poses</option>
                 </select>
                 <div className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#4B2E1F]/60">
                   <ChevronDown className="h-3.5 w-3.5" />

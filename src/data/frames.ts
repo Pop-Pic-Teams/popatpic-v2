@@ -128,40 +128,99 @@ export function getLayoutGuideDownload(poseCount: number): string {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-// Standard slots generator
+// Standard slots generator (Pose 1, 2, 4, 6, 8)
+// export function getStandardSlots(poseCount: number): FrameSlot[] {
+//   if (poseCount === 1) {
+//     return [{ x: 500, y: 600, w: 3000, h: 4200 }];
+//   }
+//   if (poseCount === 2) {
+//     return [
+//       { x: 650, y: 500, w: 2700, h: 2200 },
+//       { x: 650, y: 2850, w: 2700, h: 2200 },
+//     ];
+//   }
+//   if (poseCount === 6) {
+//     return [
+//       { x: 480, y: 380, w: 1460, h: 1450 },
+//       { x: 2060, y: 380, w: 1460, h: 1450 },
+//       { x: 480, y: 1950, w: 1460, h: 1450 },
+//       { x: 2060, y: 1950, w: 1460, h: 1450 },
+//       { x: 480, y: 3520, w: 1460, h: 1450 },
+//       { x: 2060, y: 3520, w: 1460, h: 1450 },
+//     ];
+//   }
+//   if (poseCount === 8) {
+//     return [
+//       { x: 480, y: 380, w: 1460, h: 1050 },
+//       { x: 2060, y: 380, w: 1460, h: 1050 },
+//       { x: 480, y: 1530, w: 1460, h: 1050 },
+//       { x: 2060, y: 1530, w: 1460, h: 1050 },
+//       { x: 480, y: 2680, w: 1460, h: 1050 },
+//       { x: 2060, y: 2680, w: 1460, h: 1050 },
+//       { x: 480, y: 3830, w: 1460, h: 1050 },
+//       { x: 2060, y: 3830, w: 1460, h: 1050 },
+//     ];
+//   }
+//   // Default 4 poses
+//   return [
+//     { x: 480, y: 480, w: 1460, h: 1940 },
+//     { x: 2060, y: 480, w: 1460, h: 1940 },
+//     { x: 480, y: 2540, w: 1460, h: 1940 },
+//     { x: 2060, y: 2540, w: 1460, h: 1940 },
+//   ];
+// }
+
+// Standard slots generator disesuaikan dengan template presisi (Figma Width: 4000px)
 export function getStandardSlots(poseCount: number): FrameSlot[] {
   if (poseCount === 1) {
-    return [{ x: 500, y: 600, w: 3000, h: 4200 }];
+    // 1 Pose: Kotak besar di tengah
+    return [{ x: 203, y: 210, w: 3601, h: 4904 }];
   }
   if (poseCount === 2) {
+    // 2 Poses: Susunan vertikal atas & bawah
     return [
-      { x: 650, y: 500, w: 2700, h: 2200 },
-      { x: 650, y: 2850, w: 2700, h: 2200 },
+      { x: 203, y: 210, w: 3601, h: 2365 },
+      { x: 200, y: 2749, w: 3601, h: 2365 },
     ];
   }
   if (poseCount === 6) {
+    // 6 Poses: Grid 2 kolom x 3 baris
     return [
-      { x: 480, y: 380, w: 1460, h: 1450 },
-      { x: 2060, y: 380, w: 1460, h: 1450 },
-      { x: 480, y: 1950, w: 1460, h: 1450 },
-      { x: 2060, y: 1950, w: 1460, h: 1450 },
-      { x: 480, y: 3520, w: 1460, h: 1450 },
-      { x: 2060, y: 3520, w: 1460, h: 1450 },
+      { x: 201, y: 210, w: 1715, h: 1558 },
+      { x: 2086, y: 210, w: 1715, h: 1558 },
+      { x: 201, y: 1883, w: 1715, h: 1558 },
+      { x: 2086, y: 1883, w: 1715, h: 1558 },
+      { x: 200, y: 3556, w: 1715, h: 1558 },
+      { x: 2085, y: 3556, w: 1715, h: 1558 },
     ];
   }
-  // Default 4 poses
+  if (poseCount === 8) {
+    // 8 Poses: Grid 2 kolom x 4 baris rapat
+    return [
+      { x: 201, y: 210, w: 1715, h: 1162 },
+      { x: 2086, y: 210, w: 1715, h: 1162 },
+      { x: 201, y: 1457, w: 1715, h: 1162 },
+      { x: 2086, y: 1457, w: 1715, h: 1162 },
+      { x: 201, y: 2704, w: 1715, h: 1162 },
+      { x: 2086, y: 2704, w: 1715, h: 1162 },
+      { x: 200, y: 3952, w: 1715, h: 1162 },
+      { x: 2085, y: 3952, w: 1715, h: 1162 },
+    ];
+  }
+  // Default 4 Poses: Grid 2 kolom x 2 baris
   return [
-    { x: 480, y: 480, w: 1460, h: 1940 },
-    { x: 2060, y: 480, w: 1460, h: 1940 },
-    { x: 480, y: 2540, w: 1460, h: 1940 },
-    { x: 2060, y: 2540, w: 1460, h: 1940 },
+    { x: 201, y: 210, w: 1715, h: 2365 },
+    { x: 2086, y: 210, w: 1715, h: 2365 },
+    { x: 200, y: 2749, w: 1715, h: 2365 },
+    { x: 2085, y: 2749, w: 1715, h: 2365 },
   ];
 }
 
 const fourSlots = getStandardSlots(4);
-const oneSlot = getStandardSlots(1);
+const oneSlots = getStandardSlots(1);
 const twoSlots = getStandardSlots(2);
 const sixSlots = getStandardSlots(6);
+const eightSlots = getStandardSlots(8);
 
 // Pre-seeded frames adhering strictly to SRS categories: Cute, Vintage, Minimalist, Formal, Retro
 export const INITIAL_FRAMES: FrameTemplate[] = [
@@ -182,14 +241,16 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-01T10:00:00Z',
   },
+
+  // 1 Poses
   {
     id: 'frm_cute_pastel',
     name: 'Cute Pastel',
-    count: 4,
+    count: 1,
     image: resolveImgSrc(cuteFramePng),
     desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: oneSlots,
     category: 'Cute',
     tags: ['Cute', 'Pastel', 'Aesthetic', 'Pink', 'Kawaii'],
     author: 'Karima Ulya',
@@ -198,14 +259,16 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-02T12:00:00Z',
   },
+
+  // 6 Poses
   {
     id: 'frm_circus_carnival',
     name: 'Circus Carnival',
-    count: 4,
+    count: 6,
     image: resolveImgSrc(circusFramePng),
     desc: 'Joyful festival theme decorated with vintage circus ornaments.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: sixSlots,
     category: 'Vintage',
     tags: ['Vintage', 'Carnival', 'Festive', 'Retro', 'Classic'],
     author: 'Karima Ulya',
@@ -214,14 +277,16 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-03T15:00:00Z',
   },
+
+  // 8 Poses
   {
     id: 'frm_monochrome_noir',
     name: 'Monochrome Noir',
-    count: 4,
+    count: 8,
     image: resolveImgSrc(monochromeFramePng),
     desc: 'Clean black-and-white minimalist design with modern editorial flair.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: eightSlots,
     category: 'Minimalist',
     tags: ['Minimalist', 'Monochrome', 'Noir', 'Clean', 'Modern'],
     author: 'Nadhira Studio',
@@ -230,14 +295,16 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     is_active: true,
     created_at: '2026-03-04T09:00:00Z',
   },
+
+  // 2 Poses
   {
     id: 'frm_tape_scrapbook',
     name: 'Tape Scrapbook',
-    count: 4,
+    count: 2,
     image: resolveImgSrc(tapeFramePng),
     desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: twoSlots,
     category: 'Vintage',
     tags: ['Vintage', 'Scrapbook', 'Aesthetic', 'WashiTape', 'Journal'],
     author: 'Karima Ulya',
@@ -252,10 +319,10 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_solo_spotlight',
     name: 'Sweet Solo',
     count: 1,
-    image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlot),
+    image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlots),
     desc: 'Single portrait frame with gentle warm blush accents.',
     figmaWidth: 4000,
-    slots: oneSlot,
+    slots: oneSlots,
     category: 'Cute',
     tags: ['Cute', 'Solo', 'Sweet', 'Portrait', 'Minimalist'],
     author: 'Karima Ulya',
@@ -268,10 +335,10 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_formal_mono',
     name: 'Formal Elegance',
     count: 1,
-    image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlot),
+    image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlots),
     desc: 'Minimalist executive frame tailored for professional portraits and celebrations.',
     figmaWidth: 4000,
-    slots: oneSlot,
+    slots: oneSlots,
     category: 'Formal',
     tags: ['Formal', 'Executive', 'Minimalist', 'Clean', 'Portrait'],
     author: 'Nadhira Studio',
@@ -426,6 +493,22 @@ export const PHOTO_FILTERS: PhotoFilter[] = [
     previewColor: '#e2e8f0',
     description: 'Classic analog 35mm film grain and tone emulation.',
   },
+  {
+    id: 'vibrant-pop',
+    name: 'Vibrant Pop',
+    label: 'Vivid',
+    cssFilter: 'saturate(1.55) contrast(1.18) brightness(1.03)',
+    previewColor: '#fb7185',
+    description: 'Sharp, punchy saturation and vivid colors for maximum pop.',
+  },
+  {
+    id: 'teal-orange',
+    name: 'Cinematic Teal',
+    label: 'Cinematic',
+    cssFilter: 'contrast(1.25) saturate(1.35) hue-rotate(-15deg) brightness(1.02)',
+    previewColor: '#2dd4bf',
+    description: 'Modern blockbuster cinematic contrast with deep tones.',
+  },
 ];
 
 // Persistent Frames Store
@@ -517,7 +600,7 @@ export function submitFrameForReview(
   return newFrame;
 }
 
-// Creator: Update draft or rejected frame (F-C12, BR-06)
+// Creator: Update draft, rejected, or unarchive frame (F-C12, BR-06)
 export function updateCreatorFrame(
   frameId: string,
   creatorId: string,
@@ -698,4 +781,12 @@ export function recordGuestPhoto(record: GuestPhotoRecord): void {
   const existing = getGuestPhotos();
   const updated = [record, ...existing.slice(0, 49)];
   localStorage.setItem(STORAGE_KEY_PHOTOS, JSON.stringify(updated));
+}
+
+// Admin: Delete frame permanently
+export function adminDeleteFrame(frameId: string): boolean {
+  const all = getAllFrames();
+  const updated = all.filter((f) => f.id !== frameId);
+  saveAllFrames(updated);
+  return true;
 }

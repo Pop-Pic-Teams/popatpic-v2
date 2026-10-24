@@ -39,6 +39,7 @@ import {
   getAuditLogs,
   getGuestPhotos,
   addAuditLog,
+  adminDeleteFrame,
 } from '../data/frames';
 import type { FrameTemplate, AuditLog, GuestPhotoRecord, User } from '../types/photobooth';
 import { AdminSidebar, type AdminView } from './AdminSidebar';
@@ -163,6 +164,18 @@ export const AdminDashboard: React.FC = () => {
     refreshData();
     setNotification(`Frame "${frame.name}" archived.`);
     setTimeout(() => setNotification(null), 2500);
+  };
+
+  const handleDeleteFrame = (frame: FrameTemplate) => {
+    if (confirm(`Apakah Anda yakin ingin menghapus frame "${frame.name}" secara permanen?`)) {
+      adminDeleteFrame(frame.id);
+      if (selectedDetailFrame?.id === frame.id) {
+        setSelectedDetailFrame(null);
+      }
+      refreshData();
+      setNotification(`Frame "${frame.name}" berhasil dihapus secara permanen.`);
+      setTimeout(() => setNotification(null), 3000);
+    }
   };
 
   // Creator Account Management Actions
@@ -370,6 +383,14 @@ export const AdminDashboard: React.FC = () => {
                     >
                       <Archive className="h-4 w-4" />
                       <span>Archive</span>
+                    </button>
+
+                    <button
+                      onClick={() => handleDeleteFrame(selectedDetailFrame)}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3.5 py-2 text-xs font-semibold text-red-700 hover:bg-red-100 transition-colors cursor-pointer shadow-xs"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      <span>Delete Frame</span>
                     </button>
                   </>
                 )}
@@ -1158,6 +1179,16 @@ export const AdminDashboard: React.FC = () => {
                                 <Info className="h-3.5 w-3.5" />
                               </button>
                             )}
+
+                            {/* Permanent Delete Frame Button */}
+                            <button
+                              onClick={() => handleDeleteFrame(f)}
+                              className="h-7 w-7 rounded-lg border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+                              title="Delete Frame Permanently"
+                              aria-label="Delete Frame Permanently"
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </button>
                           </div>
                         </td>
                       </tr>

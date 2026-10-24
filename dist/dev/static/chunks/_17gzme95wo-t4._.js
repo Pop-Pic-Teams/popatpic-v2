@@ -9,7 +9,7 @@ __turbopack_context__.s([
     ()=>ArrowLeft
 ]);
 /**
- * @license lucide-react v0.546.0 - ISC
+ * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
@@ -53,7 +53,7 @@ __turbopack_context__.s([
     ()=>CircleAlert
 ]);
 /**
- * @license lucide-react v0.546.0 - ISC
+ * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
@@ -112,7 +112,7 @@ __turbopack_context__.s([
     ()=>CircleCheck
 ]);
 /**
- * @license lucide-react v0.546.0 - ISC
+ * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
@@ -158,7 +158,7 @@ __turbopack_context__.s([
     ()=>Sparkles
 ]);
 /**
- * @license lucide-react v0.546.0 - ISC
+ * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
@@ -168,31 +168,36 @@ const __iconNode = [
     [
         "path",
         {
-            d: "M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z",
-            key: "1s2grr"
+            d: "M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z",
+            key: "4pj2yx"
         }
     ],
     [
         "path",
         {
-            d: "M20 2v4",
-            key: "1rf3ol"
+            d: "M20 3v4",
+            key: "1olli1"
         }
     ],
     [
         "path",
         {
-            d: "M22 4h-4",
-            key: "gwowj6"
+            d: "M22 5h-4",
+            key: "1gvqau"
         }
     ],
     [
-        "circle",
+        "path",
         {
-            cx: "4",
-            cy: "20",
-            r: "2",
-            key: "6kqj1y"
+            d: "M4 17v2",
+            key: "vumght"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "M5 18H3",
+            key: "zchphs"
         }
     ]
 ];
@@ -218,7 +223,7 @@ __turbopack_context__.s([
     ()=>UserPlus
 ]);
 /**
- * @license lucide-react v0.546.0 - ISC
+ * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
@@ -372,10 +377,14 @@ const CreatorLogin = ()=>{
         try {
             const res = await register(signupEmail, signupPassword, signupName, signupUsername || undefined);
             if (res.success) {
-                setSuccessMessage('Pendaftaran berhasil! Akun Creator Anda aktif dan siap digunakan.');
+                setSuccessMessage('Pendaftaran berhasil! Silakan masuk dengan akun yang baru Anda buat.');
+                const registeredIdentifier = signupUsername.trim() || signupEmail.trim();
                 setTimeout(()=>{
-                    navigate('/creator-dashboard');
-                }, 800);
+                    setIdentifier(registeredIdentifier);
+                    setPassword('');
+                    setActiveTab('signin');
+                    setSignupPassword('');
+                }, 1000);
             } else {
                 setErrorMessage(res.error || 'Pendaftaran gagal.');
             }
@@ -400,12 +409,12 @@ const CreatorLogin = ()=>{
                             className: "h-4 w-4"
                         }, void 0, false, {
                             fileName: "[project]/src/creator/CreatorLogin.tsx",
-                            lineNumber: 91,
+                            lineNumber: 95,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 85,
+                        lineNumber: 89,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -413,11 +422,11 @@ const CreatorLogin = ()=>{
                         children: [
                             "Pop",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-[#DEE6BD]",
+                                className: "text-[#F4B8A5]",
                                 children: "@"
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 95,
+                                lineNumber: 99,
                                 columnNumber: 14
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -425,19 +434,19 @@ const CreatorLogin = ()=>{
                                 children: "Pic!"
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 95,
+                                lineNumber: 99,
                                 columnNumber: 55
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 94,
+                        lineNumber: 98,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                lineNumber: 84,
+                lineNumber: 88,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -452,12 +461,12 @@ const CreatorLogin = ()=>{
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                    lineNumber: 104,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 103,
+                                lineNumber: 107,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -465,7 +474,7 @@ const CreatorLogin = ()=>{
                                 children: activeTab === 'signin' ? 'Creator Sign In' : 'Creator Sign Up'
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 106,
+                                lineNumber: 110,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -473,13 +482,13 @@ const CreatorLogin = ()=>{
                                 children: activeTab === 'signin' ? 'Manage and upload your frame creations' : 'Join to design and publish aesthetic frames'
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 109,
+                                lineNumber: 113,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 102,
+                        lineNumber: 106,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -497,20 +506,20 @@ const CreatorLogin = ()=>{
                                         className: "h-3.5 w-3.5"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 130,
+                                        lineNumber: 134,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Sign In"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 135,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 118,
+                                lineNumber: 122,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -525,26 +534,26 @@ const CreatorLogin = ()=>{
                                         className: "h-3.5 w-3.5"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 145,
+                                        lineNumber: 149,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Sign Up"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 150,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 133,
+                                lineNumber: 137,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 117,
+                        lineNumber: 121,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     errorMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -554,20 +563,20 @@ const CreatorLogin = ()=>{
                                 className: "h-4 w-4 shrink-0 mt-0.5"
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 153,
+                                lineNumber: 157,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: errorMessage
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 154,
+                                lineNumber: 158,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 152,
+                        lineNumber: 156,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     successMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -577,20 +586,20 @@ const CreatorLogin = ()=>{
                                 className: "h-4 w-4 shrink-0 mt-0.5"
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 160,
+                                lineNumber: 164,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: successMessage
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 161,
+                                lineNumber: 165,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 159,
+                        lineNumber: 163,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     activeTab === 'signin' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -604,7 +613,7 @@ const CreatorLogin = ()=>{
                                         children: "Username or Email"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 173,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -616,13 +625,13 @@ const CreatorLogin = ()=>{
                                         className: "w-full rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2.5 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:ring-1 focus:ring-[#4B2E1F] focus:outline-none transition-colors"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 172,
+                                        lineNumber: 176,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 168,
+                                lineNumber: 172,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -632,7 +641,7 @@ const CreatorLogin = ()=>{
                                         children: "Password"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 183,
+                                        lineNumber: 187,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -644,13 +653,13 @@ const CreatorLogin = ()=>{
                                         className: "w-full rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2.5 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:ring-1 focus:ring-[#4B2E1F] focus:outline-none transition-colors"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 186,
+                                        lineNumber: 190,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 182,
+                                lineNumber: 186,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -662,20 +671,20 @@ const CreatorLogin = ()=>{
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 201,
+                                        lineNumber: 205,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: isLoading ? 'Signing In...' : 'Sign In'
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 202,
+                                        lineNumber: 206,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 196,
+                                lineNumber: 200,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -689,7 +698,7 @@ const CreatorLogin = ()=>{
                                             children: "creator"
                                         }, void 0, false, {
                                             fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                            lineNumber: 208,
+                                            lineNumber: 212,
                                             columnNumber: 31
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " / ",
@@ -698,24 +707,24 @@ const CreatorLogin = ()=>{
                                             children: "creator123"
                                         }, void 0, false, {
                                             fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                            lineNumber: 208,
+                                            lineNumber: 212,
                                             columnNumber: 85
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                    lineNumber: 207,
+                                    lineNumber: 211,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 206,
+                                lineNumber: 210,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 167,
+                        lineNumber: 171,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)) : /* SIGN UP FORM */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                         onSubmit: handleSignUp,
@@ -728,7 +737,7 @@ const CreatorLogin = ()=>{
                                         children: "Full Name / Studio Name"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 216,
+                                        lineNumber: 220,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -740,13 +749,13 @@ const CreatorLogin = ()=>{
                                         className: "w-full rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2.5 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:ring-1 focus:ring-[#4B2E1F] focus:outline-none transition-colors"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 219,
+                                        lineNumber: 223,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 215,
+                                lineNumber: 219,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -756,7 +765,7 @@ const CreatorLogin = ()=>{
                                         children: "Username"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 234,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -768,13 +777,13 @@ const CreatorLogin = ()=>{
                                         className: "w-full rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2.5 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:ring-1 focus:ring-[#4B2E1F] focus:outline-none transition-colors"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 233,
+                                        lineNumber: 237,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 229,
+                                lineNumber: 233,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -784,7 +793,7 @@ const CreatorLogin = ()=>{
                                         children: "Email"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 244,
+                                        lineNumber: 248,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -796,13 +805,13 @@ const CreatorLogin = ()=>{
                                         className: "w-full rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2.5 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:ring-1 focus:ring-[#4B2E1F] focus:outline-none transition-colors"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 247,
+                                        lineNumber: 251,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 243,
+                                lineNumber: 247,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -812,7 +821,7 @@ const CreatorLogin = ()=>{
                                         children: "Password"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 258,
+                                        lineNumber: 262,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -824,13 +833,13 @@ const CreatorLogin = ()=>{
                                         className: "w-full rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2.5 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:ring-1 focus:ring-[#4B2E1F] focus:outline-none transition-colors"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 261,
+                                        lineNumber: 265,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 257,
+                                lineNumber: 261,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -842,32 +851,32 @@ const CreatorLogin = ()=>{
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 276,
+                                        lineNumber: 280,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: isLoading ? 'Registering...' : 'Create Creator Account'
                                     }, void 0, false, {
                                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                        lineNumber: 277,
+                                        lineNumber: 281,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                                lineNumber: 271,
+                                lineNumber: 275,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/creator/CreatorLogin.tsx",
-                        lineNumber: 214,
+                        lineNumber: 218,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                lineNumber: 100,
+                lineNumber: 104,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -875,13 +884,13 @@ const CreatorLogin = ()=>{
                 children: "© 2026 Pop@Pic! Photobooth"
             }, void 0, false, {
                 fileName: "[project]/src/creator/CreatorLogin.tsx",
-                lineNumber: 284,
+                lineNumber: 288,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/creator/CreatorLogin.tsx",
-        lineNumber: 82,
+        lineNumber: 86,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

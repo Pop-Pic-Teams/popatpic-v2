@@ -426,7 +426,6 @@ const DEFAULT_USERS = [
         email: 'admin@popatpic.com',
         name: 'Administrator',
         role: 'Admin',
-        password: 'admin123',
         createdAt: '2026-01-01T00:00:00Z'
     },
     {
@@ -436,18 +435,7 @@ const DEFAULT_USERS = [
         name: 'Karima Ulya (Creator)',
         role: 'Creator',
         creatorStatus: 'active',
-        password: 'creator123',
         createdAt: '2026-02-15T00:00:00Z'
-    },
-    {
-        id: 'usr_creator_2',
-        username: 'nadhira',
-        email: 'nadhira.art@gmail.com',
-        name: 'Nadhira Studio',
-        role: 'Creator',
-        creatorStatus: 'active',
-        password: 'creator123',
-        createdAt: '2026-03-10T00:00:00Z'
     }
 ];
 const AuthContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"])(undefined);
@@ -462,116 +450,125 @@ const AuthProvider = ({ children })=>{
         //TURBOPACK unreachable
         ;
     });
+    // Sinkronisasi status autentikasi dari sesi backend (cookie HttpOnly Supabase)
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        let isMounted = true;
+        async function syncSession() {
+            try {
+                const res = await fetch('/api/auth/me', {
+                    method: 'GET'
+                });
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!isMounted) return;
+                if (data.authenticated && data.user) {
+                    setCurrentUser(data.user);
+                    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+                    ;
+                } else {
+                    // Tidak ada sesi aktif di cookie server
+                    setCurrentUser(null);
+                    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+                    ;
+                }
+            } catch (err) {
+                console.error('[AuthContext] sync session error:', err);
+            }
+        }
+        syncSession();
+        return ()=>{
+            isMounted = false;
+        };
+    }, []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
         ;
     }, [
         users
     ]);
-    // Login handler
+    // Login handler terhubung langsung ke backend /api/auth/login
     const login = async (identifier, password)=>{
-        const trimmedId = identifier.trim().toLowerCase();
-        const trimmedPass = password.trim();
-        // 1. Direct match for username "admin" & password "admin123"
-        if ((trimmedId === 'admin' || trimmedId === 'admin@popatpic.com') && trimmedPass === 'admin123') {
-            const adminUser = users.find((u)=>u.username === 'admin') || DEFAULT_USERS[0];
-            setCurrentUser(adminUser);
-            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-            ;
-            return {
-                success: true,
-                role: 'Admin'
-            };
-        }
-        // 2. Direct match for username "creator" & password "creator123" (Item 1)
-        if ((trimmedId === 'creator' || trimmedId === 'creator@popatpic.com') && trimmedPass === 'creator123') {
-            const creatorUser = users.find((u)=>u.username === 'creator') || DEFAULT_USERS[1];
-            if (creatorUser.creatorStatus === 'suspended') {
+        try {
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    identifier,
+                    password
+                })
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
                 return {
                     success: false,
-                    error: 'This Creator account has been suspended by an Administrator due to a policy violation.'
+                    error: data.error || 'Username atau kata sandi tidak valid.'
                 };
             }
-            setCurrentUser(creatorUser);
+            setCurrentUser(data.user);
             if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
             ;
             return {
                 success: true,
-                role: 'Creator'
+                role: data.role
             };
-        }
-        // 3. Registered accounts
-        const user = users.find((u)=>u.username && u.username.toLowerCase() === trimmedId || u.email.toLowerCase() === trimmedId);
-        if (!user) {
+        } catch (err) {
+            console.error('[AuthContext] login error:', err);
             return {
                 success: false,
-                error: 'Username or email is not registered.'
+                error: 'Terjadi kesalahan saat menghubungi server autentikasi.'
             };
         }
-        if (user.password && user.password !== trimmedPass) {
-            return {
-                success: false,
-                error: 'Incorrect password.'
-            };
-        }
-        if (user.role === 'Creator' && user.creatorStatus === 'suspended') {
-            return {
-                success: false,
-                error: 'Your Creator account has been suspended by an Administrator due to a policy violation.'
-            };
-        }
-        setCurrentUser(user);
-        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-        ;
-        return {
-            success: true,
-            role: user.role
-        };
     };
-    const logout = ()=>{
-        setCurrentUser(null);
-        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-        ;
-    };
-    // Creator registration: Does NOT need approval!
+    // Logout handler terhubung ke backend /api/auth/logout
+    const logout = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async ()=>{
+        try {
+            await fetch('/api/auth/logout', {
+                method: 'POST'
+            });
+        } catch (err) {
+            console.error('[AuthContext] logout error:', err);
+        } finally{
+            setCurrentUser(null);
+            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+            ;
+        }
+    }, []);
+    // Register handler terhubung ke backend /api/auth/register
     const register = async (email, password, name, username)=>{
-        const trimmedEmail = email.trim().toLowerCase();
-        const cleanUsername = (username || trimmedEmail.split('@')[0]).trim().toLowerCase();
-        if (users.some((u)=>u.email.toLowerCase() === trimmedEmail)) {
+        try {
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    name,
+                    username
+                })
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+                return {
+                    success: false,
+                    error: data.error || 'Pendaftaran gagal.'
+                };
+            }
+            return {
+                success: true
+            };
+        } catch (err) {
+            console.error('[AuthContext] register error:', err);
             return {
                 success: false,
-                error: 'Email is already registered.'
+                error: 'Terjadi kesalahan saat pendaftaran.'
             };
         }
-        if (users.some((u)=>u.username && u.username.toLowerCase() === cleanUsername)) {
-            return {
-                success: false,
-                error: 'Username is already taken. Please choose another.'
-            };
-        }
-        const newUser = {
-            id: `usr_creator_${Date.now()}`,
-            username: cleanUsername,
-            email: trimmedEmail,
-            name,
-            role: 'Creator',
-            creatorStatus: 'active',
-            password,
-            createdAt: new Date().toISOString()
-        };
-        setUsers((prev)=>[
-                ...prev,
-                newUser
-            ]);
-        // Auto login
-        setCurrentUser(newUser);
-        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-        ;
-        return {
-            success: true
-        };
     };
-    // Admin function: Nonaktifkan / aktifkan creator jika melanggar
+    // Helper untuk manajemen creator di dashboard admin
     const updateUserStatus = (userId, newStatus)=>{
         setUsers((prev)=>prev.map((u)=>u.id === userId ? {
                     ...u,
@@ -607,7 +604,7 @@ const AuthProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/AuthContext.tsx",
-        lineNumber: 233,
+        lineNumber: 217,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
