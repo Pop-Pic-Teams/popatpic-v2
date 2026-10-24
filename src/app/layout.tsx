@@ -51,8 +51,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

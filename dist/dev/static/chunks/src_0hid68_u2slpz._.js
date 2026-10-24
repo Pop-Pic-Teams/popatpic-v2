@@ -422,10 +422,10 @@ function getStandardSlots(poseCount) {
         // 1 Pose: Kotak besar di tengah
         return [
             {
-                x: 500,
-                y: 550,
-                w: 3000,
-                h: 4300
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 4904
             }
         ];
     }
@@ -433,16 +433,16 @@ function getStandardSlots(poseCount) {
         // 2 Poses: Susunan vertikal atas & bawah
         return [
             {
-                x: 650,
-                y: 480,
-                w: 2700,
-                h: 2150
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 2365
             },
             {
-                x: 650,
-                y: 2850,
-                w: 2700,
-                h: 2150
+                x: 200,
+                y: 2749,
+                w: 3601,
+                h: 2365
             }
         ];
     }
@@ -450,40 +450,40 @@ function getStandardSlots(poseCount) {
         // 6 Poses: Grid 2 kolom x 3 baris
         return [
             {
-                x: 480,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 200,
+                y: 3556,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 2085,
+                y: 3556,
+                w: 1715,
+                h: 1558
             }
         ];
     }
@@ -491,85 +491,85 @@ function getStandardSlots(poseCount) {
         // 8 Poses: Grid 2 kolom x 4 baris rapat
         return [
             {
-                x: 480,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 200,
+                y: 3952,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 2085,
+                y: 3952,
+                w: 1715,
+                h: 1162
             }
         ];
     }
     // Default 4 Poses: Grid 2 kolom x 2 baris
     return [
         {
-            x: 480,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 201,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 2086,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 480,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 200,
+            y: 2749,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 2085,
+            y: 2749,
+            w: 1715,
+            h: 2365
         }
     ];
 }
 const fourSlots = getStandardSlots(4);
-const oneSlot = getStandardSlots(1);
+const oneSlots = getStandardSlots(1);
 const twoSlots = getStandardSlots(2);
 const sixSlots = getStandardSlots(6);
 const eightSlots = getStandardSlots(8);
@@ -605,7 +605,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -628,7 +628,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Joyful festival theme decorated with vintage circus ornaments.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: sixSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -651,7 +651,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Clean black-and-white minimalist design with modern editorial flair.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: eightSlots,
         category: 'Minimalist',
         tags: [
             'Minimalist',
@@ -674,7 +674,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: twoSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -694,10 +694,10 @@ const INITIAL_FRAMES = [
         id: 'frm_solo_spotlight',
         name: 'Sweet Solo',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlots),
         desc: 'Single portrait frame with gentle warm blush accents.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -716,10 +716,10 @@ const INITIAL_FRAMES = [
         id: 'frm_formal_mono',
         name: 'Formal Elegance',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlots),
         desc: 'Minimalist executive frame tailored for professional portraits and celebrations.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Formal',
         tags: [
             'Formal',
@@ -1003,14 +1003,13 @@ function updateCreatorFrame(frameId, creatorId, updates) {
     const index = all.findIndex((f)=>f.id === frameId && f.creator_id === creatorId);
     if (index === -1) return false;
     const target = all[index];
-    // Jika ada status spesifik yang dikirim (misal 'approved'), gunakan status tersebut.
-    // Jika tidak, default-kan frame draft/rejected menjadi 'pending_review'.
-    const newStatus = updates.status || (target.status === 'draft' || target.status === 'rejected' ? 'pending_review' : target.status);
+    if (target.status !== 'draft' && target.status !== 'rejected') {
+        return false;
+    }
     all[index] = {
         ...target,
         ...updates,
-        status: newStatus,
-        is_active: newStatus === 'approved' ? true : target.is_active,
+        status: 'pending_review',
         rejection_reason: undefined,
         updated_at: new Date().toISOString()
     };
@@ -1188,21 +1187,13 @@ const BrowseFramesPage = ()=>{
     const [selectedTags, setSelectedTags] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [customTagInput, setCustomTagInput] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [inspectingFrame, setInspectingFrame] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [allFrames, setAllFrames] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        "BrowseFramesPage.useState": ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$frames$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["INITIAL_FRAMES"].filter({
-                "BrowseFramesPage.useState": (frame)=>frame.status === 'approved' && frame.is_active
-            }["BrowseFramesPage.useState"])
-    }["BrowseFramesPage.useState"]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "BrowseFramesPage.useEffect": ()=>{
-            setAllFrames((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$frames$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApprovedActiveFrames"])());
-        }
-    }["BrowseFramesPage.useEffect"], []);
+    // All approved & active frames
+    const allFrames = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$frames$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApprovedActiveFrames"])();
     // Style categories defined by Admin
     const ADMIN_STYLES = [
         {
             id: 'All',
-            label: 'All Styles'
+            label: 'Semua Style'
         },
         {
             id: 'Cute',
@@ -1345,12 +1336,12 @@ const BrowseFramesPage = ()=>{
                     currentStep: 1
                 }, void 0, false, {
                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                    lineNumber: 153,
+                    lineNumber: 149,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                lineNumber: 152,
+                lineNumber: 148,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1365,33 +1356,33 @@ const BrowseFramesPage = ()=>{
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                         className: "text-3xl md:text-5xl font-serif tracking-tight text-[#4B2E1F]",
                                         children: [
+                                            "Galeri Frame ",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "italic text-[#F4B8A5] font-serif",
-                                                children: "Creator"
+                                                children: "Kreator"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 161,
-                                                columnNumber: 15
-                                            }, ("TURBOPACK compile-time value", void 0)),
-                                            " Frame Gallery"
+                                                lineNumber: 157,
+                                                columnNumber: 28
+                                            }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 160,
+                                        lineNumber: 156,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "mt-2 text-sm text-[#4B2E1F]/75 leading-relaxed",
-                                        children: "Explore frame designs with a variety of themes and hashtags. Click on a frame card to view full details, or click the camera icon to start your photo shoot session immediately!"
+                                        children: "Jelajahi karya desain frame dengan berbagai tema tag & hashtag. Klik kartu frame untuk melihat detail lengkap, atau klik ikon kamera untuk langsung mulai sesi pemotretan!"
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 163,
+                                        lineNumber: 159,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 159,
+                                lineNumber: 155,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1403,34 +1394,34 @@ const BrowseFramesPage = ()=>{
                                             className: "h-2.5 w-2.5 rounded-full bg-[#DEE6BD] border border-[#C5D09D]"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 166,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: [
                                                 filteredFrames.length,
-                                                " Frames Avaivable"
+                                                " Frames Tersedia"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 171,
+                                            lineNumber: 167,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                    lineNumber: 169,
+                                    lineNumber: 165,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 168,
+                                lineNumber: 164,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                        lineNumber: 158,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1446,18 +1437,18 @@ const BrowseFramesPage = ()=>{
                                                 className: "absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#4B2E1F]/50"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 182,
+                                                lineNumber: 178,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                 type: "text",
                                                 value: searchQuery,
                                                 onChange: (e)=>setSearchQuery(e.target.value),
-                                                placeholder: "Search frames, creators, descriptions, or hashtags #cute...",
+                                                placeholder: "Cari frame, kreator, deskripsi, atau hashtag #cute...",
                                                 className: "w-full pl-10 pr-9 py-2.5 rounded-lg border border-[#DEE6BD] bg-white text-xs text-[#4B2E1F] placeholder:text-[#4B2E1F]/45 focus:outline-none focus:ring-1 focus:ring-[#4B2E1F] focus:border-[#4B2E1F] transition-all shadow-2xs"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 183,
+                                                lineNumber: 179,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1467,18 +1458,18 @@ const BrowseFramesPage = ()=>{
                                                     className: "h-3.5 w-3.5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 195,
+                                                    lineNumber: 191,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 191,
+                                                lineNumber: 187,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 181,
+                                        lineNumber: 177,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1487,10 +1478,10 @@ const BrowseFramesPage = ()=>{
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                 htmlFor: "pose-dropdown",
                                                 className: "sr-only",
-                                                children: "Select Poses"
+                                                children: "Pilih Pose"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 202,
+                                                lineNumber: 198,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1502,12 +1493,12 @@ const BrowseFramesPage = ()=>{
                                                             className: "h-3.5 w-3.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 205,
+                                                            lineNumber: 201,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 204,
+                                                        lineNumber: 200,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1521,10 +1512,10 @@ const BrowseFramesPage = ()=>{
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                 value: "All",
-                                                                children: "All Poses"
+                                                                children: "Semua Pose"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 216,
+                                                                lineNumber: 212,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1532,7 +1523,7 @@ const BrowseFramesPage = ()=>{
                                                                 children: "1 Pose"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 217,
+                                                                lineNumber: 213,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1540,7 +1531,7 @@ const BrowseFramesPage = ()=>{
                                                                 children: "2 Poses"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 218,
+                                                                lineNumber: 214,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1548,7 +1539,7 @@ const BrowseFramesPage = ()=>{
                                                                 children: "4 Poses"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 219,
+                                                                lineNumber: 215,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1556,7 +1547,7 @@ const BrowseFramesPage = ()=>{
                                                                 children: "6 Poses"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 220,
+                                                                lineNumber: 216,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1564,13 +1555,13 @@ const BrowseFramesPage = ()=>{
                                                                 children: "8 Poses"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 221,
+                                                                lineNumber: 217,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 207,
+                                                        lineNumber: 203,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1579,24 +1570,24 @@ const BrowseFramesPage = ()=>{
                                                             className: "h-3.5 w-3.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 224,
+                                                            lineNumber: 220,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 223,
+                                                        lineNumber: 219,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 203,
+                                                lineNumber: 199,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 201,
+                                        lineNumber: 197,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1608,7 +1599,7 @@ const BrowseFramesPage = ()=>{
                                                 children: "Tag Kreator"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 231,
+                                                lineNumber: 227,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1620,12 +1611,12 @@ const BrowseFramesPage = ()=>{
                                                             className: "h-3.5 w-3.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 234,
+                                                            lineNumber: 230,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 233,
+                                                        lineNumber: 229,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1640,10 +1631,10 @@ const BrowseFramesPage = ()=>{
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                 value: "",
-                                                                children: "Select Creator Tag"
+                                                                children: "Pilih Tag Kreator"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 246,
+                                                                lineNumber: 242,
                                                                 columnNumber: 19
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             allCreatorTags.map((tag)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1654,13 +1645,13 @@ const BrowseFramesPage = ()=>{
                                                                     ]
                                                                 }, tag, true, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 248,
+                                                                    lineNumber: 244,
                                                                     columnNumber: 21
                                                                 }, ("TURBOPACK compile-time value", void 0)))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 236,
+                                                        lineNumber: 232,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1669,24 +1660,24 @@ const BrowseFramesPage = ()=>{
                                                             className: "h-3.5 w-3.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 254,
+                                                            lineNumber: 250,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 253,
+                                                        lineNumber: 249,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 232,
+                                                lineNumber: 228,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 226,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1701,24 +1692,24 @@ const BrowseFramesPage = ()=>{
                                                         children: "#"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 262,
+                                                        lineNumber: 258,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "text",
                                                         value: customTagInput,
                                                         onChange: (e)=>setCustomTagInput(e.target.value),
-                                                        placeholder: "Type creator tag...",
+                                                        placeholder: "Ketik tag kreator...",
                                                         className: "w-full pl-7 pr-3 py-2.5 rounded-lg border border-[#DEE6BD] bg-white text-xs text-[#4B2E1F] placeholder:text-[#4B2E1F]/45 focus:outline-none focus:ring-1 focus:ring-[#4B2E1F] transition-all shadow-2xs"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 263,
+                                                        lineNumber: 259,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 261,
+                                                lineNumber: 257,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1731,33 +1722,33 @@ const BrowseFramesPage = ()=>{
                                                         className: "h-3.5 w-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 277,
+                                                        lineNumber: 273,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "hidden sm:inline",
-                                                        children: "Add"
+                                                        children: "Tambah"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 278,
+                                                        lineNumber: 274,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 271,
+                                                lineNumber: 267,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 260,
+                                        lineNumber: 256,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 179,
+                                lineNumber: 175,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1773,22 +1764,22 @@ const BrowseFramesPage = ()=>{
                                                         className: "h-3 w-3 text-[#4B2E1F]/60"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 288,
+                                                        lineNumber: 284,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
-                                                    "Active Creator Tags:"
+                                                    "Tag Kreator Aktif:"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 287,
+                                                lineNumber: 283,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             selectedTags.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "text-[11px] text-[#4B2E1F]/60 italic",
-                                                children: "All tags (click hashtags below or select from creator tags dropdown)"
+                                                children: "Semua tag (klik hashtag di bawah atau pilih dropdown tag kreator)"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 292,
+                                                lineNumber: 288,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                                                 children: selectedTags.map((tag)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1805,29 +1796,29 @@ const BrowseFramesPage = ()=>{
                                                                     className: "h-3 w-3"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 309,
+                                                                    lineNumber: 305,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 303,
+                                                                lineNumber: 299,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, tag, true, {
                                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                        lineNumber: 298,
+                                                        lineNumber: 294,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 296,
+                                                lineNumber: 292,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 286,
+                                        lineNumber: 282,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     (searchQuery || selectedPose !== 'All' || selectedStyle !== 'All' || selectedTags.length > 0) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1839,26 +1830,26 @@ const BrowseFramesPage = ()=>{
                                                 className: "h-3 w-3"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 324,
+                                                lineNumber: 320,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                children: "Reset All Filters"
+                                                children: "Reset Semua Filter"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 325,
+                                                lineNumber: 321,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 319,
+                                        lineNumber: 315,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 284,
+                                lineNumber: 280,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1871,14 +1862,14 @@ const BrowseFramesPage = ()=>{
                                                 className: "h-3 w-3 text-[#4B2E1F]/60"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 333,
+                                                lineNumber: 329,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
-                                            "Popular Creator Tags:"
+                                            "Tag Populer Kreator:"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 332,
+                                        lineNumber: 328,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     allCreatorTags.slice(0, 10).map((tag)=>{
@@ -1893,26 +1884,26 @@ const BrowseFramesPage = ()=>{
                                             ]
                                         }, tag, true, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 339,
+                                            lineNumber: 335,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0));
                                     })
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 331,
+                                lineNumber: 327,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                        lineNumber: 177,
+                        lineNumber: 173,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                lineNumber: 157,
+                lineNumber: 153,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1927,20 +1918,20 @@ const BrowseFramesPage = ()=>{
                                     className: "h-3.5 w-3.5 text-[#4B2E1F]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                    lineNumber: 361,
+                                    lineNumber: 357,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: "Select Style:"
+                                    children: "Pilih Style:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                    lineNumber: 362,
+                                    lineNumber: 358,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 360,
+                            lineNumber: 356,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         ADMIN_STYLES.map((style)=>{
@@ -1955,7 +1946,7 @@ const BrowseFramesPage = ()=>{
                                         children: style.label
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 383,
+                                        lineNumber: 379,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1963,25 +1954,25 @@ const BrowseFramesPage = ()=>{
                                         children: count
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 384,
+                                        lineNumber: 380,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, style.id, true, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 373,
+                                lineNumber: 369,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0));
                         })
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                    lineNumber: 359,
+                    lineNumber: 355,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                lineNumber: 358,
+                lineNumber: 354,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1995,28 +1986,28 @@ const BrowseFramesPage = ()=>{
                                 className: "h-6 w-6"
                             }, void 0, false, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 404,
+                                lineNumber: 400,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 403,
+                            lineNumber: 399,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                             className: "text-lg font-serif text-[#4B2E1F]",
-                            children: "No matching frames found"
+                            children: "Tidak ada frame yang cocok"
                         }, void 0, false, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 406,
+                            lineNumber: 402,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "mt-1 text-xs text-[#4B2E1F]/70",
-                            children: "Try using different keywords or reset tag filters to explore other frame collections."
+                            children: "Coba gunakan kata kunci lain atau hapus filter tag untuk melihat koleksi frame lainnya."
                         }, void 0, false, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 407,
+                            lineNumber: 403,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2025,13 +2016,13 @@ const BrowseFramesPage = ()=>{
                             children: "Reset Semua Filter"
                         }, void 0, false, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 410,
+                            lineNumber: 406,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                    lineNumber: 402,
+                    lineNumber: 398,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6",
@@ -2058,7 +2049,7 @@ const BrowseFramesPage = ()=>{
                                             loading: "lazy"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 435,
+                                            lineNumber: 431,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2076,23 +2067,23 @@ const BrowseFramesPage = ()=>{
                                                     className: "h-4 w-4 text-[#4B2E1F]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 454,
+                                                    lineNumber: 450,
                                                     columnNumber: 25
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                lineNumber: 444,
+                                                lineNumber: 440,
                                                 columnNumber: 23
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 443,
+                                            lineNumber: 439,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                    lineNumber: 434,
+                                    lineNumber: 430,
                                     columnNumber: 19
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2105,7 +2096,7 @@ const BrowseFramesPage = ()=>{
                                                     children: frame.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 463,
+                                                    lineNumber: 459,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2113,7 +2104,7 @@ const BrowseFramesPage = ()=>{
                                                     children: frame.desc || 'Desain frame artistik resolusi tinggi khusus untuk sesi photobooth kamu.'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 468,
+                                                    lineNumber: 464,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2136,19 +2127,19 @@ const BrowseFramesPage = ()=>{
                                                             ]
                                                         }, clean, true, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 483,
+                                                            lineNumber: 479,
                                                             columnNumber: 29
                                                         }, ("TURBOPACK compile-time value", void 0));
                                                     })
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 473,
+                                                    lineNumber: 469,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 461,
+                                            lineNumber: 457,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2162,7 +2153,7 @@ const BrowseFramesPage = ()=>{
                                                             children: frame.author ? frame.author.charAt(0).toUpperCase() : 'C'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 503,
+                                                            lineNumber: 499,
                                                             columnNumber: 25
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2173,7 +2164,7 @@ const BrowseFramesPage = ()=>{
                                                                     children: frame.author
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 507,
+                                                                    lineNumber: 503,
                                                                     columnNumber: 27
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2184,19 +2175,19 @@ const BrowseFramesPage = ()=>{
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 510,
+                                                                    lineNumber: 506,
                                                                     columnNumber: 27
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 506,
+                                                            lineNumber: 502,
                                                             columnNumber: 25
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 502,
+                                                    lineNumber: 498,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2208,36 +2199,36 @@ const BrowseFramesPage = ()=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 516,
+                                                    lineNumber: 512,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 501,
+                                            lineNumber: 497,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                    lineNumber: 460,
+                                    lineNumber: 456,
                                     columnNumber: 19
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, frame.id, true, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 428,
+                            lineNumber: 424,
                             columnNumber: 17
                         }, ("TURBOPACK compile-time value", void 0));
                     })
                 }, void 0, false, {
                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                    lineNumber: 418,
+                    lineNumber: 414,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                lineNumber: 400,
+                lineNumber: 396,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             inspectingFrame && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2252,12 +2243,12 @@ const BrowseFramesPage = ()=>{
                                 className: "h-4 w-4"
                             }, void 0, false, {
                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                lineNumber: 537,
+                                lineNumber: 533,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 533,
+                            lineNumber: 529,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2271,12 +2262,12 @@ const BrowseFramesPage = ()=>{
                                         className: "max-h-[480px] w-auto object-contain rounded-lg drop-shadow-sm"
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                        lineNumber: 543,
+                                        lineNumber: 539,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                    lineNumber: 542,
+                                    lineNumber: 538,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2295,7 +2286,7 @@ const BrowseFramesPage = ()=>{
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 555,
+                                                            lineNumber: 551,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         (inspectingFrame.tags && inspectingFrame.tags.length > 0 ? inspectingFrame.tags : [
@@ -2308,13 +2299,13 @@ const BrowseFramesPage = ()=>{
                                                                 ]
                                                             }, t, true, {
                                                                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                lineNumber: 562,
+                                                                lineNumber: 558,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0)))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 554,
+                                                    lineNumber: 550,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2322,7 +2313,7 @@ const BrowseFramesPage = ()=>{
                                                     children: inspectingFrame.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 571,
+                                                    lineNumber: 567,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2333,17 +2324,17 @@ const BrowseFramesPage = ()=>{
                                                             children: inspectingFrame.author ? inspectingFrame.author.charAt(0).toUpperCase() : 'C'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 577,
+                                                            lineNumber: 573,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "text-xs text-[#4B2E1F]/60 font-medium",
-                                                                    children: "Frame Creator"
+                                                                    children: "Kreator Frame"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 581,
+                                                                    lineNumber: 577,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2351,7 +2342,7 @@ const BrowseFramesPage = ()=>{
                                                                     children: inspectingFrame.author
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 582,
+                                                                    lineNumber: 578,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2362,19 +2353,19 @@ const BrowseFramesPage = ()=>{
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 583,
+                                                                    lineNumber: 579,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 580,
+                                                            lineNumber: 576,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 576,
+                                                    lineNumber: 572,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2382,10 +2373,10 @@ const BrowseFramesPage = ()=>{
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                                             className: "text-xs font-semibold text-[#4B2E1F]/70 uppercase tracking-wider",
-                                                            children: "Description & Design Details"
+                                                            children: "Keterangan & Detail Desain"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 589,
+                                                            lineNumber: 585,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2393,13 +2384,13 @@ const BrowseFramesPage = ()=>{
                                                             children: inspectingFrame.desc || 'Desain frame photobooth berkualitas tinggi siap digunakan untuk mengabadikan momen spesial kamu bersama teman dan keluarga.'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 592,
+                                                            lineNumber: 588,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 588,
+                                                    lineNumber: 584,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2409,7 +2400,31 @@ const BrowseFramesPage = ()=>{
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     className: "text-[#4B2E1F]/60 block",
-                                                                    children: "Resolution:"
+                                                                    children: "Resolusi:"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/guest/BrowseFramesPage.tsx",
+                                                                    lineNumber: 595,
+                                                                    columnNumber: 23
+                                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    className: "text-[#4B2E1F]",
+                                                                    children: "4000 × 5900 px"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/guest/BrowseFramesPage.tsx",
+                                                                    lineNumber: 596,
+                                                                    columnNumber: 23
+                                                                }, ("TURBOPACK compile-time value", void 0))
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/guest/BrowseFramesPage.tsx",
+                                                            lineNumber: 594,
+                                                            columnNumber: 21
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-[#4B2E1F]/60 block",
+                                                                    children: "Slots Terkalibrasi:"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
                                                                     lineNumber: 599,
@@ -2417,8 +2432,11 @@ const BrowseFramesPage = ()=>{
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                                                     className: "text-[#4B2E1F]",
-                                                                    children: "4000 × 5900 px"
-                                                                }, void 0, false, {
+                                                                    children: [
+                                                                        inspectingFrame.slots.length,
+                                                                        " Foto Cutout"
+                                                                    ]
+                                                                }, void 0, true, {
                                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
                                                                     lineNumber: 600,
                                                                     columnNumber: 23
@@ -2428,44 +2446,17 @@ const BrowseFramesPage = ()=>{
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
                                                             lineNumber: 598,
                                                             columnNumber: 21
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-[#4B2E1F]/60 block",
-                                                                    children: "Calibrated Slots:"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 603,
-                                                                    columnNumber: 23
-                                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                                                    className: "text-[#4B2E1F]",
-                                                                    children: [
-                                                                        inspectingFrame.slots.length,
-                                                                        " Photo Cutouts"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                                    lineNumber: 604,
-                                                                    columnNumber: 23
-                                                                }, ("TURBOPACK compile-time value", void 0))
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 602,
-                                                            columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 597,
+                                                    lineNumber: 593,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 552,
+                                            lineNumber: 548,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2479,67 +2470,67 @@ const BrowseFramesPage = ()=>{
                                                             className: "h-4 w-4 text-[#FDFFEB]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 615,
+                                                            lineNumber: 611,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            children: "Use Frame & Start Session Now"
+                                                            children: "Pakai Frame & Mulai Foto Sekarang"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                            lineNumber: 616,
+                                                            lineNumber: 612,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 611,
+                                                    lineNumber: 607,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "text-[11px] text-[#4B2E1F]/70 text-center",
-                                                    children: "Proceed directly to the photo shoot (Phase 2: Take Photos) with this frame."
+                                                    children: "Langsung masuk ke tahap pemotretan (Fase 2: Foto) dengan frame ini."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                                    lineNumber: 618,
+                                                    lineNumber: 614,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                            lineNumber: 610,
+                                            lineNumber: 606,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                                    lineNumber: 551,
+                                    lineNumber: 547,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                            lineNumber: 540,
+                            lineNumber: 536,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                    lineNumber: 531,
+                    lineNumber: 527,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-                lineNumber: 530,
+                lineNumber: 526,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/guest/BrowseFramesPage.tsx",
-        lineNumber: 150,
+        lineNumber: 146,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(BrowseFramesPage, "HQEiq8X6OQ6kIvJbOgOZUIPP+Ho=", false, function() {
+_s(BrowseFramesPage, "LRJcQl2lvE+8lsu7BTu+N67S+Aw=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$navigation$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNavigate"]
     ];

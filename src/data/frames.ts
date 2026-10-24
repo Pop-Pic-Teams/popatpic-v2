@@ -174,50 +174,50 @@ export function getLayoutGuideDownload(poseCount: number): string {
 export function getStandardSlots(poseCount: number): FrameSlot[] {
   if (poseCount === 1) {
     // 1 Pose: Kotak besar di tengah
-    return [{ x: 500, y: 550, w: 3000, h: 4300 }];
+    return [{ x: 203, y: 210, w: 3601, h: 4904 }];
   }
   if (poseCount === 2) {
     // 2 Poses: Susunan vertikal atas & bawah
     return [
-      { x: 650, y: 480, w: 2700, h: 2150 },
-      { x: 650, y: 2850, w: 2700, h: 2150 },
+      { x: 203, y: 210, w: 3601, h: 2365 },
+      { x: 200, y: 2749, w: 3601, h: 2365 },
     ];
   }
   if (poseCount === 6) {
     // 6 Poses: Grid 2 kolom x 3 baris
     return [
-      { x: 480, y: 380, w: 1460, h: 1420 },
-      { x: 2060, y: 380, w: 1460, h: 1420 },
-      { x: 480, y: 1930, w: 1460, h: 1420 },
-      { x: 2060, y: 1930, w: 1460, h: 1420 },
-      { x: 480, y: 3480, w: 1460, h: 1420 },
-      { x: 2060, y: 3480, w: 1460, h: 1420 },
+      { x: 201, y: 210, w: 1715, h: 1558 },
+      { x: 2086, y: 210, w: 1715, h: 1558 },
+      { x: 201, y: 1883, w: 1715, h: 1558 },
+      { x: 2086, y: 1883, w: 1715, h: 1558 },
+      { x: 200, y: 3556, w: 1715, h: 1558 },
+      { x: 2085, y: 3556, w: 1715, h: 1558 },
     ];
   }
   if (poseCount === 8) {
     // 8 Poses: Grid 2 kolom x 4 baris rapat
     return [
-      { x: 480, y: 350, w: 1460, h: 1040 },
-      { x: 2060, y: 350, w: 1460, h: 1040 },
-      { x: 480, y: 1510, w: 1460, h: 1040 },
-      { x: 2060, y: 1510, w: 1460, h: 1040 },
-      { x: 480, y: 2670, w: 1460, h: 1040 },
-      { x: 2060, y: 2670, w: 1460, h: 1040 },
-      { x: 480, y: 3830, w: 1460, h: 1040 },
-      { x: 2060, y: 3830, w: 1460, h: 1040 },
+      { x: 201, y: 210, w: 1715, h: 1162 },
+      { x: 2086, y: 210, w: 1715, h: 1162 },
+      { x: 201, y: 1457, w: 1715, h: 1162 },
+      { x: 2086, y: 1457, w: 1715, h: 1162 },
+      { x: 201, y: 2704, w: 1715, h: 1162 },
+      { x: 2086, y: 2704, w: 1715, h: 1162 },
+      { x: 200, y: 3952, w: 1715, h: 1162 },
+      { x: 2085, y: 3952, w: 1715, h: 1162 },
     ];
   }
   // Default 4 Poses: Grid 2 kolom x 2 baris
   return [
-    { x: 480, y: 480, w: 1460, h: 1920 },
-    { x: 2060, y: 480, w: 1460, h: 1920 },
-    { x: 480, y: 2520, w: 1460, h: 1920 },
-    { x: 2060, y: 2520, w: 1460, h: 1920 },
+    { x: 201, y: 210, w: 1715, h: 2365 },
+    { x: 2086, y: 210, w: 1715, h: 2365 },
+    { x: 200, y: 2749, w: 1715, h: 2365 },
+    { x: 2085, y: 2749, w: 1715, h: 2365 },
   ];
 }
 
 const fourSlots = getStandardSlots(4);
-const oneSlot = getStandardSlots(1);
+const oneSlots = getStandardSlots(1);
 const twoSlots = getStandardSlots(2);
 const sixSlots = getStandardSlots(6);
 const eightSlots = getStandardSlots(8);
@@ -250,7 +250,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     image: resolveImgSrc(cuteFramePng),
     desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: oneSlots,
     category: 'Cute',
     tags: ['Cute', 'Pastel', 'Aesthetic', 'Pink', 'Kawaii'],
     author: 'Karima Ulya',
@@ -268,7 +268,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     image: resolveImgSrc(circusFramePng),
     desc: 'Joyful festival theme decorated with vintage circus ornaments.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: sixSlots,
     category: 'Vintage',
     tags: ['Vintage', 'Carnival', 'Festive', 'Retro', 'Classic'],
     author: 'Karima Ulya',
@@ -286,7 +286,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     image: resolveImgSrc(monochromeFramePng),
     desc: 'Clean black-and-white minimalist design with modern editorial flair.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: eightSlots,
     category: 'Minimalist',
     tags: ['Minimalist', 'Monochrome', 'Noir', 'Clean', 'Modern'],
     author: 'Nadhira Studio',
@@ -304,7 +304,7 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     image: resolveImgSrc(tapeFramePng),
     desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
     figmaWidth: 4000,
-    slots: fourSlots,
+    slots: twoSlots,
     category: 'Vintage',
     tags: ['Vintage', 'Scrapbook', 'Aesthetic', 'WashiTape', 'Journal'],
     author: 'Karima Ulya',
@@ -319,10 +319,10 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_solo_spotlight',
     name: 'Sweet Solo',
     count: 1,
-    image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlot),
+    image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlots),
     desc: 'Single portrait frame with gentle warm blush accents.',
     figmaWidth: 4000,
-    slots: oneSlot,
+    slots: oneSlots,
     category: 'Cute',
     tags: ['Cute', 'Solo', 'Sweet', 'Portrait', 'Minimalist'],
     author: 'Karima Ulya',
@@ -335,10 +335,10 @@ export const INITIAL_FRAMES: FrameTemplate[] = [
     id: 'frm_formal_mono',
     name: 'Formal Elegance',
     count: 1,
-    image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlot),
+    image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlots),
     desc: 'Minimalist executive frame tailored for professional portraits and celebrations.',
     figmaWidth: 4000,
-    slots: oneSlot,
+    slots: oneSlots,
     category: 'Formal',
     tags: ['Formal', 'Executive', 'Minimalist', 'Clean', 'Portrait'],
     author: 'Nadhira Studio',
