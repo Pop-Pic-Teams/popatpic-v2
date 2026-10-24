@@ -611,16 +611,14 @@ export function updateCreatorFrame(
   if (index === -1) return false;
 
   const target = all[index];
-
-  // Jika ada status spesifik yang dikirim (misal 'approved'), gunakan status tersebut.
-  // Jika tidak, default-kan frame draft/rejected menjadi 'pending_review'.
-  const newStatus = updates.status || (target.status === 'draft' || target.status === 'rejected' ? 'pending_review' : target.status);
+  if (target.status !== 'draft' && target.status !== 'rejected') {
+    return false;
+  }
 
   all[index] = {
     ...target,
     ...updates,
-    status: newStatus,
-    is_active: newStatus === 'approved' ? true : target.is_active,
+    status: 'pending_review', // Re-submit for review
     rejection_reason: undefined,
     updated_at: new Date().toISOString(),
   };

@@ -1,0 +1,10 @@
+{
+  "/admin-dashboard/page": "app/admin-dashboard/page.js",
+  "/booth/page": "app/booth/page.js",
+  "/creator-dashboard/page": "app/creator-dashboard/page.js",
+  "/filters/page": "app/filters/page.js",
+  "/frames/page": "app/frames/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/result/page": "app/result/page.js"
+}

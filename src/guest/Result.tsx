@@ -187,9 +187,9 @@ export const ResultPage: React.FC = () => {
         <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white text-[#4B2E1F] mb-4 border border-[#919386]/30">
           <Sparkles className="h-6 w-6" />
         </div>
-        <h2 className="text-3xl font-serif font-bold text-[#4B2E1F] mb-2">Session Not Found</h2>
+        <h2 className="text-3xl font-serif font-bold text-[#4B2E1F] mb-2">Sesi Tidak Ditemukan</h2>
         <p className="text-sm text-[#919386] max-w-sm mb-6">
-          No photos have been captured for this session yet. Please start a new photobooth session.
+          Belum ada foto yang diambil untuk sesi ini. Silakan mulai sesi photobooth baru.
         </p>
         <button
           onClick={() => navigate('/select-frame')}
@@ -290,15 +290,15 @@ export const ResultPage: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <span className="rounded-md bg-[#DEE6BD] text-[#4B2E1F] font-semibold px-2 py-0.5 text-[10px] uppercase tracking-wider border border-[#C5D09D]">
-                Phase 4: Download & Share
+                Fase 4: Download & Share
               </span>
-              <span className="text-xs text-[#4B2E1F]/70 font-medium">Ready to Share</span>
+              <span className="text-xs text-[#4B2E1F]/70 font-medium">Siap Dibagikan</span>
             </div>
             <h1 className="text-lg md:text-xl font-serif font-bold text-[#4B2E1F] mt-0.5">
-              Pop@Pic! Photo Strip Result
+              Hasil Foto Strip Pop@Pic!
             </h1>
             <p className="text-xs text-[#4B2E1F]/70">
-              {frameName} • By {creatorName}
+              {frameName} • Oleh {creatorName}
             </p>
           </div>
 
@@ -309,7 +309,7 @@ export const ResultPage: React.FC = () => {
               title="Kembali ke Beranda"
             >
               <Home className="h-3.5 w-3.5" />
-              <span>Back to Home</span>
+              <span>Kembali ke Home</span>
             </button>
             <button
               onClick={() =>
@@ -328,13 +328,13 @@ export const ResultPage: React.FC = () => {
               }
               className="inline-flex items-center gap-1.5 rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] hover:bg-white px-3 py-1.5 text-xs font-semibold text-[#4B2E1F] transition-colors shadow-2xs cursor-pointer"
             >
-              <span>Change Filter</span>
+              <span>Ganti Filter</span>
             </button>
             <button
               onClick={() => navigate('/frames')}
               className="inline-flex items-center gap-1.5 rounded-lg border border-[#DE9784] bg-[#F4B8A5] hover:bg-[#EAA996] px-3.5 py-1.5 text-xs font-semibold text-[#4B2E1F] transition-colors shadow-2xs cursor-pointer"
             >
-              Choose New Frame
+              Pilih Frame Baru
             </button>
           </div>
         </div>
@@ -347,7 +347,7 @@ export const ResultPage: React.FC = () => {
               <div className="absolute inset-0 bg-[#FDFFEB]/85 backdrop-blur-xs flex flex-col items-center justify-center rounded-2xl z-20">
                 <div className="h-8 w-8 border-3 border-[#4B2E1F] border-t-transparent rounded-full animate-spin mb-2" />
                 <p className="text-xs font-semibold text-[#4B2E1F]">
-                  Preparing high-resolution photo strip result...
+                  Menyiapkan hasil foto strip resolusi tinggi...
                 </p>
               </div>
             )}
@@ -361,7 +361,7 @@ export const ResultPage: React.FC = () => {
 
             <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
               <span className="rounded-md bg-[#4B2E1F]/90 backdrop-blur-md px-2.5 py-1 text-xs font-semibold text-[#FDFFEB] shadow-xs">
-                Final Photo Strip
+                Hasil Akhir Strip
               </span>
               <span className="rounded-md bg-[#FDFFEB] text-[#4B2E1F] border border-[#DEE6BD] px-2.5 py-1 text-[11px] font-semibold flex items-center gap-1 shadow-xs">
                 <Sparkles className="h-3 w-3 text-[#F4B8A5]" />
@@ -382,10 +382,10 @@ export const ResultPage: React.FC = () => {
             <div className="flex items-center justify-between border-b border-[#B8C8DB] pb-3">
               <div>
                 <h2 className="text-base sm:text-lg font-serif font-bold text-[#4B2E1F]">
-                  Save & Download Photos
+                  Simpan & Unduh Foto
                 </h2>
                 <p className="text-[11px] text-[#4B2E1F]/70">
-                  Download photo strip or scan QR Code on your mobile phone
+                  Unduh foto strip atau scan QR Code di ponsel Anda
                 </p>
               </div>
               <span className="text-[10px] font-semibold text-[#4B2E1F] bg-[#FDFFEB] border border-[#DEE6BD] px-2.5 py-1 rounded-md shadow-2xs">
@@ -401,7 +401,7 @@ export const ResultPage: React.FC = () => {
                 className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#4B2E1F] hover:bg-[#3D2418] py-3 px-5 text-xs sm:text-sm font-bold text-[#FDFFEB] border border-[#4B2E1F] shadow-sm hover:shadow-md disabled:opacity-40 transition-all cursor-pointer"
               >
                 <Download className="h-4 w-4 text-[#FDFFEB]" />
-                <span> Download Photo Strip</span>
+                <span>Unduh Foto Strip</span>
               </button>
 
               <button
@@ -413,35 +413,35 @@ export const ResultPage: React.FC = () => {
                 {copiedImage ? (
                   <>
                     <Check className="h-4 w-4 text-[#4B2E1F]" />
-                    <span>Copied!</span>
+                    <span>Tersalin!</span>
                   </>
                 ) : (
                   <>
                     <Copy className="h-4 w-4 text-[#4B2E1F]" />
-                    <span>Copy</span>
+                    <span>Salin</span>
                   </>
                 )}
               </button>
             </div>
 
             <div className="flex items-center justify-between text-xs text-[#4B2E1F]/70 px-0.5">
-              <span>High Resolution • Print Quality</span>
+              <span>Resolusi Tinggi • Kualitas Cetak</span>
               <button
                 onClick={handleShare}
                 className="inline-flex items-center gap-1 font-semibold text-[#4B2E1F] hover:text-[#3D2418] cursor-pointer"
               >
                 <Share2 className="h-3.5 w-3.5" />
-                <span>{copiedLink ? 'Link Copied!' : 'Share Link'}</span>
+                <span>{copiedLink ? 'Tautan Disalin!' : 'Bagikan Tautan'}</span>
               </button>
             </div>
 
             {/* Bottom: QR Code Sharing */}
             <div className="border-t border-[#B8C8DB] pt-4 flex flex-col items-center text-center">
               <span className="text-xs font-bold text-[#4B2E1F] mb-0.5">
-                Scan QR Code to Save on Mobile
+                Scan QR Code untuk Simpan di Ponsel
               </span>
               <p className="text-[11px] text-[#4B2E1F]/70 mb-3">
-                Point your phone camera at the QR code to download directly
+                Arahkan kamera ponsel Anda ke kode QR untuk mengunduh langsung
               </p>
 
               <div className="rounded-xl border border-[#B8C8DB] bg-white p-2.5 inline-block shadow-2xs">
@@ -455,7 +455,7 @@ export const ResultPage: React.FC = () => {
 
               <div className="mt-3 flex items-center gap-1.5 text-[11px] font-bold text-[#4B2E1F] bg-[#FDFFEB] px-3 py-1 rounded-lg border border-[#DEE6BD]">
                 <CheckCircle className="h-3.5 w-3.5 text-[#4B2E1F]" />
-                <span>Direct Transfer Ready</span>
+                <span>Transfer Langsung Siap</span>
               </div>
             </div>
 

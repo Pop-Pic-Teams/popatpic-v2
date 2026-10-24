@@ -76,7 +76,7 @@ export const CreatorDashboard: React.FC = () => {
   const [frameDesc, setFrameDesc] = useState('');
   const [poseCount, setPoseCount] = useState<number>(4);
   const [styleCategory, setStyleCategory] = useState<FrameStyle>('Cute');
-  const [frameTags, setFrameTags] = useState<string[]>(['graduation', 'cute', 'aesthetic']);
+  const [frameTags, setFrameTags] = useState<string[]>(['wisuda', 'lucu', 'aesthetic']);
   const [frameImageBase64, setFrameImageBase64] = useState<string | null>(null);
 
   // Analytics chart state
@@ -214,7 +214,7 @@ export const CreatorDashboard: React.FC = () => {
     setEditingFrame(null);
     setFrameName('');
     setFrameDesc('');
-    setFrameTags(['graduation', 'cute', 'aesthetic']);
+    setFrameTags(['wisuda', 'lucu', 'aesthetic']);
     setFrameImageBase64(null);
     setShowUploadModal(false);
     refreshFrames();
@@ -612,8 +612,11 @@ const handleUnarchive = (frame: FrameTemplate) => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
-                    setSelectedDetailFrame(null);
-                    setCurrentView('upload');
+                    setEditingFrame(null);
+                    setFrameName('');
+                    setFrameDesc('');
+                    setFrameImageBase64(null);
+                    setShowUploadModal(true);
                   }}
                   className="inline-flex items-center gap-2 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-4 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs transition-colors cursor-pointer"
                 >
@@ -820,8 +823,11 @@ const handleUnarchive = (frame: FrameTemplate) => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
-                    setSelectedDetailFrame(null);
-                    setCurrentView('upload');
+                    setEditingFrame(null);
+                    setFrameName('');
+                    setFrameDesc('');
+                    setFrameImageBase64(null);
+                    setShowUploadModal(true);
                   }}
                   className="inline-flex items-center gap-1.5 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-4 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs transition-colors cursor-pointer"
                 >
@@ -907,10 +913,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
                 </p>
                 {frames.length === 0 && (
                   <button
-                    onClick={() => {
-                      setSelectedDetailFrame(null);
-                      setCurrentView('upload');
-                    }}
+                    onClick={() => setShowUploadModal(true)}
                     className="mt-4 rounded-lg bg-[#4B2E1F] px-5 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs hover:bg-[#3D2418] transition-colors cursor-pointer"
                   >
                     Upload Frame Now
@@ -1236,8 +1239,8 @@ const handleUnarchive = (frame: FrameTemplate) => {
                   <HashtagInput
                     tags={frameTags}
                     onChange={setFrameTags}
-                    label="Hashtags / Keywords"
-                    placeholder="Type hashtags and press coma, space, or Enter (ex: graduation, cute, vintage)..."
+                    label="Hashtags / Kata Kunci Bebas"
+                    placeholder="Ketik hashtag lalu tekan koma, spasi, atau Enter (cth: wisuda, lucu, vintage)..."
                     helperText="Creator bebas menginput banyak hashtag. Teks otomatis diubah menjadi visual chip (kotak kecil) dan dikirim ke payload Supabase sebagai array text[]."
                   />
                 </div>
@@ -1485,8 +1488,8 @@ const handleUnarchive = (frame: FrameTemplate) => {
                 <HashtagInput
                   tags={frameTags}
                   onChange={setFrameTags}
-                  label="Hashtags / Keywords"
-                  placeholder="Type hashtags and press comma or space (ex: graduation, cute, vintage)..."
+                  label="Hashtags / Kata Kunci Bebas"
+                  placeholder="Ketik hashtag lalu tekan koma atau spasi (cth: wisuda, lucu, pastel)..."
                   helperText="Teks otomatis diubah menjadi kotak kecil (visual chips) dan dimasukkan ke array tags."
                 />
               </div>
@@ -1552,10 +1555,10 @@ const handleUnarchive = (frame: FrameTemplate) => {
       <button
         onClick={() => navigate('/')}
         className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#4B2E1F] hover:bg-[#3D2418] text-[#FDFFEB] px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-xl border-2 border-[#DEE6BD] hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-        title="Return to Guest Home"
+        title="Kembali ke Halaman Utama Guest"
       >
         <Home className="h-4 w-4 text-[#F4B8A5] group-hover:rotate-12 transition-transform" />
-        <span>Guest Home</span>
+        <span>Halaman Utama Guest</span>
       </button>
     </div>
   );

@@ -1498,10 +1498,10 @@ export const AdminDashboard: React.FC = () => {
       <button
         onClick={() => navigate('/')}
         className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#4B2E1F] hover:bg-[#3D2418] text-[#FDFFEB] px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-xl border-2 border-[#DEE6BD] hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-        title="Return to Guest Home"
+        title="Kembali ke Halaman Utama Guest"
       >
         <Home className="h-4 w-4 text-[#F4B8A5] group-hover:rotate-12 transition-transform" />
-        <span>Guest Home</span>
+        <span>Halaman Utama Guest</span>
       </button>
     </div>
   );

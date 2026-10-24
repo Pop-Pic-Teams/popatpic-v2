@@ -100,8 +100,8 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         <button
           onClick={() => setIsMobileOpen(true)}
           className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#3D2418] text-[#FDFFEB] border border-[#DEE6BD]/20 hover:bg-[#2A180E] transition-colors cursor-pointer shadow-xs"
-          aria-label="Open Admin Menu"
-          title="Open Admin Menu"
+          aria-label="Buka Menu Admin"
+          title="Buka Menu Admin"
         >
           <Menu className="h-5 w-5" />
         </button>
@@ -140,7 +140,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                 <button
                   onClick={() => setIsMobileOpen(false)}
                   className="rounded-lg p-1.5 text-[#FDFFEB]/70 hover:text-[#FDFFEB] hover:bg-[#3D2418] transition-colors cursor-pointer"
-                  aria-label="Close Menu"
+                  aria-label="Tutup Menu"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -226,7 +226,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
           {/* Header & Logo + Collapse Button (Tanpa tombol ke guest di sebelahnya) */}
           <div
             className={`border-b border-[#3D2418] flex items-center justify-between ${
-              isCollapsed ? 'p-3 flex-col gap-3 justify-center' : 'p-5'
+              isCollapsed ? 'p-3 flex-col gap-2' : 'p-5'
             }`}
           >
             <div className="flex items-center gap-3 overflow-hidden text-left">
