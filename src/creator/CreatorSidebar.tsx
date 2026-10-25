@@ -211,7 +211,7 @@ export const CreatorSidebar: React.FC<CreatorSidebarProps> = ({
           {/* Header & Logo + Collapse Button (Tanpa tombol ke guest di sebelahnya) */}
           <div
             className={`border-b border-[#3D2418] flex items-center justify-between ${
-              isCollapsed ? 'p-3 flex-col gap-2' : 'p-5'
+              isCollapsed ? 'p-3 flex-col gap-3 justify-center' : 'p-5'
             }`}
           >
             <div className="flex items-center gap-3 overflow-hidden text-left">
@@ -282,15 +282,19 @@ export const CreatorSidebar: React.FC<CreatorSidebarProps> = ({
                   </div>
 
                   {item.badge !== undefined && (
-                    <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                        isActive
-                          ? 'bg-[#4B2E1F] text-[#FDFFEB]'
-                          : 'bg-[#F4B8A5] text-[#4B2E1F] border border-[#DE9784]'
-                      }`}
-                    >
-                      {item.badge}
+                    isCollapsed ? (
+                    <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-[#F4B8A5]" />
+                  ) : (
+                  <span
+                  className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                    isActive
+                    ? 'bg-[#4B2E1F] text-[#FDFFEB]'
+                    : 'bg-[#F4B8A5] text-[#4B2E1F] border border-[#DE9784]'
+                  }`}
+                  >
+                    {item.badge}
                     </span>
+                    )
                   )}
                 </button>
               );

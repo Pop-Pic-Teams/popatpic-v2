@@ -244,6 +244,38 @@ export const CreatorDashboard: React.FC = () => {
     }
   };
 
+  // const handleUnarchive = (frame: FrameTemplate) => {
+  //   if (confirm(`Are you sure you want to restore "${frame.name}"?`)) {
+  //     updateCreatorFrame(frame.id, currentUser.id, { status: 'approved' });
+  //     refreshFrames();
+  //     setNotification({
+  //       type: 'success',
+  //       message: `Frame "${frame.name}" has been restored to active status.`,
+  //     });
+  //     setTimeout(() => setNotification(null), 3000);
+  //   }
+  // };
+
+const handleUnarchive = (frame: FrameTemplate) => {
+  if (confirm(`Are you sure you want to restore "${frame.name}"?`)) {
+    // 1. Simpan perubahan di data lokal
+    updateCreatorFrame(frame.id, currentUser.id, { status: 'approved' });
+
+    // 2. Perbarui state React secara langsung agar UI otomatis berubah
+    setFrames((prevFrames) =>
+      prevFrames.map((f) =>
+        f.id === frame.id ? { ...f, status: 'approved' } : f
+      )
+    );
+
+    setNotification({
+      type: 'success',
+      message: `Frame "${frame.name}" has been restored to active status.`,
+    });
+    setTimeout(() => setNotification(null), 3000);
+  }
+};
+
   // Stats Counters
   const totalUploaded = frames.length;
   const approvedFrames = frames.filter((f) => f.status === 'approved');
@@ -664,8 +696,8 @@ export const CreatorDashboard: React.FC = () => {
                 </div>
 
                 {/* SVG Visual Area Chart */}
-                <div className="relative w-full h-52 pt-2">
-                  <svg className="w-full h-full overflow-visible" viewBox="0 0 500 160" preserveAspectRatio="none">
+                <div className="relative w-full h-80 pt-2">
+                  <svg className="w-full h-full overflow-visible" viewBox="0 0 500 200" preserveAspectRatio="none">
                     <defs>
                       <linearGradient id="creatorGrad" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stopColor="#4B2E1F" stopOpacity="0.25" />
@@ -678,7 +710,7 @@ export const CreatorDashboard: React.FC = () => {
                     </defs>
 
                     {/* Horizontal Gridlines */}
-                    {[0, 40, 80, 120].map((y) => (
+                    {[20, 70, 120, 170].map((y) => (
                       <line
                         key={y}
                         x1="0"
@@ -694,10 +726,10 @@ export const CreatorDashboard: React.FC = () => {
                     {(() => {
                       const points = creatorTrendData.map((d, i) => {
                         const x = (i / (creatorTrendData.length - 1)) * 500;
-                        const y = 140 - (d.uses / maxUses) * 115;
+                        const y = 170 - (d.uses / maxUses) * 150;
                         return `${x},${y}`;
                       });
-                      const dArea = `M 0,140 L ${points.join(' L ')} L 500,140 Z`;
+                      const dArea = `M 0,170 L ${points.join(' L ')} L 500,140 Z`;
                       const dLine = `M ${points.join(' L ')}`;
 
                       return (
@@ -717,7 +749,7 @@ export const CreatorDashboard: React.FC = () => {
                     {/* Points */}
                     {creatorTrendData.map((d, i) => {
                       const x = (i / (creatorTrendData.length - 1)) * 500;
-                      const y = 140 - (d.uses / maxUses) * 115;
+                      const y = 170 - (d.uses / maxUses) * 150;
                       const isHovered = activeChartPoint === i;
 
                       return (
@@ -1025,6 +1057,17 @@ export const CreatorDashboard: React.FC = () => {
                                 >
                                   <Archive className="h-3.5 w-3.5" />
                                 </button>
+                              )}
+
+                              {frame.status === 'archived' && (
+                                <button
+                                onClick={() => handleUnarchive(frame)}
+                                className="h-7 w-7 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+                                title="Unarchive Frame"
+                                aria-label="Unarchive Frame"
+                                >
+                                  <Archive className="h-3.5 w-3.5 rotate-180" />
+                                  </button>
                               )}
                             </div>
                           </td>

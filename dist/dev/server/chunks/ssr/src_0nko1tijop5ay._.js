@@ -395,10 +395,10 @@ function getStandardSlots(poseCount) {
         // 1 Pose: Kotak besar di tengah
         return [
             {
-                x: 500,
-                y: 550,
-                w: 3000,
-                h: 4300
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 4904
             }
         ];
     }
@@ -406,16 +406,16 @@ function getStandardSlots(poseCount) {
         // 2 Poses: Susunan vertikal atas & bawah
         return [
             {
-                x: 650,
-                y: 480,
-                w: 2700,
-                h: 2150
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 2365
             },
             {
-                x: 650,
-                y: 2850,
-                w: 2700,
-                h: 2150
+                x: 200,
+                y: 2749,
+                w: 3601,
+                h: 2365
             }
         ];
     }
@@ -423,40 +423,40 @@ function getStandardSlots(poseCount) {
         // 6 Poses: Grid 2 kolom x 3 baris
         return [
             {
-                x: 480,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 200,
+                y: 3556,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 2085,
+                y: 3556,
+                w: 1715,
+                h: 1558
             }
         ];
     }
@@ -464,85 +464,85 @@ function getStandardSlots(poseCount) {
         // 8 Poses: Grid 2 kolom x 4 baris rapat
         return [
             {
-                x: 480,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 200,
+                y: 3952,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 2085,
+                y: 3952,
+                w: 1715,
+                h: 1162
             }
         ];
     }
     // Default 4 Poses: Grid 2 kolom x 2 baris
     return [
         {
-            x: 480,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 201,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 2086,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 480,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 200,
+            y: 2749,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 2085,
+            y: 2749,
+            w: 1715,
+            h: 2365
         }
     ];
 }
 const fourSlots = getStandardSlots(4);
-const oneSlot = getStandardSlots(1);
+const oneSlots = getStandardSlots(1);
 const twoSlots = getStandardSlots(2);
 const sixSlots = getStandardSlots(6);
 const eightSlots = getStandardSlots(8);
@@ -578,7 +578,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -601,7 +601,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Joyful festival theme decorated with vintage circus ornaments.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: sixSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -624,7 +624,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Clean black-and-white minimalist design with modern editorial flair.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: eightSlots,
         category: 'Minimalist',
         tags: [
             'Minimalist',
@@ -647,7 +647,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: twoSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -667,10 +667,10 @@ const INITIAL_FRAMES = [
         id: 'frm_solo_spotlight',
         name: 'Sweet Solo',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlots),
         desc: 'Single portrait frame with gentle warm blush accents.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -689,10 +689,10 @@ const INITIAL_FRAMES = [
         id: 'frm_formal_mono',
         name: 'Formal Elegance',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlots),
         desc: 'Minimalist executive frame tailored for professional portraits and celebrations.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Formal',
         tags: [
             'Formal',
@@ -952,14 +952,13 @@ function updateCreatorFrame(frameId, creatorId, updates) {
     const index = all.findIndex((f)=>f.id === frameId && f.creator_id === creatorId);
     if (index === -1) return false;
     const target = all[index];
-    // Jika ada status spesifik yang dikirim (misal 'approved'), gunakan status tersebut.
-    // Jika tidak, default-kan frame draft/rejected menjadi 'pending_review'.
-    const newStatus = updates.status || (target.status === 'draft' || target.status === 'rejected' ? 'pending_review' : target.status);
+    if (target.status !== 'draft' && target.status !== 'rejected') {
+        return false;
+    }
     all[index] = {
         ...target,
         ...updates,
-        status: newStatus,
-        is_active: newStatus === 'approved' ? true : target.is_active,
+        status: 'pending_review',
         rejection_reason: undefined,
         updated_at: new Date().toISOString()
     };
@@ -1166,7 +1165,7 @@ const BoothPage = ()=>{
                 videoRef.current.srcObject = stream;
             }
         } catch  {
-            setCameraError('Camera permission denied or camera not detected. Please upload from gallery or allow camera access.');
+            setCameraError('Izin kamera ditolak atau kamera tidak terdeteksi. Silakan gunakan unggah dari galeri atau izinkan akses kamera.');
         }
     }, [
         facingMode
@@ -1340,7 +1339,7 @@ const BoothPage = ()=>{
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     onClick: ()=>navigate('/frames'),
                                     className: "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#DEE6BD]/30 bg-[#3D2418] text-[#FDFFEB] transition-colors hover:bg-[#2A180E] cursor-pointer shadow-xs",
-                                    "aria-label": "Change Frame",
+                                    "aria-label": "Ganti Frame",
                                     title: "Kembali ke Galeri Frame",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
                                         className: "h-4 w-4"
@@ -1409,8 +1408,7 @@ const BoothPage = ()=>{
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: [
                                         frameCount,
-                                        " ",
-                                        frameCount === 1 ? 'Pose' : 'Poses'
+                                        " Pose"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/Booth.tsx",
@@ -1469,7 +1467,7 @@ const BoothPage = ()=>{
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "rounded-md bg-[#DEE6BD] text-[#4B2E1F] font-semibold px-2 py-0.5 text-[10px] uppercase tracking-wider border border-[#C5D09D]",
-                                                children: "Phase 2: Take Photos"
+                                                children: "Fase 2: Take Photos"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/Booth.tsx",
                                                 lineNumber: 315,
@@ -1481,7 +1479,7 @@ const BoothPage = ()=>{
                                                     photos.length,
                                                     "/",
                                                     frameCount,
-                                                    " Photos Taken"
+                                                    " Foto Terisi"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/Booth.tsx",
@@ -1523,7 +1521,7 @@ const BoothPage = ()=>{
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                children: "Change Frame"
+                                                children: "Ganti Frame"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/Booth.tsx",
                                                 lineNumber: 333,
@@ -1540,7 +1538,7 @@ const BoothPage = ()=>{
                                         className: "inline-flex items-center gap-1.5 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-3.5 py-1.5 text-xs font-semibold text-[#FDFFEB] border border-[#4B2E1F] shadow-2xs transition-colors cursor-pointer",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                children: "Continue to Filters"
+                                                children: "Lanjut ke Filter"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/guest/Booth.tsx",
                                                 lineNumber: 341,
@@ -1645,7 +1643,7 @@ const BoothPage = ()=>{
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                             onClick: ()=>setIsMirrored(!isMirrored),
                                                             className: `flex h-8 px-2.5 items-center gap-1.5 rounded-lg border text-xs font-semibold transition-colors cursor-pointer shadow-2xs ${isMirrored ? 'border-[#4B2E1F] bg-[#4B2E1F] text-[#FDFFEB]' : 'border-[#DEE6BD] bg-[#FDFFEB] text-[#4B2E1F] hover:bg-white'}`,
-                                                            title: "Toggle Mirror View",
+                                                            title: "Cerminkan Tampilan Kamera (Mirror View)",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$flip$2d$horizontal$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FlipHorizontal$3e$__["FlipHorizontal"], {
                                                                     className: "h-3.5 w-3.5"
@@ -1671,7 +1669,7 @@ const BoothPage = ()=>{
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                             onClick: toggleFacingMode,
                                                             className: "flex h-8 w-8 items-center justify-center rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] text-[#4B2E1F] hover:bg-white transition-colors cursor-pointer shadow-2xs",
-                                                            title: "Switch Front / Back Camera",
+                                                            title: "Putar Kamera Depan / Belakang",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$rotate$2d$ccw$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__RotateCcw$3e$__["RotateCcw"], {
                                                                 className: "h-3.5 w-3.5"
                                                             }, void 0, false, {
@@ -1766,7 +1764,7 @@ const BoothPage = ()=>{
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                     onClick: ()=>setPhotoSource('gallery'),
                                                                     className: "rounded-lg bg-[#FDFFEB] hover:bg-white px-4 py-2 text-xs font-bold text-[#4B2E1F] shadow-sm cursor-pointer transition-colors",
-                                                                    children: "Switch to File Upload"
+                                                                    children: "Beralih ke Unggah File"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/Booth.tsx",
                                                                     lineNumber: 444,
@@ -1797,7 +1795,7 @@ const BoothPage = ()=>{
                                                             className: "absolute top-3 left-3 z-10 flex items-center gap-2",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "rounded-lg bg-[#4B2E1F]/90 backdrop-blur-md px-2.5 py-1 text-xs font-semibold text-[#FDFFEB] shadow-xs",
-                                                                children: isShooting ? `Pose ${currentShotIndex + 1} of ${frameCount}` : `${frameCount} Poses Ready`
+                                                                children: isShooting ? `Pose ${currentShotIndex + 1} dari ${frameCount}` : `${frameCount} Pose Siap Difoto`
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/guest/Booth.tsx",
                                                                 lineNumber: 464,
@@ -1832,7 +1830,7 @@ const BoothPage = ()=>{
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                             className: "text-lg font-serif font-bold text-[#4B2E1F] mb-0.5",
-                                                            children: "Select Photos from Device"
+                                                            children: "Pilih Foto dari Perangkat Anda"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/Booth.tsx",
                                                             lineNumber: 476,
@@ -1840,7 +1838,7 @@ const BoothPage = ()=>{
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-[11px] text-[#4B2E1F]/70 max-w-sm mb-3",
-                                                            children: "Format: JPEG, PNG, WebP (Max 10 MB per photo)."
+                                                            children: "Format: JPEG, PNG, WebP (Maksimum 10 MB per foto)."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/Booth.tsx",
                                                             lineNumber: 479,
@@ -1850,7 +1848,7 @@ const BoothPage = ()=>{
                                                             onClick: ()=>fileInputRef.current?.click(),
                                                             className: "rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-5 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs transition-colors cursor-pointer",
                                                             children: [
-                                                                "Choose Photo Files (",
+                                                                "Pilih Berkas Foto (",
                                                                 photos.length,
                                                                 "/",
                                                                 frameCount,
@@ -1885,19 +1883,45 @@ const BoothPage = ()=>{
                                             className: "mt-3 flex flex-col sm:flex-row items-center justify-between gap-2.5",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        ref: fileInputRef,
-                                                        type: "file",
-                                                        accept: "image/jpeg,image/png,image/webp",
-                                                        multiple: true,
-                                                        onChange: handleFileUpload,
-                                                        className: "hidden"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/guest/Booth.tsx",
-                                                        lineNumber: 498,
-                                                        columnNumber: 19
-                                                    }, ("TURBOPACK compile-time value", void 0))
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                            ref: fileInputRef,
+                                                            type: "file",
+                                                            accept: "image/jpeg,image/png,image/webp",
+                                                            multiple: true,
+                                                            onChange: handleFileUpload,
+                                                            className: "hidden"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/guest/Booth.tsx",
+                                                            lineNumber: 498,
+                                                            columnNumber: 19
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        photoSource === 'camera' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: ()=>fileInputRef.current?.click(),
+                                                            className: "inline-flex items-center gap-1.5 rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] px-3 py-1.5 text-xs font-semibold text-[#4B2E1F] hover:bg-white transition-colors cursor-pointer shadow-2xs",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
+                                                                    className: "h-3.5 w-3.5 text-[#4B2E1F]"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/guest/Booth.tsx",
+                                                                    lineNumber: 511,
+                                                                    columnNumber: 23
+                                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    children: "Unggah dari Galeri"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/guest/Booth.tsx",
+                                                                    lineNumber: 512,
+                                                                    columnNumber: 23
+                                                                }, ("TURBOPACK compile-time value", void 0))
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/guest/Booth.tsx",
+                                                            lineNumber: 507,
+                                                            columnNumber: 21
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/src/guest/Booth.tsx",
                                                     lineNumber: 497,
                                                     columnNumber: 17
@@ -1908,13 +1932,13 @@ const BoothPage = ()=>{
                                                         photos.length > 0 && !isShooting && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                             onClick: ()=>setPhotos([]),
                                                             className: "rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] px-3 py-1.5 text-xs font-semibold text-[#4B2E1F] hover:bg-white transition-colors cursor-pointer shadow-2xs",
-                                                            children: "Reset Photos"
+                                                            children: "Reset Foto"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                            lineNumber: 511,
+                                                            lineNumber: 519,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
-                                                        photoSource === 'camera' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        photoSource === 'camera' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                             onClick: handleShootAll,
                                                             disabled: isShooting,
                                                             className: "flex items-center gap-2 rounded-xl bg-[#4B2E1F] hover:bg-[#3D2418] px-5 py-2.5 text-xs sm:text-sm font-semibold text-[#FDFFEB] border border-[#4B2E1F] shadow-sm disabled:opacity-50 transition-all cursor-pointer",
@@ -1923,26 +1947,49 @@ const BoothPage = ()=>{
                                                                     className: "h-4 w-4 text-[#FDFFEB]"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                    lineNumber: 525,
+                                                                    lineNumber: 533,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    children: isShooting ? 'Capturing Photos...' : photos.length === frameCount ? `Retake All (${frameCount} Poses)` : `Start Capture (${frameCount} Poses)`
+                                                                    children: isShooting ? 'Mengambil Foto...' : photos.length === frameCount ? `Ambil Ulang (${frameCount} Pose)` : `Mulai Foto (${frameCount} Pose)`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                    lineNumber: 526,
+                                                                    lineNumber: 534,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                            lineNumber: 520,
+                                                            lineNumber: 528,
+                                                            columnNumber: 21
+                                                        }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: ()=>fileInputRef.current?.click(),
+                                                            className: "flex items-center gap-2 rounded-xl bg-[#4B2E1F] hover:bg-[#3D2418] px-6 py-2.5 text-xs sm:text-sm font-semibold text-[#FDFFEB] border border-[#4B2E1F] shadow-sm transition-all cursor-pointer",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
+                                                                    className: "h-4 w-4 text-[#FDFFEB]"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/guest/Booth.tsx",
+                                                                    lineNumber: 547,
+                                                                    columnNumber: 23
+                                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    children: "Pilih Berkas Foto"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/guest/Booth.tsx",
+                                                                    lineNumber: 548,
+                                                                    columnNumber: 23
+                                                                }, ("TURBOPACK compile-time value", void 0))
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/guest/Booth.tsx",
+                                                            lineNumber: 543,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                    lineNumber: 509,
+                                                    lineNumber: 517,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
@@ -1971,7 +2018,7 @@ const BoothPage = ()=>{
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                                     className: "text-xs sm:text-sm font-serif font-bold text-[#4B2E1F]",
                                                                     children: [
-                                                                        "Slot Results (",
+                                                                        "Hasil Slot (",
                                                                         photos.length,
                                                                         "/",
                                                                         frameCount,
@@ -1979,21 +2026,21 @@ const BoothPage = ()=>{
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                    lineNumber: 545,
+                                                                    lineNumber: 561,
                                                                     columnNumber: 21
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     className: "text-[10px] text-[#4B2E1F]/70",
-                                                                    children: "Photos Taken"
+                                                                    children: "Pose Foto Terisi"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                    lineNumber: 548,
+                                                                    lineNumber: 564,
                                                                     columnNumber: 21
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                            lineNumber: 544,
+                                                            lineNumber: 560,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         photos.length === frameCount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2003,26 +2050,26 @@ const BoothPage = ()=>{
                                                                     className: "h-3 w-3 text-[#4B2E1F]"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                    lineNumber: 554,
+                                                                    lineNumber: 570,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    children: "Complete"
+                                                                    children: "Lengkap"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                    lineNumber: 555,
+                                                                    lineNumber: 571,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                            lineNumber: 553,
+                                                            lineNumber: 569,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                    lineNumber: 543,
+                                                    lineNumber: 559,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2037,7 +2084,7 @@ const BoothPage = ()=>{
                                                                         className: "h-full w-full object-cover"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                        lineNumber: 569,
+                                                                        lineNumber: 585,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2048,7 +2095,7 @@ const BoothPage = ()=>{
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                        lineNumber: 576,
+                                                                        lineNumber: 592,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2063,20 +2110,20 @@ const BoothPage = ()=>{
                                                                                     className: "h-2 w-2"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                                    lineNumber: 589,
+                                                                                    lineNumber: 605,
                                                                                     columnNumber: 33
                                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                     children: "Retake"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                                    lineNumber: 590,
+                                                                                    lineNumber: 606,
                                                                                     columnNumber: 33
                                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                                            lineNumber: 583,
+                                                                            lineNumber: 599,
                                                                             columnNumber: 31
                                                                         }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                             onClick: ()=>{
@@ -2092,17 +2139,17 @@ const BoothPage = ()=>{
                                                                                 children: "Hapus"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                                lineNumber: 602,
+                                                                                lineNumber: 618,
                                                                                 columnNumber: 33
                                                                             }, ("TURBOPACK compile-time value", void 0))
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                                            lineNumber: 593,
+                                                                            lineNumber: 609,
                                                                             columnNumber: 31
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                        lineNumber: 581,
+                                                                        lineNumber: 597,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2116,7 +2163,7 @@ const BoothPage = ()=>{
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                                lineNumber: 609,
+                                                                                lineNumber: 625,
                                                                                 columnNumber: 29
                                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                                             photoSource === 'camera' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2128,20 +2175,20 @@ const BoothPage = ()=>{
                                                                                         className: "h-2.5 w-2.5 text-[#4B2E1F]"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                                        lineNumber: 616,
+                                                                                        lineNumber: 632,
                                                                                         columnNumber: 33
                                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                         children: "Retake"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                                        lineNumber: 617,
+                                                                                        lineNumber: 633,
                                                                                         columnNumber: 33
                                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                                lineNumber: 611,
+                                                                                lineNumber: 627,
                                                                                 columnNumber: 31
                                                                             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                 onClick: ()=>{
@@ -2156,24 +2203,24 @@ const BoothPage = ()=>{
                                                                                     children: "Hapus"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                                                    lineNumber: 628,
+                                                                                    lineNumber: 644,
                                                                                     columnNumber: 33
                                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                                lineNumber: 620,
+                                                                                lineNumber: 636,
                                                                                 columnNumber: 31
                                                                             }, ("TURBOPACK compile-time value", void 0))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                        lineNumber: 608,
+                                                                        lineNumber: 624,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                lineNumber: 568,
+                                                                lineNumber: 584,
                                                                 columnNumber: 25
                                                             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "h-full w-full flex items-center justify-center gap-2 p-2 bg-[#FDFFEB]/60",
@@ -2184,12 +2231,12 @@ const BoothPage = ()=>{
                                                                             className: "h-3 w-3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                                            lineNumber: 636,
+                                                                            lineNumber: 652,
                                                                             columnNumber: 29
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                        lineNumber: 635,
+                                                                        lineNumber: 651,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2203,43 +2250,43 @@ const BoothPage = ()=>{
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                                lineNumber: 639,
+                                                                                lineNumber: 655,
                                                                                 columnNumber: 29
                                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                 className: "text-[9px] text-[#4B2E1F]/60 block leading-tight",
-                                                                                children: "Empty"
+                                                                                children: "Kosong"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                                lineNumber: 640,
+                                                                                lineNumber: 656,
                                                                                 columnNumber: 29
                                                                             }, ("TURBOPACK compile-time value", void 0))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                                        lineNumber: 638,
+                                                                        lineNumber: 654,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                                lineNumber: 634,
+                                                                lineNumber: 650,
                                                                 columnNumber: 25
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, shot, false, {
                                                             fileName: "[project]/src/guest/Booth.tsx",
-                                                            lineNumber: 563,
+                                                            lineNumber: 579,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/Booth.tsx",
-                                                    lineNumber: 561,
+                                                    lineNumber: 577,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/Booth.tsx",
-                                            lineNumber: 541,
+                                            lineNumber: 557,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2252,27 +2299,27 @@ const BoothPage = ()=>{
                                                         className: "h-3.5 w-3.5 text-[#F4B8A5]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                        lineNumber: 656,
+                                                        lineNumber: 672,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: "Continue to Filters"
+                                                        children: "Lanjut ke Filter"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                        lineNumber: 657,
+                                                        lineNumber: 673,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                         className: "h-3.5 w-3.5 text-[#FDFFEB]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                        lineNumber: 658,
+                                                        lineNumber: 674,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                lineNumber: 652,
+                                                lineNumber: 668,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex items-center justify-between text-[11px] text-[#4B2E1F]/70 px-1 py-1 font-medium",
@@ -2280,11 +2327,11 @@ const BoothPage = ()=>{
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: [
                                                             frameCount - photos.length,
-                                                            " poses remaining"
+                                                            " pose tersisa"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                        lineNumber: 662,
+                                                        lineNumber: 678,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2296,24 +2343,24 @@ const BoothPage = ()=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/guest/Booth.tsx",
-                                                        lineNumber: 663,
+                                                        lineNumber: 679,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/guest/Booth.tsx",
-                                                lineNumber: 661,
+                                                lineNumber: 677,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/Booth.tsx",
-                                            lineNumber: 650,
+                                            lineNumber: 666,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/Booth.tsx",
-                                    lineNumber: 540,
+                                    lineNumber: 556,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]

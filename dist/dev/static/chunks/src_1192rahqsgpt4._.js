@@ -279,10 +279,10 @@ function getStandardSlots(poseCount) {
         // 1 Pose: Kotak besar di tengah
         return [
             {
-                x: 500,
-                y: 550,
-                w: 3000,
-                h: 4300
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 4904
             }
         ];
     }
@@ -290,16 +290,16 @@ function getStandardSlots(poseCount) {
         // 2 Poses: Susunan vertikal atas & bawah
         return [
             {
-                x: 650,
-                y: 480,
-                w: 2700,
-                h: 2150
+                x: 203,
+                y: 210,
+                w: 3601,
+                h: 2365
             },
             {
-                x: 650,
-                y: 2850,
-                w: 2700,
-                h: 2150
+                x: 200,
+                y: 2749,
+                w: 3601,
+                h: 2365
             }
         ];
     }
@@ -307,40 +307,40 @@ function getStandardSlots(poseCount) {
         // 6 Poses: Grid 2 kolom x 3 baris
         return [
             {
-                x: 480,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 380,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 201,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 1930,
-                w: 1460,
-                h: 1420
+                x: 2086,
+                y: 1883,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 480,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 200,
+                y: 3556,
+                w: 1715,
+                h: 1558
             },
             {
-                x: 2060,
-                y: 3480,
-                w: 1460,
-                h: 1420
+                x: 2085,
+                y: 3556,
+                w: 1715,
+                h: 1558
             }
         ];
     }
@@ -348,85 +348,85 @@ function getStandardSlots(poseCount) {
         // 8 Poses: Grid 2 kolom x 4 baris rapat
         return [
             {
-                x: 480,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 350,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 210,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 1510,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 1457,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 201,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 2670,
-                w: 1460,
-                h: 1040
+                x: 2086,
+                y: 2704,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 480,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 200,
+                y: 3952,
+                w: 1715,
+                h: 1162
             },
             {
-                x: 2060,
-                y: 3830,
-                w: 1460,
-                h: 1040
+                x: 2085,
+                y: 3952,
+                w: 1715,
+                h: 1162
             }
         ];
     }
     // Default 4 Poses: Grid 2 kolom x 2 baris
     return [
         {
-            x: 480,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 201,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 480,
-            w: 1460,
-            h: 1920
+            x: 2086,
+            y: 210,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 480,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 200,
+            y: 2749,
+            w: 1715,
+            h: 2365
         },
         {
-            x: 2060,
-            y: 2520,
-            w: 1460,
-            h: 1920
+            x: 2085,
+            y: 2749,
+            w: 1715,
+            h: 2365
         }
     ];
 }
 const fourSlots = getStandardSlots(4);
-const oneSlot = getStandardSlots(1);
+const oneSlots = getStandardSlots(1);
 const twoSlots = getStandardSlots(2);
 const sixSlots = getStandardSlots(6);
 const eightSlots = getStandardSlots(8);
@@ -462,7 +462,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$cute$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Sweet strawberry pastel tones with charming aesthetic stickers.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -485,7 +485,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$circus$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Joyful festival theme decorated with vintage circus ornaments.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: sixSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -508,7 +508,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$monochrome$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Clean black-and-white minimalist design with modern editorial flair.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: eightSlots,
         category: 'Minimalist',
         tags: [
             'Minimalist',
@@ -531,7 +531,7 @@ const INITIAL_FRAMES = [
         image: resolveImgSrc(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$frames$2f$tape$2d$frame$2e$png__$28$static__in__ecmascript$2c$__tag__client$2922$__$7d$__$5b$app$2d$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"]),
         desc: 'Vintage scrapbook journal style with aesthetic washi tape cutouts.',
         figmaWidth: 4000,
-        slots: fourSlots,
+        slots: twoSlots,
         category: 'Vintage',
         tags: [
             'Vintage',
@@ -551,10 +551,10 @@ const INITIAL_FRAMES = [
         id: 'frm_solo_spotlight',
         name: 'Sweet Solo',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'SWEET SOLO • EDITION 2026', 'pink', oneSlots),
         desc: 'Single portrait frame with gentle warm blush accents.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Cute',
         tags: [
             'Cute',
@@ -573,10 +573,10 @@ const INITIAL_FRAMES = [
         id: 'frm_formal_mono',
         name: 'Formal Elegance',
         count: 1,
-        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlot),
+        image: createSvgFrameDataUrl('Pop@Pic!', 'EXECUTIVE PORTRAIT • 2026', 'formal', oneSlots),
         desc: 'Minimalist executive frame tailored for professional portraits and celebrations.',
         figmaWidth: 4000,
-        slots: oneSlot,
+        slots: oneSlots,
         category: 'Formal',
         tags: [
             'Formal',
@@ -860,14 +860,13 @@ function updateCreatorFrame(frameId, creatorId, updates) {
     const index = all.findIndex((f)=>f.id === frameId && f.creator_id === creatorId);
     if (index === -1) return false;
     const target = all[index];
-    // Jika ada status spesifik yang dikirim (misal 'approved'), gunakan status tersebut.
-    // Jika tidak, default-kan frame draft/rejected menjadi 'pending_review'.
-    const newStatus = updates.status || (target.status === 'draft' || target.status === 'rejected' ? 'pending_review' : target.status);
+    if (target.status !== 'draft' && target.status !== 'rejected') {
+        return false;
+    }
     all[index] = {
         ...target,
         ...updates,
-        status: newStatus,
-        is_active: newStatus === 'approved' ? true : target.is_active,
+        status: 'pending_review',
         rejection_reason: undefined,
         updated_at: new Date().toISOString()
     };
@@ -1032,16 +1031,8 @@ const LandingPage = ()=>{
     _s();
     const navigate = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$navigation$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNavigate"])();
     const [inspectingFrame, setInspectingFrame] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [approvedFrames, setApprovedFrames] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        "LandingPage.useState": ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$frames$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["INITIAL_FRAMES"].filter({
-                "LandingPage.useState": (frame)=>frame.status === 'approved' && frame.is_active
-            }["LandingPage.useState"])
-    }["LandingPage.useState"]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "LandingPage.useEffect": ()=>{
-            setApprovedFrames((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$frames$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApprovedActiveFrames"])());
-        }
-    }["LandingPage.useEffect"], []);
+    // Only approved and active frames for Guest (SRS BR-03, F-G02)
+    const approvedFrames = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$frames$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApprovedActiveFrames"])();
     const trendingFrames = approvedFrames.slice(0, 4);
     const handleUseFrame = (frame)=>{
         navigate('/booth', {
@@ -1080,7 +1071,7 @@ const LandingPage = ()=>{
                                             children: "@"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 44,
+                                            lineNumber: 39,
                                             columnNumber: 18
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1088,13 +1079,13 @@ const LandingPage = ()=>{
                                             children: "Pic!"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 44,
+                                            lineNumber: 39,
                                             columnNumber: 59
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 38,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1102,7 +1093,7 @@ const LandingPage = ()=>{
                                     children: "Choose curated frames, snap with live webcam or upload from gallery, and instantly download high-res photo strips without signing up."
                                 }, void 0, false, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 47,
+                                    lineNumber: 42,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1116,20 +1107,20 @@ const LandingPage = ()=>{
                                                     children: "Start Photo Session"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 56,
+                                                    lineNumber: 51,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                                     className: "h-4 w-4 text-[#FDFFEB]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 57,
+                                                    lineNumber: 52,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 52,
+                                            lineNumber: 47,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1140,26 +1131,26 @@ const LandingPage = ()=>{
                                                     className: "h-4 w-4 text-[#4B2E1F]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 64,
+                                                    lineNumber: 59,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "Browse Frames"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 65,
+                                                    lineNumber: 60,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 60,
+                                            lineNumber: 55,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 51,
+                                    lineNumber: 46,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1172,12 +1163,43 @@ const LandingPage = ()=>{
                                                     children: "Guest Access"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 72,
+                                                    lineNumber: 67,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-[11px] text-[#919386]",
                                                     children: "No account required"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/guest/LandingPage.tsx",
+                                                    lineNumber: 68,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/guest/LandingPage.tsx",
+                                            lineNumber: 66,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "h-6 w-px bg-[#919386]/30"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/guest/LandingPage.tsx",
+                                            lineNumber: 70,
+                                            columnNumber: 15
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "text-xl font-serif text-[#4B2E1F]",
+                                                    children: "Webcam & Gallery"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/guest/LandingPage.tsx",
+                                                    lineNumber: 72,
+                                                    columnNumber: 17
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "text-[11px] text-[#919386]",
+                                                    children: "Live camera support"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
                                                     lineNumber: 73,
@@ -1200,7 +1222,7 @@ const LandingPage = ()=>{
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-xl font-serif text-[#4B2E1F]",
-                                                    children: "Webcam & Gallery"
+                                                    children: "QR Code"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
                                                     lineNumber: 77,
@@ -1208,7 +1230,7 @@ const LandingPage = ()=>{
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-[11px] text-[#919386]",
-                                                    children: "Live camera support"
+                                                    children: "Instant phone transfer"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
                                                     lineNumber: 78,
@@ -1219,48 +1241,17 @@ const LandingPage = ()=>{
                                             fileName: "[project]/src/guest/LandingPage.tsx",
                                             lineNumber: 76,
                                             columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "h-6 w-px bg-[#919386]/30"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 80,
-                                            columnNumber: 15
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-xl font-serif text-[#4B2E1F]",
-                                                    children: "QR Code"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 82,
-                                                    columnNumber: 17
-                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-[11px] text-[#919386]",
-                                                    children: "Instant phone transfer"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 83,
-                                                    columnNumber: 17
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 81,
-                                            columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 70,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 42,
+                            lineNumber: 37,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1276,12 +1267,12 @@ const LandingPage = ()=>{
                                             className: "h-full w-full object-cover"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 93,
+                                            lineNumber: 88,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/LandingPage.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 87,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1292,12 +1283,12 @@ const LandingPage = ()=>{
                                             className: "h-full w-full object-cover"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 102,
+                                            lineNumber: 97,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/LandingPage.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 96,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1308,34 +1299,34 @@ const LandingPage = ()=>{
                                             className: "h-full w-full object-cover"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 111,
+                                            lineNumber: 106,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/LandingPage.tsx",
-                                        lineNumber: 110,
+                                        lineNumber: 105,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/guest/LandingPage.tsx",
-                                lineNumber: 90,
+                                lineNumber: 85,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 89,
+                            lineNumber: 84,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/LandingPage.tsx",
-                    lineNumber: 40,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/LandingPage.tsx",
-                lineNumber: 39,
+                lineNumber: 34,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1358,13 +1349,13 @@ const LandingPage = ()=>{
                                                     children: "Frames"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 128,
+                                                    lineNumber: 123,
                                                     columnNumber: 26
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 122,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1372,13 +1363,13 @@ const LandingPage = ()=>{
                                             children: "Curated creative designs ready for your photo session"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 130,
+                                            lineNumber: 125,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 126,
+                                    lineNumber: 121,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1389,26 +1380,26 @@ const LandingPage = ()=>{
                                             children: "View all frames"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 138,
+                                            lineNumber: 133,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                             className: "h-3.5 w-3.5 text-[#FDFFEB]"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 139,
+                                            lineNumber: 134,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 134,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 125,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1436,7 +1427,7 @@ const LandingPage = ()=>{
                                                     loading: "lazy"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 160,
+                                                    lineNumber: 155,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1454,23 +1445,23 @@ const LandingPage = ()=>{
                                                             className: "h-4 w-4 text-[#4B2E1F]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 179,
+                                                            lineNumber: 174,
                                                             columnNumber: 25
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/guest/LandingPage.tsx",
-                                                        lineNumber: 169,
+                                                        lineNumber: 164,
                                                         columnNumber: 23
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 168,
+                                                    lineNumber: 163,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 159,
+                                            lineNumber: 154,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1483,7 +1474,7 @@ const LandingPage = ()=>{
                                                             children: frame.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 188,
+                                                            lineNumber: 183,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1491,7 +1482,7 @@ const LandingPage = ()=>{
                                                             children: frame.desc || 'Desain frame artistik resolusi tinggi siap pakai untuk sesi foto kamu.'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 193,
+                                                            lineNumber: 188,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1507,19 +1498,19 @@ const LandingPage = ()=>{
                                                                     ]
                                                                 }, clean, true, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 203,
+                                                                    lineNumber: 198,
                                                                     columnNumber: 29
                                                                 }, ("TURBOPACK compile-time value", void 0));
                                                             })
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 198,
+                                                            lineNumber: 193,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 181,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1533,7 +1524,7 @@ const LandingPage = ()=>{
                                                                     children: frame.author ? frame.author.charAt(0).toUpperCase() : 'C'
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 217,
+                                                                    lineNumber: 212,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1544,7 +1535,7 @@ const LandingPage = ()=>{
                                                                             children: frame.author
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                            lineNumber: 221,
+                                                                            lineNumber: 216,
                                                                             columnNumber: 27
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1555,19 +1546,19 @@ const LandingPage = ()=>{
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                            lineNumber: 224,
+                                                                            lineNumber: 219,
                                                                             columnNumber: 27
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 220,
+                                                                    lineNumber: 215,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 216,
+                                                            lineNumber: 211,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1578,42 +1569,42 @@ const LandingPage = ()=>{
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 229,
+                                                            lineNumber: 224,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 215,
+                                                    lineNumber: 210,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 180,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, frame.id, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 153,
+                                    lineNumber: 148,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0));
                             })
                         }, void 0, false, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 143,
+                            lineNumber: 138,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/LandingPage.tsx",
-                    lineNumber: 124,
+                    lineNumber: 119,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/LandingPage.tsx",
-                lineNumber: 123,
+                lineNumber: 118,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1633,13 +1624,13 @@ const LandingPage = ()=>{
                                             children: "Works"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 246,
+                                            lineNumber: 241,
                                             columnNumber: 22
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 245,
+                                    lineNumber: 240,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1647,13 +1638,13 @@ const LandingPage = ()=>{
                                     children: "Four simple steps to capture and celebrate your moments"
                                 }, void 0, false, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 248,
+                                    lineNumber: 243,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 244,
+                            lineNumber: 239,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1667,7 +1658,7 @@ const LandingPage = ()=>{
                                             children: "1"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 255,
+                                            lineNumber: 250,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1675,7 +1666,7 @@ const LandingPage = ()=>{
                                             children: "Pick a Frame"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 258,
+                                            lineNumber: 253,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1683,13 +1674,13 @@ const LandingPage = ()=>{
                                             children: "Choose 1, 2, 4, or 6 pose formats tailored to your style."
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 259,
+                                            lineNumber: 254,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 254,
+                                    lineNumber: 249,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1700,7 +1691,7 @@ const LandingPage = ()=>{
                                             children: "2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 265,
+                                            lineNumber: 260,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1708,7 +1699,7 @@ const LandingPage = ()=>{
                                             children: "Take Photos"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 268,
+                                            lineNumber: 263,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1716,13 +1707,13 @@ const LandingPage = ()=>{
                                             children: "Use your live webcam with a timer or upload from your gallery."
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 269,
+                                            lineNumber: 264,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 264,
+                                    lineNumber: 259,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1733,7 +1724,7 @@ const LandingPage = ()=>{
                                             children: "3"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 275,
+                                            lineNumber: 270,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1741,7 +1732,7 @@ const LandingPage = ()=>{
                                             children: "Apply Filters"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 278,
+                                            lineNumber: 273,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1749,13 +1740,13 @@ const LandingPage = ()=>{
                                             children: "Enhance your photos with presets like 90s Vibe, Pastel, or Noir."
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 279,
+                                            lineNumber: 274,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 274,
+                                    lineNumber: 269,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1766,7 +1757,7 @@ const LandingPage = ()=>{
                                             children: "4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 285,
+                                            lineNumber: 280,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1774,7 +1765,7 @@ const LandingPage = ()=>{
                                             children: "Download & QR"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 288,
+                                            lineNumber: 283,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1782,30 +1773,30 @@ const LandingPage = ()=>{
                                             children: "Save high-resolution PNG strips or scan QR code to your phone."
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 289,
+                                            lineNumber: 284,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 284,
+                                    lineNumber: 279,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 253,
+                            lineNumber: 248,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/LandingPage.tsx",
-                    lineNumber: 243,
+                    lineNumber: 238,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/LandingPage.tsx",
-                lineNumber: 242,
+                lineNumber: 237,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1823,13 +1814,13 @@ const LandingPage = ()=>{
                                     children: "Pop@Pic!"
                                 }, void 0, false, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 301,
+                                    lineNumber: 296,
                                     columnNumber: 19
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 300,
+                            lineNumber: 295,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1837,7 +1828,7 @@ const LandingPage = ()=>{
                             children: "Pop@Pic! is a modern web photobooth experience (BYOD). Guests can snap photos instantly without logging in, while independent creators can contribute custom frames curated by the Admin team."
                         }, void 0, false, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 303,
+                            lineNumber: 298,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1850,14 +1841,14 @@ const LandingPage = ()=>{
                                             className: "h-3.5 w-3.5 text-[#4B2E1F]"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 309,
+                                            lineNumber: 304,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " Webcam & Gallery"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 308,
+                                    lineNumber: 303,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1867,14 +1858,14 @@ const LandingPage = ()=>{
                                             className: "h-3.5 w-3.5 text-[#4B2E1F]"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 312,
+                                            lineNumber: 307,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " Preset Color Filters"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 311,
+                                    lineNumber: 306,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1884,31 +1875,31 @@ const LandingPage = ()=>{
                                             className: "h-3.5 w-3.5 text-[#4B2E1F]"
                                         }, void 0, false, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 310,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         " QR Mobile Transfer"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 314,
+                                    lineNumber: 309,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 307,
+                            lineNumber: 302,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/LandingPage.tsx",
-                    lineNumber: 299,
+                    lineNumber: 294,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/LandingPage.tsx",
-                lineNumber: 298,
+                lineNumber: 293,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -1917,12 +1908,12 @@ const LandingPage = ()=>{
                     children: "© 2026 Pop@Pic! Photobooth. All rights reserved."
                 }, void 0, false, {
                     fileName: "[project]/src/guest/LandingPage.tsx",
-                    lineNumber: 323,
+                    lineNumber: 318,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/LandingPage.tsx",
-                lineNumber: 322,
+                lineNumber: 317,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             inspectingFrame && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1937,12 +1928,12 @@ const LandingPage = ()=>{
                                 className: "h-4 w-4"
                             }, void 0, false, {
                                 fileName: "[project]/src/guest/LandingPage.tsx",
-                                lineNumber: 335,
+                                lineNumber: 330,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 331,
+                            lineNumber: 326,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1956,12 +1947,12 @@ const LandingPage = ()=>{
                                         className: "max-h-[480px] w-auto object-contain rounded-lg drop-shadow-sm"
                                     }, void 0, false, {
                                         fileName: "[project]/src/guest/LandingPage.tsx",
-                                        lineNumber: 341,
+                                        lineNumber: 336,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 340,
+                                    lineNumber: 335,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1980,7 +1971,7 @@ const LandingPage = ()=>{
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 353,
+                                                            lineNumber: 348,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         (inspectingFrame.tags && inspectingFrame.tags.length > 0 ? inspectingFrame.tags : [
@@ -1993,13 +1984,13 @@ const LandingPage = ()=>{
                                                                 ]
                                                             }, t, true, {
                                                                 fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                lineNumber: 360,
+                                                                lineNumber: 355,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0)))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 352,
+                                                    lineNumber: 347,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2007,7 +1998,7 @@ const LandingPage = ()=>{
                                                     children: inspectingFrame.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 369,
+                                                    lineNumber: 364,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2018,7 +2009,7 @@ const LandingPage = ()=>{
                                                             children: inspectingFrame.author ? inspectingFrame.author.charAt(0).toUpperCase() : 'C'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 375,
+                                                            lineNumber: 370,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2028,7 +2019,7 @@ const LandingPage = ()=>{
                                                                     children: "Kreator Frame"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 379,
+                                                                    lineNumber: 374,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2036,7 +2027,7 @@ const LandingPage = ()=>{
                                                                     children: inspectingFrame.author
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 380,
+                                                                    lineNumber: 375,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2047,19 +2038,19 @@ const LandingPage = ()=>{
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 381,
+                                                                    lineNumber: 376,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 378,
+                                                            lineNumber: 373,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 374,
+                                                    lineNumber: 369,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2070,7 +2061,7 @@ const LandingPage = ()=>{
                                                             children: "Keterangan & Detail Desain"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 387,
+                                                            lineNumber: 382,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2078,13 +2069,13 @@ const LandingPage = ()=>{
                                                             children: inspectingFrame.desc || 'Desain frame photobooth berkualitas tinggi siap digunakan untuk mengabadikan momen spesial kamu bersama teman dan keluarga.'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 390,
+                                                            lineNumber: 385,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 386,
+                                                    lineNumber: 381,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2097,7 +2088,7 @@ const LandingPage = ()=>{
                                                                     children: "Resolusi:"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 397,
+                                                                    lineNumber: 392,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
@@ -2105,13 +2096,13 @@ const LandingPage = ()=>{
                                                                     children: "4000 × 5900 px"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 398,
+                                                                    lineNumber: 393,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 396,
+                                                            lineNumber: 391,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2121,7 +2112,7 @@ const LandingPage = ()=>{
                                                                     children: "Slots Terkalibrasi:"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 401,
+                                                                    lineNumber: 396,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
@@ -2132,25 +2123,25 @@ const LandingPage = ()=>{
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                                    lineNumber: 402,
+                                                                    lineNumber: 397,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 400,
+                                                            lineNumber: 395,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 395,
+                                                    lineNumber: 390,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 350,
+                                            lineNumber: 345,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2168,20 +2159,20 @@ const LandingPage = ()=>{
                                                             className: "h-4 w-4 text-[#FDFFEB]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 417,
+                                                            lineNumber: 412,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Pakai Frame & Mulai Foto Sekarang"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                                            lineNumber: 418,
+                                                            lineNumber: 413,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 409,
+                                                    lineNumber: 404,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2189,46 +2180,46 @@ const LandingPage = ()=>{
                                                     children: "Langsung masuk ke tahap pemotretan (Fase 2: Foto) dengan frame ini."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                                    lineNumber: 420,
+                                                    lineNumber: 415,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/guest/LandingPage.tsx",
-                                            lineNumber: 408,
+                                            lineNumber: 403,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/guest/LandingPage.tsx",
-                                    lineNumber: 349,
+                                    lineNumber: 344,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/guest/LandingPage.tsx",
-                            lineNumber: 338,
+                            lineNumber: 333,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/guest/LandingPage.tsx",
-                    lineNumber: 329,
+                    lineNumber: 324,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/guest/LandingPage.tsx",
-                lineNumber: 328,
+                lineNumber: 323,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/guest/LandingPage.tsx",
-        lineNumber: 37,
+        lineNumber: 32,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(LandingPage, "F/1PmeGYba0/qdIqRhp7Koomaz0=", false, function() {
+_s(LandingPage, "ZmWIStgoBz+9aKanoEQ/6081TdI=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$navigation$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useNavigate"]
     ];

@@ -205,6 +205,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Admin function: Hapus akun creator jika melanggar (Item 2)
   const deleteCreator = (userId: string) => {
     setUsers((prev) => prev.filter((u) => u.id !== userId));
     if (currentUser?.id === userId) {

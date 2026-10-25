@@ -86,7 +86,7 @@ export const LandingPage: React.FC = () => {
               {/* Card 1: Back Left (Secondary: Soft Pistachio) */}
               <div className="absolute top-4 left-0 w-2/3 aspect-[3/4] overflow-hidden rounded-lg shadow-lg border-[4px] border-[#F4B8A5] transform -rotate-8 transition-all duration-500 group-hover:-translate-x-6 group-hover:-translate-y-3 group-hover:-rotate-[12deg] z-10 bg-[#DEE6BD]">
                 <img
-                  src="/assets/card/left.jpg"
+                  src="/assets/landing-page/left.jpg"
                   alt="Back card left"
                   className="h-full w-full object-cover"
                 />
@@ -95,7 +95,7 @@ export const LandingPage: React.FC = () => {
               {/* Card 2: Back Right (Primary: Powder Blue) */}
               <div className="absolute top-8 right-0 w-2/3 aspect-[3/4] overflow-hidden rounded-lg shadow-lg border-[4px] border-[#F4B8A5] transform rotate-8 transition-all duration-500 group-hover:translate-x-6 group-hover:translate-y-2 group-hover:rotate-[12deg] z-10 bg-[#D2DDEA]">
                 <img
-                  src="/assets/card/right.png"
+                  src="/assets/landing-page/right.png"
                   alt="Back card right"
                   className="h-full w-full object-cover"
                 />
@@ -104,7 +104,7 @@ export const LandingPage: React.FC = () => {
               {/* Card 3: Main Foreground Center */}
               <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[78%] aspect-[3/4] overflow-hidden rounded-lg shadow-xl border-[4px] border-[#F4B8A5] transform rotate-1 transition-all duration-500 group-hover:-translate-y-4 group-hover:rotate-0 z-20 bg-[#D2DDEA]">
                 <img
-                  src="/assets/card/center.jpg"
+                  src="/assets/landing-page/center.jpg"
                   alt="Main card center"
                   className="h-full w-full object-cover"
                 />
