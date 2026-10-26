@@ -13,6 +13,7 @@ import circusFramePng from '../assets/frames/circus-frame.png';
 import monochromeFramePng from '../assets/frames/monochrome-frame.png';
 import tapeFramePng from '../assets/frames/tape-frame.png';
 
+
 const resolveImgSrc = (img: any): string =>
   typeof img === 'object' && img?.src ? img.src : String(img || '');
 
@@ -601,6 +602,33 @@ export function submitFrameForReview(
 }
 
 // Creator: Update draft, rejected, or unarchive frame (F-C12, BR-06)
+// export function updateCreatorFrame(
+//   frameId: string,
+//   creatorId: string,
+//   updates: Partial<FrameTemplate>
+// ): boolean {
+//   const all = getAllFrames();
+//   const index = all.findIndex((f) => f.id === frameId && f.creator_id === creatorId);
+//   if (index === -1) return false;
+
+//   const target = all[index];
+//   if (target.status !== 'draft' && target.status !== 'rejected') {
+//     return false;
+//   }
+
+//   all[index] = {
+//     ...target,
+//     ...updates,
+//     status: 'pending_review', // Re-submit for review
+//     rejection_reason: undefined,
+//     updated_at: new Date().toISOString(),
+//   };
+
+//   saveAllFrames(all);
+//   return true;
+// }
+
+// Creator: Update draft, rejected, or unarchive frame (F-C12, BR-06)
 export function updateCreatorFrame(
   frameId: string,
   creatorId: string,
@@ -611,15 +639,17 @@ export function updateCreatorFrame(
   if (index === -1) return false;
 
   const target = all[index];
-  if (target.status !== 'draft' && target.status !== 'rejected') {
-    return false;
-  }
+
+  // Tentukan status baru:
+  // Jika dalam updates ada status (misal: 'approved' saat unarchive), pakai itu.
+  // Jika tidak ada, default-kan ke 'pending_review' (saat revisi frame rejected).
+  const newStatus = updates.status || 'pending_review';
 
   all[index] = {
     ...target,
     ...updates,
-    status: 'pending_review', // Re-submit for review
-    rejection_reason: undefined,
+    status: newStatus,
+    rejection_reason: updates.status === 'approved' ? undefined : target.rejection_reason,
     updated_at: new Date().toISOString(),
   };
 
