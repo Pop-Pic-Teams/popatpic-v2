@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from '../utils/navigation';
 import {
   Upload,
@@ -38,7 +38,7 @@ import {
   getStandardSlots,
   getGuestPhotos
 } from '../data/frames';
-import type { FrameTemplate, FrameStyle } from '../types/photobooth';
+import type { FrameTemplate, FrameStyle, GuestPhotoRecord } from '../types/photobooth';
 import { CreatorSidebar, type CreatorView } from './CreatorSidebar';
 import { HashtagInput } from '../components/HashtagInput';
 
@@ -58,26 +58,7 @@ export const CreatorDashboard: React.FC = () => {
   const [frames, setFrames] = useState<FrameTemplate[]>(() =>
     currentUser ? getFramesByCreator(currentUser.id) : []
   );
-  
-  tsx
-// 1. Ubah deklarasi state agar bisa diperbarui (tambahkan setGuestPhotos)
-const [guestPhotos, setGuestPhotos] = useState<GuestPhotoRecord[]>([]);
-
-// 2. Tambahkan useEffect di bawah deklarasi state tadi
-useEffect(() => {
-  const updateData = () => {
-    const data = getGuestPhotos();
-    setGuestPhotos(data);
-    // Juga panggil refreshFrames untuk update status koleksi
-    refreshFrames();
-  };
-
-  updateData();
-  
-  // Opsional: Cek data setiap 5 detik jika sedang testing
-  const interval = setInterval(updateData, 5000);
-  return () => clearInterval(interval);
-}, [currentUser]);
+  const [guestPhotos, setGuestPhotos] = useState<GuestPhotoRecord[]>([]);
 
   // Frame detail inspection view (preserving sidebar)
   const [selectedDetailFrame, setSelectedDetailFrame] = useState<FrameTemplate | null>(null);
@@ -118,6 +99,26 @@ useEffect(() => {
     }
   };
 
+  useEffect(() => {
+    const updateData = () => {
+      setGuestPhotos(getGuestPhotos());
+      if (currentUser) {
+        const updatedFrames = getFramesByCreator(currentUser.id);
+        setFrames(updatedFrames);
+        setSelectedDetailFrame((selected) =>
+          selected ? updatedFrames.find((frame) => frame.id === selected.id) ?? null : null
+        );
+      } else {
+        setFrames([]);
+        setSelectedDetailFrame(null);
+      }
+    };
+
+    updateData();
+    const interval = window.setInterval(updateData, 5000);
+    return () => window.clearInterval(interval);
+  }, [currentUser]);
+
   // Tambahkan fungsi ini di bawah refreshFrames()
   const handleGoToUpload = () => {
     setSelectedDetailFrame(null);
@@ -127,6 +128,65 @@ useEffect(() => {
     setFrameImageBase64(null);
     setCurrentView('upload');
   };
+
+  const creatorFrameIds = React.useMemo(() => new Set(frames.map((f) => f.id)), [frames]);
+  const totalCapturesEstimate = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id)).length;
+
+  const creatorTrendData = React.useMemo(() => {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const result: { label: string; uses: number }[] = [];
+    const creatorPhotos = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id));
+
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const dayName = days[d.getDay()];
+      const dateString = d.toISOString().split('T')[0];
+
+      const count = creatorPhotos.filter((p) => {
+        const photoDate = new Date(p.created_at).toISOString().split('T')[0];
+        return photoDate === dateString;
+      }).length;
+
+      result.push({ label: dayName, uses: count });
+    }
+
+    return result;
+  }, [creatorFrameIds, guestPhotos]);
+
+  const usageTrendInfo = React.useMemo(() => {
+    const creatorPhotos = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id));
+    if (creatorPhotos.length === 0) {
+      return { text: '0% usage', type: 'neutral' };
+    }
+
+    const now = new Date();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const fourteenDaysAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+
+    const currentWeekCount = creatorPhotos.filter((p) => new Date(p.created_at) >= sevenDaysAgo).length;
+    const previousWeekCount = creatorPhotos.filter((p) => {
+      const pDate = new Date(p.created_at);
+      return pDate >= fourteenDaysAgo && pDate < sevenDaysAgo;
+    }).length;
+
+    if (previousWeekCount === 0) {
+      return currentWeekCount > 0
+        ? { text: '+100% usage', type: 'up' }
+        : { text: '0% usage', type: 'neutral' };
+    }
+
+    const diff = currentWeekCount - previousWeekCount;
+    const percent = Math.round((diff / previousWeekCount) * 100);
+
+    if (percent > 0) {
+      return { text: `+${percent}% usage`, type: 'up' };
+    } else if (percent < 0) {
+      return { text: `${percent}% usage`, type: 'down' };
+    } else {
+      return { text: '0% usage', type: 'neutral' };
+    }
+  }, [creatorFrameIds, guestPhotos]);
 
   if (!currentUser || !isCreator) {
     return (
@@ -370,71 +430,6 @@ const handleUnarchive = (frame: FrameTemplate) => {
   //   { label: 'Sat', uses: 220 },
   //   { label: 'Sun', uses: 195 },
   // ];
-
-  // Ambil ID semua frame milik creator saat ini
-  const creatorFrameIds = React.useMemo(() => new Set(frames.map((f) => f.id)), [frames]);
-  
-
-  // Total foto asli yang berhasil diambil tamu menggunakan frame creator ini
-  const totalCapturesEstimate = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id)).length;
-
-  // Hitung tren penggunaan foto 7 hari terakhir secara otomatis berdasarkan data asli
-  const creatorTrendData = React.useMemo(() => {
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const result: { label: string; uses: number }[] = [];
-    const creatorPhotos = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id));
-
-    for (let i = 6; i >= 0; i--) {
-      const d = new Date();
-      d.setDate(d.getDate() - i);
-      const dayName = days[d.getDay()];
-      const dateString = d.toISOString().split('T')[0];
-
-      const count = creatorPhotos.filter((p) => {
-        const photoDate = new Date(p.created_at).toISOString().split('T')[0];
-        return photoDate === dateString;
-      }).length;
-
-      result.push({ label: dayName, uses: count });
-    }
-
-    return result;
-  }, [creatorFrameIds, guestPhotos]);
-  
-  // Hitung persentase pertumbuhan riil beserta status warna dan ikonnya
-  const usageTrendInfo = React.useMemo(() => {
-    const creatorPhotos = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id));
-    if (creatorPhotos.length === 0) {
-      return { text: '0% usage', type: 'neutral' };
-    }
-
-    const now = new Date();
-    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    const fourteenDaysAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
-
-    const currentWeekCount = creatorPhotos.filter((p) => new Date(p.created_at) >= sevenDaysAgo).length;
-    const previousWeekCount = creatorPhotos.filter((p) => {
-      const pDate = new Date(p.created_at);
-      return pDate >= fourteenDaysAgo && pDate < sevenDaysAgo;
-    }).length;
-
-    if (previousWeekCount === 0) {
-      return currentWeekCount > 0 
-        ? { text: '+100% usage', type: 'up' } 
-        : { text: '0% usage', type: 'neutral' };
-    }
-
-    const diff = currentWeekCount - previousWeekCount;
-    const percent = Math.round((diff / previousWeekCount) * 100);
-
-    if (percent > 0) {
-      return { text: `+${percent}% usage`, type: 'up' };
-    } else if (percent < 0) {
-      return { text: `${percent}% usage`, type: 'down' };
-    } else {
-      return { text: '0% usage', type: 'neutral' };
-    }
-  }, [creatorFrameIds, guestPhotos]);
 
   const maxUses = Math.max(...creatorTrendData.map((d) => d.uses), 1);
 

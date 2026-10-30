@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, startTransition } from 'react';
 import type { User } from '../types/photobooth';
 
 interface AuthContextType {
@@ -44,25 +44,24 @@ const DEFAULT_USERS: User[] = [
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(() => {
-    if (typeof window === 'undefined') return null;
-    try {
-      const stored = localStorage.getItem('popatpic_auth_user');
-      return stored ? JSON.parse(stored) : null;
-    } catch {
-      return null;
-    }
-  });
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  const [users, setUsers] = useState<User[]>(() => {
-    if (typeof window === 'undefined') return DEFAULT_USERS;
+  const [users, setUsers] = useState<User[]>(DEFAULT_USERS);
+  const [usersLoaded, setUsersLoaded] = useState(false);
+
+  useEffect(() => {
     try {
-      const stored = localStorage.getItem('popatpic_all_users');
-      return stored ? JSON.parse(stored) : DEFAULT_USERS;
-    } catch {
-      return DEFAULT_USERS;
+      const storedUsers = localStorage.getItem('popatpic_all_users');
+      const restoredUsers = storedUsers ? JSON.parse(storedUsers) : null;
+      startTransition(() => {
+        if (restoredUsers) setUsers(restoredUsers);
+        setUsersLoaded(true);
+      });
+    } catch (err) {
+      console.error('[AuthContext] failed to restore cached users:', err);
+      startTransition(() => setUsersLoaded(true));
     }
-  });
+  }, []);
 
   // Sinkronisasi status autentikasi dari sesi backend (cookie HttpOnly Supabase)
   useEffect(() => {
@@ -100,10 +99,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (usersLoaded) {
       localStorage.setItem('popatpic_all_users', JSON.stringify(users));
     }
-  }, [users]);
+  }, [users, usersLoaded]);
 
   // Login handler terhubung langsung ke backend /api/auth/login
   const login = async (
