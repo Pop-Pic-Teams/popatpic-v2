@@ -18,6 +18,8 @@ import {
   Power,
   Archive,
   TrendingUp,
+  TrendingDown, // <-- Tambahkan ini
+  Minus,        // <-- Tambahkan ini
   BarChart3,
   PieChart,
   Calendar,
@@ -78,7 +80,7 @@ export const AdminDashboard: React.FC = () => {
   const [deleteConfirmCreator, setDeleteConfirmCreator] = useState<User | null>(null);
 
   // Analytics Timeframe
-  const [analyticsRange, setAnalyticsRange] = useState<'7d' | '30d' | '90d'>('7d');
+  const [analyticsRange, setAnalyticsRange] = useState<'7d' | '30d'>('7d');
   const [activeChartPoint, setActiveChartPoint] = useState<number | null>(null);
 
   const [notification, setNotification] = useState<string | null>(null);
@@ -238,25 +240,85 @@ export const AdminDashboard: React.FC = () => {
   const totalPhotos = guestPhotos.length;
 
   // Analytics Sample Data
-  const trendData7d = [
-    { label: 'Mon', sessions: 142, photos: 568 },
-    { label: 'Tue', sessions: 185, photos: 740 },
-    { label: 'Wed', sessions: 220, photos: 880 },
-    { label: 'Thu', sessions: 265, photos: 1060 },
-    { label: 'Fri', sessions: 390, photos: 1560 },
-    { label: 'Sat', sessions: 480, photos: 1920 },
-    { label: 'Sun', sessions: 430, photos: 1720 },
-  ];
+  // Kalkulasi data tren dinamis dari guestPhotos
+  const activeTrendData = React.useMemo(() => {
+    if (analyticsRange === '7d') {
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const result: { label: string; sessions: number }[] = [];
 
-  const trendData30d = [
-    { label: 'W1', sessions: 980, photos: 3920 },
-    { label: 'W2', sessions: 1240, photos: 4960 },
-    { label: 'W3', sessions: 1510, photos: 6040 },
-    { label: 'W4', sessions: 1890, photos: 7560 },
-  ];
+      for (let i = 6; i >= 0; i--) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        const dayName = days[d.getDay()];
+        const dateString = d.toISOString().split('T')[0];
 
-  const activeTrendData = analyticsRange === '7d' ? trendData7d : trendData30d;
-  const maxSessions = Math.max(...activeTrendData.map((d) => d.sessions));
+        const count = guestPhotos.filter((p) => {
+          const photoDate = new Date(p.created_at).toISOString().split('T')[0];
+          return photoDate === dateString;
+        }).length;
+
+        result.push({ label: dayName, sessions: count });
+      }
+      return result;
+    } else {
+      // 30 Days (dikelompokkan per minggu W1-W4)
+      const result = [
+        { label: 'W1', sessions: 0 },
+        { label: 'W2', sessions: 0 },
+        { label: 'W3', sessions: 0 },
+        { label: 'W4', sessions: 0 },
+      ];
+      const now = new Date();
+
+      guestPhotos.forEach((p) => {
+        const pDate = new Date(p.created_at);
+        const diffDays = Math.floor((now.getTime() - pDate.getTime()) / (1000 * 3600 * 24));
+
+        if (diffDays <= 7) result[3].sessions += 1;
+        else if (diffDays <= 14) result[2].sessions += 1;
+        else if (diffDays <= 21) result[1].sessions += 1;
+        else if (diffDays <= 28) result[0].sessions += 1;
+      });
+
+      return result;
+    }
+  }, [guestPhotos, analyticsRange]);
+
+  const maxSessions = Math.max(...activeTrendData.map((d) => d.sessions), 1);
+
+  // Kalkulasi tren persentase penggunaan foto riil (7 hari terakhir vs 7 hari sebelumnya)
+  const usageTrendInfo = React.useMemo(() => {
+    if (guestPhotos.length === 0) {
+      return { text: '0% activity', type: 'neutral' };
+    }
+
+    const now = new Date();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const fourteenDaysAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+
+    const currentWeekCount = guestPhotos.filter((p) => new Date(p.created_at) >= sevenDaysAgo).length;
+    const previousWeekCount = guestPhotos.filter((p) => {
+      const pDate = new Date(p.created_at);
+      return pDate >= fourteenDaysAgo && pDate < sevenDaysAgo;
+    }).length;
+
+    if (previousWeekCount === 0) {
+      return currentWeekCount > 0 
+        ? { text: '+100% activity', type: 'up' } 
+        : { text: '0% activity', type: 'neutral' };
+    }
+
+    const diff = currentWeekCount - previousWeekCount;
+    const percent = Math.round((diff / previousWeekCount) * 100);
+
+    if (percent > 0) {
+      return { text: `+${percent}% activity`, type: 'up' };
+    } else if (percent < 0) {
+      return { text: `${percent}% activity`, type: 'down' };
+    } else {
+      return { text: '0% activity', type: 'neutral' };
+    }
+  }, [guestPhotos]);
 
   // Category breakdown data
   const categoryCounts: Record<string, number> = {
@@ -698,9 +760,21 @@ export const AdminDashboard: React.FC = () => {
                   <span className="text-[11px] font-semibold uppercase text-[#4B2E1F]/70">Photo Sessions</span>
                   <Sparkles className="h-4 w-4 text-[#F4B8A5]" />
                 </div>
-                <div className="text-2xl font-serif font-normal text-[#4B2E1F]">{totalPhotos + 1480}</div>
-                <div className="text-[10px] text-emerald-700 font-semibold mt-0.5 flex items-center gap-0.5">
-                  <TrendingUp className="h-3 w-3" /> +24% activity
+                <div className="text-2xl font-serif font-normal text-[#4B2E1F]">{totalPhotos}</div>
+                
+                <div
+                  className={`text-[10px] font-semibold mt-0.5 flex items-center gap-0.5 ${
+                    usageTrendInfo.type === 'up'
+                      ? 'text-emerald-700'
+                      : usageTrendInfo.type === 'down'
+                      ? 'text-red-600'
+                      : 'text-[#4B2E1F]/60'
+                  }`}
+                >
+                  {usageTrendInfo.type === 'up' && <TrendingUp className="h-3 w-3 text-emerald-700" />}
+                  {usageTrendInfo.type === 'down' && <TrendingDown className="h-3 w-3 text-red-600" />}
+                  {usageTrendInfo.type === 'neutral' && <Minus className="h-3 w-3 text-[#4B2E1F]/60" />}
+                  <span>{usageTrendInfo.text}</span>
                 </div>
               </div>
             </div>
@@ -718,8 +792,8 @@ export const AdminDashboard: React.FC = () => {
                       </h2>
                     </div>
                     <span className="text-[11px] text-[#4B2E1F]/70">
-                      Average: <strong className="text-[#4B2E1F]">340 sessions/day</strong>
-                    </span>
+    Total: <strong className="text-[#4B2E1F]">{totalPhotos} captures</strong>
+  </span>
                   </div>
                   <p className="text-xs text-[#4B2E1F]/70 mb-6">
                     Real-time guest traffic trends across live webcam captures and high-res downloads.
@@ -1498,10 +1572,10 @@ export const AdminDashboard: React.FC = () => {
       <button
         onClick={() => navigate('/')}
         className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#4B2E1F] hover:bg-[#3D2418] text-[#FDFFEB] px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-xl border-2 border-[#DEE6BD] hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-        title="Kembali ke Halaman Utama Guest"
+        title="Return to Guest Home"
       >
         <Home className="h-4 w-4 text-[#F4B8A5] group-hover:rotate-12 transition-transform" />
-        <span>Halaman Utama Guest</span>
+        <span>Guest Home</span>
       </button>
     </div>
   );

@@ -16,6 +16,8 @@ import {
   Eye,
   Edit3,
   TrendingUp,
+  TrendingDown,
+  Minus,
   BarChart3,
   Layers,
   Search,
@@ -34,6 +36,7 @@ import {
   archiveCreatorFrame,
   getLayoutGuideDownload,
   getStandardSlots,
+  getGuestPhotos
 } from '../data/frames';
 import type { FrameTemplate, FrameStyle } from '../types/photobooth';
 import { CreatorSidebar, type CreatorView } from './CreatorSidebar';
@@ -55,6 +58,26 @@ export const CreatorDashboard: React.FC = () => {
   const [frames, setFrames] = useState<FrameTemplate[]>(() =>
     currentUser ? getFramesByCreator(currentUser.id) : []
   );
+  
+  tsx
+// 1. Ubah deklarasi state agar bisa diperbarui (tambahkan setGuestPhotos)
+const [guestPhotos, setGuestPhotos] = useState<GuestPhotoRecord[]>([]);
+
+// 2. Tambahkan useEffect di bawah deklarasi state tadi
+useEffect(() => {
+  const updateData = () => {
+    const data = getGuestPhotos();
+    setGuestPhotos(data);
+    // Juga panggil refreshFrames untuk update status koleksi
+    refreshFrames();
+  };
+
+  updateData();
+  
+  // Opsional: Cek data setiap 5 detik jika sedang testing
+  const interval = setInterval(updateData, 5000);
+  return () => clearInterval(interval);
+}, [currentUser]);
 
   // Frame detail inspection view (preserving sidebar)
   const [selectedDetailFrame, setSelectedDetailFrame] = useState<FrameTemplate | null>(null);
@@ -76,7 +99,7 @@ export const CreatorDashboard: React.FC = () => {
   const [frameDesc, setFrameDesc] = useState('');
   const [poseCount, setPoseCount] = useState<number>(4);
   const [styleCategory, setStyleCategory] = useState<FrameStyle>('Cute');
-  const [frameTags, setFrameTags] = useState<string[]>(['wisuda', 'lucu', 'aesthetic']);
+  const [frameTags, setFrameTags] = useState<string[]>(['graduation', 'cute', 'aesthetic']);
   const [frameImageBase64, setFrameImageBase64] = useState<string | null>(null);
 
   // Analytics chart state
@@ -93,6 +116,16 @@ export const CreatorDashboard: React.FC = () => {
         setSelectedDetailFrame(refreshedTarget || null);
       }
     }
+  };
+
+  // Tambahkan fungsi ini di bawah refreshFrames()
+  const handleGoToUpload = () => {
+    setSelectedDetailFrame(null);
+    setEditingFrame(null);
+    setFrameName('');
+    setFrameDesc('');
+    setFrameImageBase64(null);
+    setCurrentView('upload');
   };
 
   if (!currentUser || !isCreator) {
@@ -214,7 +247,7 @@ export const CreatorDashboard: React.FC = () => {
     setEditingFrame(null);
     setFrameName('');
     setFrameDesc('');
-    setFrameTags(['wisuda', 'lucu', 'aesthetic']);
+    setFrameTags(['graduation', 'cute', 'aesthetic']);
     setFrameImageBase64(null);
     setShowUploadModal(false);
     refreshFrames();
@@ -222,6 +255,7 @@ export const CreatorDashboard: React.FC = () => {
   };
 
   const handleEditRejected = (frame: FrameTemplate) => {
+    setSelectedDetailFrame(null);
     setEditingFrame(frame);
     setFrameName(frame.name);
     setFrameDesc(frame.desc);
@@ -229,7 +263,7 @@ export const CreatorDashboard: React.FC = () => {
     setStyleCategory(frame.category);
     setFrameTags(frame.tags && frame.tags.length > 0 ? frame.tags : [frame.category.toLowerCase()]);
     setFrameImageBase64(frame.image);
-    setShowUploadModal(true);
+    setCurrentView('upload');
   };
 
   const handleArchive = (frame: FrameTemplate) => {
@@ -256,21 +290,50 @@ export const CreatorDashboard: React.FC = () => {
   //   }
   // };
 
+// const handleUnarchive = (frame: FrameTemplate) => {
+//   if (confirm(`Are you sure you want to restore "${frame.name}"?`)) {
+//     // 1. Simpan perubahan di data lokal
+//     updateCreatorFrame(frame.id, currentUser.id, { status: 'approved' });
+
+//     // 2. Perbarui state React secara langsung agar UI otomatis berubah
+//     setFrames((prevFrames) =>
+//       prevFrames.map((f) =>
+//         f.id === frame.id ? { ...f, status: 'approved' } : f
+//       )
+//     );
+
+//     setNotification({
+//       type: 'success',
+//       message: `Frame "${frame.name}" has been restored to active status.`,
+//     });
+//     setTimeout(() => setNotification(null), 3000);
+//   }
+// };
+
 const handleUnarchive = (frame: FrameTemplate) => {
   if (confirm(`Are you sure you want to restore "${frame.name}"?`)) {
-    // 1. Simpan perubahan di data lokal
-    updateCreatorFrame(frame.id, currentUser.id, { status: 'approved' });
+    // Pastikan status menjadi 'approved' DAN is_active menjadi true
+    updateCreatorFrame(frame.id, currentUser.id, { 
+      status: 'approved',
+      is_active: true 
+    });
 
-    // 2. Perbarui state React secara langsung agar UI otomatis berubah
+    // Perbarui state React secara lokal
     setFrames((prevFrames) =>
       prevFrames.map((f) =>
-        f.id === frame.id ? { ...f, status: 'approved' } : f
+        f.id === frame.id ? { ...f, status: 'approved', is_active: true } : f
       )
     );
 
+    if (selectedDetailFrame && selectedDetailFrame.id === frame.id) {
+      setSelectedDetailFrame((prev) => 
+        prev ? { ...prev, status: 'approved', is_active: true } : null
+      );
+    }
+
     setNotification({
       type: 'success',
-      message: `Frame "${frame.name}" has been restored to active status.`,
+      message: `Frame "${frame.name}" has been restored to active status and is now visible on Guest Home.`,
     });
     setTimeout(() => setNotification(null), 3000);
   }
@@ -282,7 +345,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
   const pendingFrames = frames.filter((f) => f.status === 'pending_review');
   const rejectedFrames = frames.filter((f) => f.status === 'rejected');
   const archivedFrames = frames.filter((f) => f.status === 'archived');
-  const totalCapturesEstimate = approvedFrames.length * 280;
+  // const totalCapturesEstimate = approvedFrames.length * 280;
 
   // Filtered frames list
   const filteredFrames = frames.filter((frame) => {
@@ -298,16 +361,82 @@ const handleUnarchive = (frame: FrameTemplate) => {
   });
 
   // Creator Usage Trend Data (Demo)
-  const creatorTrendData = [
-    { label: 'Mon', uses: 45 },
-    { label: 'Tue', uses: 72 },
-    { label: 'Wed', uses: 88 },
-    { label: 'Thu', uses: 110 },
-    { label: 'Fri', uses: 165 },
-    { label: 'Sat', uses: 220 },
-    { label: 'Sun', uses: 195 },
-  ];
-  const maxUses = Math.max(...creatorTrendData.map((d) => d.uses));
+  // const creatorTrendData = [
+  //   { label: 'Mon', uses: 45 },
+  //   { label: 'Tue', uses: 72 },
+  //   { label: 'Wed', uses: 88 },
+  //   { label: 'Thu', uses: 110 },
+  //   { label: 'Fri', uses: 165 },
+  //   { label: 'Sat', uses: 220 },
+  //   { label: 'Sun', uses: 195 },
+  // ];
+
+  // Ambil ID semua frame milik creator saat ini
+  const creatorFrameIds = React.useMemo(() => new Set(frames.map((f) => f.id)), [frames]);
+  
+
+  // Total foto asli yang berhasil diambil tamu menggunakan frame creator ini
+  const totalCapturesEstimate = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id)).length;
+
+  // Hitung tren penggunaan foto 7 hari terakhir secara otomatis berdasarkan data asli
+  const creatorTrendData = React.useMemo(() => {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const result: { label: string; uses: number }[] = [];
+    const creatorPhotos = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id));
+
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const dayName = days[d.getDay()];
+      const dateString = d.toISOString().split('T')[0];
+
+      const count = creatorPhotos.filter((p) => {
+        const photoDate = new Date(p.created_at).toISOString().split('T')[0];
+        return photoDate === dateString;
+      }).length;
+
+      result.push({ label: dayName, uses: count });
+    }
+
+    return result;
+  }, [creatorFrameIds, guestPhotos]);
+  
+  // Hitung persentase pertumbuhan riil beserta status warna dan ikonnya
+  const usageTrendInfo = React.useMemo(() => {
+    const creatorPhotos = guestPhotos.filter((p) => creatorFrameIds.has(p.frame_id));
+    if (creatorPhotos.length === 0) {
+      return { text: '0% usage', type: 'neutral' };
+    }
+
+    const now = new Date();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const fourteenDaysAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+
+    const currentWeekCount = creatorPhotos.filter((p) => new Date(p.created_at) >= sevenDaysAgo).length;
+    const previousWeekCount = creatorPhotos.filter((p) => {
+      const pDate = new Date(p.created_at);
+      return pDate >= fourteenDaysAgo && pDate < sevenDaysAgo;
+    }).length;
+
+    if (previousWeekCount === 0) {
+      return currentWeekCount > 0 
+        ? { text: '+100% usage', type: 'up' } 
+        : { text: '0% usage', type: 'neutral' };
+    }
+
+    const diff = currentWeekCount - previousWeekCount;
+    const percent = Math.round((diff / previousWeekCount) * 100);
+
+    if (percent > 0) {
+      return { text: `+${percent}% usage`, type: 'up' };
+    } else if (percent < 0) {
+      return { text: `${percent}% usage`, type: 'down' };
+    } else {
+      return { text: '0% usage', type: 'neutral' };
+    }
+  }, [creatorFrameIds, guestPhotos]);
+
+  const maxUses = Math.max(...creatorTrendData.map((d) => d.uses), 1);
 
   // Sample portrait dummy photos for cutout inspection
   const samplePortraits = [
@@ -402,7 +531,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
                   </button>
                 )}
 
-                {selectedDetailFrame.status !== 'archived' && (
+                {/* {selectedDetailFrame.status !== 'archived' && (
                   <button
                     onClick={() => handleArchive(selectedDetailFrame)}
                     className="inline-flex items-center gap-1.5 rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2 text-xs font-semibold text-[#4B2E1F] hover:bg-[#DEE6BD]/30 transition-colors cursor-pointer shadow-xs"
@@ -410,7 +539,25 @@ const handleUnarchive = (frame: FrameTemplate) => {
                     <Archive className="h-4 w-4" />
                     <span>Archive Frame</span>
                   </button>
-                )}
+                )} */}
+
+                {selectedDetailFrame.status !== 'archived' ? (
+    <button
+      onClick={() => handleArchive(selectedDetailFrame)}
+      className="inline-flex items-center gap-1.5 rounded-lg border border-[#DEE6BD] bg-white px-3.5 py-2 text-xs font-semibold text-[#4B2E1F] hover:bg-[#DEE6BD]/30 transition-colors cursor-pointer shadow-xs"
+    >
+      <Archive className="h-4 w-4" />
+      <span>Archive Frame</span>
+    </button>
+  ) : (
+    <button
+      onClick={() => handleUnarchive(selectedDetailFrame)}
+      className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3.5 py-2 text-xs font-semibold text-white transition-colors cursor-pointer shadow-xs"
+    >
+      <Archive className="h-4 w-4 rotate-180" />
+      <span>Unarchive Frame</span>
+    </button>
+  )}
               </div>
             </div>
 
@@ -611,13 +758,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => {
-                    setEditingFrame(null);
-                    setFrameName('');
-                    setFrameDesc('');
-                    setFrameImageBase64(null);
-                    setShowUploadModal(true);
-                  }}
+                  onClick={handleGoToUpload}
                   className="inline-flex items-center gap-2 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-4 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs transition-colors cursor-pointer"
                 >
                   <Plus className="h-4 w-4" />
@@ -664,7 +805,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
                 <div className="text-[10px] text-red-700 font-semibold mt-0.5">Feedback available</div>
               </div>
 
-              <div className="rounded-xl border border-[#DEE6BD] bg-white p-4 shadow-xs">
+              {/* <div className="rounded-xl border border-[#DEE6BD] bg-white p-4 shadow-xs">
                 <div className="flex items-center justify-between text-[#4B2E1F]/50 mb-1.5">
                   <span className="text-[11px] font-semibold uppercase text-[#4B2E1F]/70">Photo Strips</span>
                   <Sparkles className="h-4 w-4 text-[#F4B8A5]" />
@@ -673,7 +814,31 @@ const handleUnarchive = (frame: FrameTemplate) => {
                 <div className="text-[10px] text-emerald-700 font-semibold mt-0.5 flex items-center gap-0.5">
                   <TrendingUp className="h-3 w-3" /> +18% usage
                 </div>
-              </div>
+              </div> */}
+
+              <div className="rounded-xl border border-[#DEE6BD] bg-white p-4 shadow-xs">
+  <div className="flex items-center justify-between text-[#4B2E1F]/50 mb-1.5">
+    <span className="text-[11px] font-semibold uppercase text-[#4B2E1F]/70">PHOTO STRIPS</span>
+    <Sparkles className="h-4 w-4 text-[#F4B8A5]" />
+  </div>
+  <div className="text-2xl font-serif font-normal text-[#4B2E1F]">{totalCapturesEstimate}</div>
+  
+  {/* Indikator Dinamis 3 Kondisi (Naik, Turun, Netral) */}
+  <div
+    className={`text-[10px] font-semibold mt-0.5 flex items-center gap-0.5 ${
+      usageTrendInfo.type === 'up'
+        ? 'text-emerald-700'
+        : usageTrendInfo.type === 'down'
+        ? 'text-red-600'
+        : 'text-[#4B2E1F]/60'
+    }`}
+  >
+    {usageTrendInfo.type === 'up' && <TrendingUp className="h-3 w-3 text-emerald-700" />}
+    {usageTrendInfo.type === 'down' && <TrendingDown className="h-3 w-3 text-red-600" />}
+    {usageTrendInfo.type === 'neutral' && <Minus className="h-3 w-3 text-[#4B2E1F]/60" />}
+    <span>{usageTrendInfo.text}</span>
+  </div>
+</div>
             </div>
 
             {/* Performance SVG Chart */}
@@ -687,7 +852,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
                       </h2>
                     </div>
                     <span className="text-[11px] text-[#4B2E1F]/70">
-                      Total: <strong className="text-[#4B2E1F]">895 captures</strong>
+                      Total: <strong className="text-[#4B2E1F]">{totalCapturesEstimate} captures</strong>
                     </span>
                   </div>
                   <p className="text-xs text-[#4B2E1F]/70 mb-6">
@@ -725,11 +890,13 @@ const handleUnarchive = (frame: FrameTemplate) => {
 
                     {(() => {
                       const points = creatorTrendData.map((d, i) => {
-                        const x = (i / (creatorTrendData.length - 1)) * 500;
-                        const y = 170 - (d.uses / maxUses) * 150;
+                        const x = creatorTrendData.length > 1 ? (i / (creatorTrendData.length - 1)) * 500 : 0;
+                        const y = maxUses > 0 && d.uses > 0 ? 160 - (d.uses / maxUses) * 120 : 160;
                         return `${x},${y}`;
                       });
-                      const dArea = `M 0,170 L ${points.join(' L ')} L 500,140 Z`;
+                      
+                      // Tutup area bayangan persis di alas garis y = 160
+                      const dArea = `M 0,160 L ${points.join(' L ')} L 500,160 Z`;
                       const dLine = `M ${points.join(' L ')}`;
 
                       return (
@@ -822,13 +989,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => {
-                    setEditingFrame(null);
-                    setFrameName('');
-                    setFrameDesc('');
-                    setFrameImageBase64(null);
-                    setShowUploadModal(true);
-                  }}
+                  onClick={handleGoToUpload}
                   className="inline-flex items-center gap-1.5 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-4 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs transition-colors cursor-pointer"
                 >
                   <Plus className="h-4 w-4" />
@@ -913,11 +1074,11 @@ const handleUnarchive = (frame: FrameTemplate) => {
                 </p>
                 {frames.length === 0 && (
                   <button
-                    onClick={() => setShowUploadModal(true)}
-                    className="mt-4 rounded-lg bg-[#4B2E1F] px-5 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs hover:bg-[#3D2418] transition-colors cursor-pointer"
-                  >
-                    Upload Frame Now
-                  </button>
+    onClick={handleGoToUpload}
+    className="mt-4 rounded-lg bg-[#4B2E1F] px-5 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs hover:bg-[#3D2418] transition-colors cursor-pointer"
+  >
+    Upload Frame Now
+  </button>
                 )}
               </div>
             ) : displayMode === 'table' ? (
@@ -1138,7 +1299,7 @@ const handleUnarchive = (frame: FrameTemplate) => {
                             <Edit3 className="h-3.5 w-3.5" />
                           </button>
                         )}
-                        {frame.status === 'approved' && (
+                        {/* {frame.status === 'approved' && (
                           <button
                             onClick={() => handleArchive(frame)}
                             className="h-7 w-7 rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] text-[#4B2E1F] hover:bg-[#DEE6BD]/50 flex items-center justify-center transition-colors cursor-pointer"
@@ -1146,7 +1307,28 @@ const handleUnarchive = (frame: FrameTemplate) => {
                           >
                             <Archive className="h-3.5 w-3.5" />
                           </button>
-                        )}
+                        )} */}
+
+                        {frame.status === 'approved' && (
+    <button
+      onClick={() => handleArchive(frame)}
+      className="h-7 w-7 rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] text-[#4B2E1F] hover:bg-[#DEE6BD]/50 flex items-center justify-center transition-colors cursor-pointer"
+      title="Archive Frame"
+    >
+      <Archive className="h-3.5 w-3.5" />
+    </button>
+  )}
+
+  {frame.status === 'archived' && (
+    <button
+      onClick={() => handleUnarchive(frame)}
+      className="h-7 w-7 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+      title="Unarchive Frame"
+      aria-label="Unarchive Frame"
+    >
+      <Archive className="h-3.5 w-3.5 rotate-180" />
+    </button>
+  )}
                       </div>
                     </div>
                   </div>
@@ -1239,9 +1421,9 @@ const handleUnarchive = (frame: FrameTemplate) => {
                   <HashtagInput
                     tags={frameTags}
                     onChange={setFrameTags}
-                    label="Hashtags / Kata Kunci Bebas"
-                    placeholder="Ketik hashtag lalu tekan koma, spasi, atau Enter (cth: wisuda, lucu, vintage)..."
-                    helperText="Creator bebas menginput banyak hashtag. Teks otomatis diubah menjadi visual chip (kotak kecil) dan dikirim ke payload Supabase sebagai array text[]."
+                    label="Hashtags / Keywords"
+                    placeholder="Type a hashtag then press comma, space, or Enter (e.g., graduation, funny, vintage)..."
+                    helperText="Feel free to add multiple hashtags. Text will automatically convert into visual chips and be saved as a text array."
                   />
                 </div>
 
@@ -1399,166 +1581,14 @@ const handleUnarchive = (frame: FrameTemplate) => {
         )}
       </main>
 
-      {/* QUICK UPLOAD / REVISION MODAL */}
-      {showUploadModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 font-sans">
-          <div className="relative w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-xl border border-[#DEE6BD] max-h-[92vh] flex flex-col">
-            <div className="flex items-center justify-between border-b border-[#DEE6BD] px-6 py-4 bg-[#FDFFEB]">
-              <div>
-                <h3 className="text-xl font-serif font-normal text-[#4B2E1F]">
-                  {editingFrame ? 'Revise Frame' : 'Upload New Frame'}
-                </h3>
-                <p className="text-[11px] text-[#4B2E1F]/70">
-                  Frames will be reviewed by the Admin team before appearing in public guest sessions
-                </p>
-              </div>
-              <button
-                onClick={() => setShowUploadModal(false)}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-[#4B2E1F]/60 hover:bg-[#DEE6BD]/40 hover:text-[#4B2E1F] cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
-            <form onSubmit={handleSubmitFrame} className="flex-1 overflow-y-auto p-6 space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-[#4B2E1F] mb-1">
-                  Frame Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={frameName}
-                  onChange={(e) => setFrameName(e.target.value)}
-                  placeholder="e.g. Retro 90s Nostalgia"
-                  className="w-full rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] px-3.5 py-2.5 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-[#4B2E1F] mb-1">
-                  Short Description
-                </label>
-                <textarea
-                  rows={2}
-                  value={frameDesc}
-                  onChange={(e) => setFrameDesc(e.target.value)}
-                  placeholder="Describe aesthetic vibe or celebratory theme..."
-                  className="w-full rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] p-3 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-semibold text-[#4B2E1F] mb-1">
-                    Pose Count *
-                  </label>
-                  <select
-                    value={poseCount}
-                    onChange={(e) => setPoseCount(Number(e.target.value))}
-                    className="w-full rounded-lg border border-[#DEE6BD] px-3 py-2 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:outline-none bg-[#FDFFEB] transition-colors"
-                  >
-                    <option value={1}>1 Pose (Solo)</option>
-                    <option value={2}>2 Poses (Duo)</option>
-                    <option value={4}>4 Poses (Strip)</option>
-                    <option value={6}>6 Poses (Grid)</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-[#4B2E1F] mb-1">
-                    Style / Category *
-                  </label>
-                  <select
-                    value={styleCategory}
-                    onChange={(e) => setStyleCategory(e.target.value as FrameStyle)}
-                    className="w-full rounded-lg border border-[#DEE6BD] px-3 py-2 text-xs text-[#4B2E1F] focus:border-[#4B2E1F] focus:outline-none bg-[#FDFFEB] transition-colors"
-                  >
-                    <option value="Cute">Cute</option>
-                    <option value="Vintage">Vintage</option>
-                    <option value="Minimalist">Minimalist</option>
-                    <option value="Formal">Formal</option>
-                    <option value="Retro">Retro</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Hashtag Input Component - Tepat di Bawah Dropdown Style */}
-              <div>
-                <HashtagInput
-                  tags={frameTags}
-                  onChange={setFrameTags}
-                  label="Hashtags / Kata Kunci Bebas"
-                  placeholder="Ketik hashtag lalu tekan koma atau spasi (cth: wisuda, lucu, pastel)..."
-                  helperText="Teks otomatis diubah menjadi kotak kecil (visual chips) dan dimasukkan ke array tags."
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-[#4B2E1F] mb-1">
-                  Frame PNG File (Transparent Alpha Channel) *
-                </label>
-                <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-[#DEE6BD] p-4 hover:border-[#4B2E1F] transition-colors bg-[#FDFFEB]">
-                  {frameImageBase64 ? (
-                    <div className="relative aspect-[3/4] w-28 overflow-hidden rounded-md border border-[#DEE6BD] bg-white">
-                      <img
-                        src={frameImageBase64}
-                        alt="Preview Frame"
-                        className="h-full w-full object-contain"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setFrameImageBase64(null)}
-                        className="absolute top-1 right-1 rounded-full bg-[#4B2E1F] p-1 text-white text-[10px] cursor-pointer"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  ) : (
-                    <label className="flex flex-col items-center cursor-pointer">
-                      <Upload className="h-6 w-6 text-[#4B2E1F] mb-1" />
-                      <span className="text-xs font-semibold text-[#4B2E1F]">
-                        Select Transparent PNG File
-                      </span>
-                      <span className="text-[10px] text-[#4B2E1F]/60 mt-0.5">
-                        Standard dimensions: 4000 × 5900 px
-                      </span>
-                      <input
-                        type="file"
-                        accept="image/png"
-                        required={!editingFrame}
-                        onChange={handleImageFileChange}
-                        className="hidden"
-                      />
-                    </label>
-                  )}
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] py-2.5 text-xs font-semibold text-[#FDFFEB] shadow-xs transition-colors cursor-pointer"
-                >
-                  <Plus className="h-4 w-4" />
-                  <span>
-                    {editingFrame ? 'Update Frame' : 'Submit for Admin Review'}
-                  </span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
       {/* Floating Button to Guest Home (Melayang di Kanan Bawah) */}
       <button
         onClick={() => navigate('/')}
         className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#4B2E1F] hover:bg-[#3D2418] text-[#FDFFEB] px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-bold shadow-xl border-2 border-[#DEE6BD] hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-        title="Kembali ke Halaman Utama Guest"
+        title="Return to Guest Home"
       >
         <Home className="h-4 w-4 text-[#F4B8A5] group-hover:rotate-12 transition-transform" />
-        <span>Halaman Utama Guest</span>
+        <span>Guest Home</span>
       </button>
     </div>
   );
