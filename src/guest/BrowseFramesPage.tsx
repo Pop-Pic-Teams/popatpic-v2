@@ -13,7 +13,7 @@ import {
   Hash,
   SlidersHorizontal,
 } from 'lucide-react';
-import { getApprovedActiveFrames, INITIAL_FRAMES } from '../data/frames';
+import { fetchPublicFrames } from '../features/frames/api/framesApi';
 import type { FrameTemplate, FrameStyle } from '../types/photobooth';
 import { PhotoSessionStepper } from '../components/PhotoSessionStepper';
 
@@ -30,8 +30,18 @@ export const BrowseFramesPage: React.FC = () => {
   const [customTagInput, setCustomTagInput] = useState('');
   const [inspectingFrame, setInspectingFrame] = useState<FrameTemplate | null>(null);
 
-  // All approved & active frames
-  const allFrames = getApprovedActiveFrames();
+  // All approved & active frames from database
+  const [allFrames, setAllFrames] = useState<FrameTemplate[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchPublicFrames().then((frames) => {
+      if (isMounted) setAllFrames(frames);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Style categories defined by Admin
   const ADMIN_STYLES: { id: FrameStyle | 'All'; label: string }[] = [

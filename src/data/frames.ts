@@ -519,30 +519,18 @@ const STORAGE_KEY_PHOTOS = 'popatpic_guest_photos_db';
 
 export function getAllFrames(): FrameTemplate[] {
   if (typeof window === 'undefined') {
-    return INITIAL_FRAMES;
+    return [];
   }
   try {
     const raw = localStorage.getItem(STORAGE_KEY_FRAMES);
     if (raw) {
       const parsed: FrameTemplate[] = JSON.parse(raw);
-      // Map initial tags fallback if missing from cached items
-      const initialMap = new Map<string, string[]>();
-      INITIAL_FRAMES.forEach((initF) => {
-        if (initF.tags) initialMap.set(initF.id, initF.tags);
-      });
-
-      return parsed.map((f) => {
-        if (!f.tags || f.tags.length === 0) {
-          const fallback = initialMap.get(f.id) || [f.category, 'Aesthetic'];
-          return { ...f, tags: fallback };
-        }
-        return f;
-      });
+      return parsed;
     }
   } catch (e) {
     console.error('Failed reading frames store', e);
   }
-  return INITIAL_FRAMES;
+  return [];
 }
 
 export function saveAllFrames(frames: FrameTemplate[]): void {
@@ -734,28 +722,7 @@ export function adminModerateFrame(
 // Audit Logs Store (F-A12, BR-012)
 export function getAuditLogs(): AuditLog[] {
   if (typeof window === 'undefined') {
-    return [
-      {
-        id: 'log_seed_1',
-        adminId: 'usr_admin_1',
-        adminName: 'Pop@Pic! Admin',
-        action: 'APPROVE_FRAME',
-        targetType: 'frame',
-        targetId: 'frm_pixel_arcade',
-        details: 'Approved frame "Pixel Arcade" created by Karima Ulya.',
-        timestamp: '2026-03-01T10:05:00Z',
-      },
-      {
-        id: 'log_seed_2',
-        adminId: 'usr_admin_1',
-        adminName: 'Pop@Pic! Admin',
-        action: 'ACTIVATE_CREATOR',
-        targetType: 'creator',
-        targetId: 'usr_creator_1',
-        details: 'Activated Creator status for Karima Ulya.',
-        timestamp: '2026-02-15T11:00:00Z',
-      },
-    ];
+    return [];
   }
   try {
     const raw = localStorage.getItem(STORAGE_KEY_AUDIT);
@@ -763,28 +730,7 @@ export function getAuditLogs(): AuditLog[] {
   } catch (e) {
     console.error('Failed reading audit logs', e);
   }
-  return [
-    {
-      id: 'log_seed_1',
-      adminId: 'usr_admin_1',
-      adminName: 'Pop@Pic! Admin',
-      action: 'APPROVE_FRAME',
-      targetType: 'frame',
-      targetId: 'frm_pixel_arcade',
-      details: 'Approved frame "Pixel Arcade" created by Karima Ulya.',
-      timestamp: '2026-03-01T10:05:00Z',
-    },
-    {
-      id: 'log_seed_2',
-      adminId: 'usr_admin_1',
-      adminName: 'Pop@Pic! Admin',
-      action: 'ACTIVATE_CREATOR',
-      targetType: 'creator',
-      targetId: 'usr_creator_1',
-      details: 'Activated Creator status for Karima Ulya.',
-      timestamp: '2026-02-15T11:00:00Z',
-    },
-  ];
+  return [];
 }
 
 export function addAuditLog(log: AuditLog): void {

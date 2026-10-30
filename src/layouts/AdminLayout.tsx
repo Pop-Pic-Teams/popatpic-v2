@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AdminSidebar, type AdminView } from '../admin/AdminSidebar';
-import { getAllFrames } from '../data/frames';
+import { fetchAdminFrames } from '../features/frames/api/framesApi';
+import type { FrameTemplate } from '../types/photobooth';
 
 interface AdminLayoutProps {
   children?: React.ReactNode;
@@ -17,6 +18,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
 }) => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [internalView, setInternalView] = useState<AdminView>(currentView);
+  const [allFrames, setAllFrames] = useState<FrameTemplate[]>([]);
 
   const activeView = onSelectView ? currentView : internalView;
   const handleSelectView = (view: AdminView) => {
@@ -27,7 +29,16 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
     }
   };
 
-  const allFrames = getAllFrames();
+  useEffect(() => {
+    let isMounted = true;
+    fetchAdminFrames().then((frames) => {
+      if (isMounted) setAllFrames(frames);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const pendingCount = allFrames.filter((f) => f.status === 'pending_review').length;
 
   return (

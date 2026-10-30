@@ -30,14 +30,16 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import {
-  getFramesByCreator,
-  submitFrameForReview,
-  updateCreatorFrame,
-  archiveCreatorFrame,
   getLayoutGuideDownload,
   getStandardSlots,
   getGuestPhotos
 } from '../data/frames';
+import {
+  fetchCreatorFrames,
+  uploadCreatorFrame,
+  updateCreatorFrameApi,
+  archiveCreatorFrameApi,
+} from '../features/frames/api/framesApi';
 import type { FrameTemplate, FrameStyle, GuestPhotoRecord } from '../types/photobooth';
 import { CreatorSidebar, type CreatorView } from './CreatorSidebar';
 import { HashtagInput } from '../components/HashtagInput';
@@ -55,9 +57,7 @@ export const CreatorDashboard: React.FC = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   // Data states
-  const [frames, setFrames] = useState<FrameTemplate[]>(() =>
-    currentUser ? getFramesByCreator(currentUser.id) : []
-  );
+  const [frames, setFrames] = useState<FrameTemplate[]>([]);
   const [guestPhotos, setGuestPhotos] = useState<GuestPhotoRecord[]>([]);
 
   // Frame detail inspection view (preserving sidebar)
@@ -88,9 +88,9 @@ export const CreatorDashboard: React.FC = () => {
 
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  const refreshFrames = () => {
+  const refreshFrames = async () => {
     if (currentUser) {
-      const updated = getFramesByCreator(currentUser.id);
+      const updated = await fetchCreatorFrames();
       setFrames(updated);
       if (selectedDetailFrame) {
         const refreshedTarget = updated.find((f) => f.id === selectedDetailFrame.id);
@@ -100,15 +100,18 @@ export const CreatorDashboard: React.FC = () => {
   };
 
   useEffect(() => {
-    const updateData = () => {
+    let isMounted = true;
+    const updateData = async () => {
       setGuestPhotos(getGuestPhotos());
       if (currentUser) {
-        const updatedFrames = getFramesByCreator(currentUser.id);
+        const updatedFrames = await fetchCreatorFrames();
+        if (!isMounted) return;
         setFrames(updatedFrames);
         setSelectedDetailFrame((selected) =>
           selected ? updatedFrames.find((frame) => frame.id === selected.id) ?? null : null
         );
       } else {
+        if (!isMounted) return;
         setFrames([]);
         setSelectedDetailFrame(null);
       }
@@ -116,7 +119,10 @@ export const CreatorDashboard: React.FC = () => {
 
     updateData();
     const interval = window.setInterval(updateData, 5000);
-    return () => window.clearInterval(interval);
+    return () => {
+      isMounted = false;
+      window.clearInterval(interval);
+    };
   }, [currentUser]);
 
   // Tambahkan fungsi ini di bawah refreshFrames()
@@ -261,7 +267,7 @@ export const CreatorDashboard: React.FC = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmitFrame = (e: React.FormEvent) => {
+  const handleSubmitFrame = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!frameName || !frameImageBase64) {
       alert('Frame name and transparent PNG asset are required.');
@@ -270,34 +276,40 @@ export const CreatorDashboard: React.FC = () => {
 
     if (editingFrame) {
       // Update existing rejected or draft frame
-      updateCreatorFrame(editingFrame.id, currentUser.id, {
+      const res = await updateCreatorFrameApi(editingFrame.id, {
         name: frameName,
-        desc: frameDesc,
-        count: poseCount,
+        description: frameDesc,
+        poseCount: poseCount,
         category: styleCategory,
         tags: frameTags,
         image: frameImageBase64,
-        slots: getStandardSlots(poseCount),
       });
+
+      if (!res.success) {
+        alert(res.error || 'Failed to update frame.');
+        return;
+      }
+
       setNotification({
         type: 'success',
         message: `Frame "${frameName}" updated and resubmitted for Administrator review.`,
       });
     } else {
       // Submit new frame for review (Payload Supabase: tags is text[])
-      submitFrameForReview(
-        {
-          name: frameName,
-          desc: frameDesc || 'Custom creative frame designed by Pop@Pic! creator.',
-          count: poseCount,
-          category: styleCategory,
-          tags: frameTags,
-          image: frameImageBase64,
-          slots: getStandardSlots(poseCount),
-        },
-        currentUser.id,
-        currentUser.name
-      );
+      const res = await uploadCreatorFrame({
+        name: frameName,
+        description: frameDesc || 'Custom creative frame designed by Pop@Pic! creator.',
+        poseCount: poseCount,
+        category: styleCategory,
+        tags: frameTags,
+        image: frameImageBase64,
+      });
+
+      if (!res.success) {
+        alert(res.error || 'Failed to upload frame.');
+        return;
+      }
+
       setNotification({
         type: 'success',
         message: `Frame "${frameName}" submitted successfully! Current status: Pending Review.`,
@@ -310,7 +322,7 @@ export const CreatorDashboard: React.FC = () => {
     setFrameTags(['graduation', 'cute', 'aesthetic']);
     setFrameImageBase64(null);
     setShowUploadModal(false);
-    refreshFrames();
+    await refreshFrames();
     setTimeout(() => setNotification(null), 4000);
   };
 
@@ -326,10 +338,14 @@ export const CreatorDashboard: React.FC = () => {
     setCurrentView('upload');
   };
 
-  const handleArchive = (frame: FrameTemplate) => {
+  const handleArchive = async (frame: FrameTemplate) => {
     if (confirm(`Are you sure you want to archive "${frame.name}"? It will no longer be visible in public guest sessions.`)) {
-      archiveCreatorFrame(frame.id, currentUser.id);
-      refreshFrames();
+      const res = await archiveCreatorFrameApi(frame.id);
+      if (!res.success) {
+        alert(res.error || 'Failed to archive frame.');
+        return;
+      }
+      await refreshFrames();
       setNotification({
         type: 'success',
         message: `Frame "${frame.name}" archived.`,
@@ -370,30 +386,20 @@ export const CreatorDashboard: React.FC = () => {
 //   }
 // };
 
-const handleUnarchive = (frame: FrameTemplate) => {
+const handleUnarchive = async (frame: FrameTemplate) => {
   if (confirm(`Are you sure you want to restore "${frame.name}"?`)) {
-    // Pastikan status menjadi 'approved' DAN is_active menjadi true
-    updateCreatorFrame(frame.id, currentUser.id, { 
-      status: 'approved',
-      is_active: true 
+    const res = await updateCreatorFrameApi(frame.id, { 
+      status: 'pending_review',
     });
-
-    // Perbarui state React secara lokal
-    setFrames((prevFrames) =>
-      prevFrames.map((f) =>
-        f.id === frame.id ? { ...f, status: 'approved', is_active: true } : f
-      )
-    );
-
-    if (selectedDetailFrame && selectedDetailFrame.id === frame.id) {
-      setSelectedDetailFrame((prev) => 
-        prev ? { ...prev, status: 'approved', is_active: true } : null
-      );
+    if (!res.success) {
+      alert(res.error || 'Failed to restore frame.');
+      return;
     }
 
+    await refreshFrames();
     setNotification({
       type: 'success',
-      message: `Frame "${frame.name}" has been restored to active status and is now visible on Guest Home.`,
+      message: `Frame "${frame.name}" resubmitted for Administrator review.`,
     });
     setTimeout(() => setNotification(null), 3000);
   }

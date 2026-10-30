@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from '../utils/navigation';
 import {
   Users,
@@ -36,13 +36,14 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import {
-  getAllFrames,
-  adminModerateFrame,
-  getAuditLogs,
   getGuestPhotos,
-  addAuditLog,
-  adminDeleteFrame,
 } from '../data/frames';
+import {
+  fetchAdminFrames,
+  adminReviewFrameApi,
+  adminDeleteFrameApi,
+  fetchAdminAuditLogs,
+} from '../features/frames/api/framesApi';
 import type { FrameTemplate, AuditLog, GuestPhotoRecord, User } from '../types/photobooth';
 import { AdminSidebar, type AdminView } from './AdminSidebar';
 
@@ -60,8 +61,8 @@ export const AdminDashboard: React.FC = () => {
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [currentView, setCurrentView] = useState<AdminView>('overview');
-  const [frames, setFrames] = useState<FrameTemplate[]>(getAllFrames);
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(getAuditLogs);
+  const [frames, setFrames] = useState<FrameTemplate[]>([]);
+  const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
   const [guestPhotos] = useState<GuestPhotoRecord[]>(getGuestPhotos);
 
   // Frame Detail Inspection View State (Requirement 5: preserves admin sidebar)
@@ -85,40 +86,55 @@ export const AdminDashboard: React.FC = () => {
 
   const [notification, setNotification] = useState<string | null>(null);
 
-  if (!currentUser || !isAdmin) {
-    return (
-      <div className="min-h-screen bg-[#FDFFEB] flex flex-col items-center justify-center p-6 text-center font-sans">
-        <div className="h-16 w-16 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mb-4">
-          <AlertTriangle className="h-8 w-8" />
-        </div>
-        <h2 className="text-2xl font-serif text-[#4B2E1F] mb-2">Restricted Access: Administrators Only</h2>
-        <p className="text-xs text-[#4B2E1F]/70 max-w-sm mb-6">
-          Administrator credentials are required to view this console. Please sign in with an authorized account.
-        </p>
-        <button
-          onClick={() => navigate('/login')}
-          className="rounded-lg bg-[#4B2E1F] px-6 py-2.5 text-xs font-semibold text-[#FDFFEB] shadow-xs hover:bg-[#3D2418] cursor-pointer transition-colors"
-        >
-          Go to Sign In
-        </button>
-      </div>
-    );
-  }
+  const refreshData = async () => {
+    try {
+      const [updatedFrames, updatedLogs] = await Promise.all([
+        fetchAdminFrames(),
+        fetchAdminAuditLogs(),
+      ]);
+      setFrames(updatedFrames);
+      setAuditLogs(updatedLogs);
 
-  const refreshData = () => {
-    const updated = getAllFrames();
-    setFrames(updated);
-    setAuditLogs(getAuditLogs());
-
-    if (selectedDetailFrame) {
-      const refreshedTarget = updated.find((f) => f.id === selectedDetailFrame.id);
-      setSelectedDetailFrame(refreshedTarget || null);
+      if (selectedDetailFrame) {
+        const refreshedTarget = updatedFrames.find((f) => f.id === selectedDetailFrame.id);
+        setSelectedDetailFrame(refreshedTarget || null);
+      }
+    } catch (err) {
+      console.error('[AdminDashboard] refreshData error:', err);
     }
   };
 
-  const handleApproveFrame = (frame: FrameTemplate) => {
-    adminModerateFrame(frame.id, 'approve', currentUser.id, currentUser.name);
-    refreshData();
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      try {
+        const [updatedFrames, updatedLogs] = await Promise.all([
+          fetchAdminFrames(),
+          fetchAdminAuditLogs(),
+        ]);
+        if (!isMounted) return;
+        setFrames(updatedFrames);
+        setAuditLogs(updatedLogs);
+      } catch (err) {
+        console.error('[AdminDashboard] load error:', err);
+      }
+    };
+
+    load();
+    const interval = setInterval(load, 5000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  const handleApproveFrame = async (frame: FrameTemplate) => {
+    const res = await adminReviewFrameApi(frame.id, 'approve');
+    if (!res.success) {
+      alert(res.error || 'Gagal menyetujui frame.');
+      return;
+    }
+    await refreshData();
     setNotification(`Frame "${frame.name}" approved and is now active for guest photobooth sessions.`);
     setTimeout(() => setNotification(null), 3000);
   };
@@ -131,7 +147,7 @@ export const AdminDashboard: React.FC = () => {
     setRejectionNote('');
   };
 
-  const handleConfirmRejection = (e: React.FormEvent) => {
+  const handleConfirmRejection = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!rejectModalData) return;
     if (!rejectionNote.trim()) {
@@ -139,66 +155,60 @@ export const AdminDashboard: React.FC = () => {
       return;
     }
 
-    adminModerateFrame(
+    const res = await adminReviewFrameApi(
       rejectModalData.id,
       'reject',
-      currentUser.id,
-      currentUser.name,
       rejectionNote
     );
+    if (!res.success) {
+      alert(res.error || 'Gagal menolak frame.');
+      return;
+    }
     setNotification(`Frame rejected with reason note sent to creator.`);
 
-    refreshData();
+    await refreshData();
     setRejectModalData(null);
     setRejectionNote('');
     setTimeout(() => setNotification(null), 3500);
   };
 
-  const handleToggleFrameActive = (frame: FrameTemplate) => {
-    adminModerateFrame(frame.id, 'toggle_active', currentUser.id, currentUser.name);
-    refreshData();
+  const handleToggleFrameActive = async (frame: FrameTemplate) => {
+    await adminReviewFrameApi(frame.id, 'toggle_active');
+    await refreshData();
     setNotification(`Visibility for "${frame.name}" updated.`);
     setTimeout(() => setNotification(null), 2500);
   };
 
-  const handleArchiveFrame = (frame: FrameTemplate) => {
-    adminModerateFrame(frame.id, 'archive', currentUser.id, currentUser.name);
-    refreshData();
+  const handleArchiveFrame = async (frame: FrameTemplate) => {
+    await adminReviewFrameApi(frame.id, 'archive');
+    await refreshData();
     setNotification(`Frame "${frame.name}" archived.`);
     setTimeout(() => setNotification(null), 2500);
   };
 
-  const handleDeleteFrame = (frame: FrameTemplate) => {
+  const handleDeleteFrame = async (frame: FrameTemplate) => {
     if (confirm(`Apakah Anda yakin ingin menghapus frame "${frame.name}" secara permanen?`)) {
-      adminDeleteFrame(frame.id);
+      const res = await adminDeleteFrameApi(frame.id);
+      if (!res.success) {
+        alert(res.error || 'Gagal menghapus frame.');
+        return;
+      }
       if (selectedDetailFrame?.id === frame.id) {
         setSelectedDetailFrame(null);
       }
-      refreshData();
+      await refreshData();
       setNotification(`Frame "${frame.name}" berhasil dihapus secara permanen.`);
       setTimeout(() => setNotification(null), 3000);
     }
   };
 
   // Creator Account Management Actions
-  const handleToggleCreatorStatus = (creator: User) => {
+  const handleToggleCreatorStatus = async (creator: User) => {
     const isSuspended = creator.creatorStatus === 'suspended';
     const newStatus = isSuspended ? 'active' : 'suspended';
 
-    updateUserStatus(creator.id, newStatus);
-
-    addAuditLog({
-      id: `log_${Date.now()}`,
-      adminId: currentUser.id,
-      adminName: currentUser.name,
-      action: isSuspended ? 'ACTIVATE_CREATOR' : 'SUSPEND_CREATOR',
-      targetType: 'creator',
-      targetId: creator.id,
-      details: `${isSuspended ? 'Reactivated' : 'Suspended'} Creator account ${creator.name} (${creator.email}).`,
-      timestamp: new Date().toISOString(),
-    });
-
-    refreshData();
+    await updateUserStatus(creator.id, newStatus);
+    await refreshData();
     setNotification(
       `Creator "${creator.name}" account status updated to ${
         isSuspended ? 'Active' : 'Suspended'
@@ -207,24 +217,13 @@ export const AdminDashboard: React.FC = () => {
     setTimeout(() => setNotification(null), 3000);
   };
 
-  const handleConfirmDeleteCreator = () => {
+  const handleConfirmDeleteCreator = async () => {
     if (!deleteConfirmCreator) return;
 
     const targetCreator = deleteConfirmCreator;
-    deleteCreator(targetCreator.id);
+    await deleteCreator(targetCreator.id);
 
-    addAuditLog({
-      id: `log_${Date.now()}`,
-      adminId: currentUser.id,
-      adminName: currentUser.name,
-      action: 'DELETE_CREATOR',
-      targetType: 'creator',
-      targetId: targetCreator.id,
-      details: `Deleted Creator account ${targetCreator.name} (${targetCreator.email}) due to policy violations.`,
-      timestamp: new Date().toISOString(),
-    });
-
-    refreshData();
+    await refreshData();
     setDeleteConfirmCreator(null);
     setNotification(`Creator account "${targetCreator.name}" permanently deleted.`);
     setTimeout(() => setNotification(null), 3000);
@@ -339,6 +338,26 @@ export const AdminDashboard: React.FC = () => {
     'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
   ];
+
+  if (!currentUser || !isAdmin) {
+    return (
+      <div className="min-h-screen bg-[#FDFFEB] flex flex-col items-center justify-center p-6 text-center font-sans">
+        <div className="h-16 w-16 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mb-4">
+          <AlertTriangle className="h-8 w-8" />
+        </div>
+        <h2 className="text-2xl font-serif text-[#4B2E1F] mb-2">Restricted Access: Administrators Only</h2>
+        <p className="text-xs text-[#4B2E1F]/70 max-w-sm mb-6">
+          Administrator credentials are required to view this console. Please sign in with an authorized account.
+        </p>
+        <button
+          onClick={() => navigate('/login')}
+          className="rounded-lg bg-[#4B2E1F] px-6 py-2.5 text-xs font-semibold text-[#FDFFEB] shadow-xs hover:bg-[#3D2418] cursor-pointer transition-colors"
+        >
+          Go to Sign In
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FDFFEB] flex font-sans text-[#4B2E1F] relative">
