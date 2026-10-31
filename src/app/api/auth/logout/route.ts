@@ -8,7 +8,7 @@ import { isCrossOrigin, jsonError } from '../../../../features/auth/server/share
  */
 export async function POST(request: Request) {
   if (isCrossOrigin(request)) {
-    return jsonError(403, 'Permintaan ditolak.');
+    return jsonError(403, 'Request denied.');
   }
 
   const supabase = await createClient();
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   if (error) {
     console.error('[auth/logout] signOut failed:', error.code, error.message);
-    return jsonError(500, 'Gagal keluar. Silakan coba lagi.');
+    return jsonError(500, 'Failed to log out. Please try again.');
   }
 
   return NextResponse.json({ success: true });

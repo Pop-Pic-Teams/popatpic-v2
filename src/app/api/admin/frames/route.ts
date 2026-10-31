@@ -19,7 +19,7 @@ export async function GET() {
   } catch (err: any) {
     console.error('[GET /api/admin/frames] Error:', err);
     return NextResponse.json(
-      { success: false, error: 'Gagal memuat frame untuk admin.' },
+      { success: false, error: 'Failed to load frames for administrator.' },
       { status: 500 }
     );
   }

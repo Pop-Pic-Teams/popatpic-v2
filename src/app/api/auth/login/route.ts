@@ -22,7 +22,7 @@ import {
  */
 export async function POST(request: Request) {
   if (isCrossOrigin(request)) {
-    return jsonError(403, 'Permintaan ditolak.');
+    return jsonError(403, 'Request denied.');
   }
 
   const parsed = validateLoginInput(await readJson(request));
@@ -35,11 +35,11 @@ export async function POST(request: Request) {
     admin = createAdminClient();
   } catch (err) {
     console.error('[auth/login] Supabase admin client init failed:', (err as Error).message);
-    return jsonError(500, 'Layanan autentikasi sedang tidak tersedia.');
+    return jsonError(500, 'Authentication service is currently unavailable.');
   }
 
   let emailToAuth: string;
-  const genericAuthError = 'Username/email atau kata sandi salah.';
+  const genericAuthError = 'Incorrect username/email or password.';
 
   if (parsed.data.kind === 'username') {
     // Cari email berdasarkan username dari public.users
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
     if (lookupErr) {
       console.error('[auth/login] username lookup failed:', lookupErr.code, lookupErr.message);
-      return jsonError(500, 'Terjadi kesalahan pada server. Silakan coba lagi.');
+      return jsonError(500, 'An error occurred on the server. Please try again.');
     }
 
     if (!userRow) {
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
   if (profileErr || !profile) {
     console.error('[auth/login] profile fetch failed:', profileErr?.code, profileErr?.message);
     await supabase.auth.signOut();
-    return jsonError(500, 'Gagal memuat profil akun. Silakan coba lagi.');
+    return jsonError(500, 'Failed to load user profile. Please try again.');
   }
 
   // Cek apakah akun suspended
@@ -102,7 +102,7 @@ export async function POST(request: Request) {
   if (!role) {
     console.error('[auth/login] unknown role for user:', profile.role);
     await supabase.auth.signOut();
-    return jsonError(403, 'Role akun Anda tidak memiliki akses.');
+    return jsonError(403, 'Your account role does not have access permissions.');
   }
 
   return NextResponse.json({

@@ -16,7 +16,7 @@ export async function GET() {
   } catch (err: any) {
     console.error('[GET /api/frames] Error:', err);
     return NextResponse.json(
-      { success: false, error: 'Gagal mengambil daftar frame publik.' },
+      { success: false, error: 'Failed to load public frames.' },
       { status: 500 }
     );
   }

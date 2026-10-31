@@ -28,7 +28,7 @@ export async function GET() {
   } catch (err: any) {
     console.error('[GET /api/creator/frames] Error:', err);
     return NextResponse.json(
-      { success: false, error: 'Gagal memuat frame kreator.' },
+      { success: false, error: 'Failed to load creator frames' },
       { status: 500 }
     );
   }
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
           fileBuffer = parsed.buffer;
         } else if (typeof body.image === 'string' && body.image.startsWith('data:')) {
           return NextResponse.json(
-            { success: false, error: 'Format data URL gambar tidak valid.' },
+            { success: false, error: 'Invalid image URL format.' },
             { status: 400 }
           );
         }
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
 
     if (!validation.valid || !validation.sanitized) {
       return NextResponse.json(
-        { success: false, error: validation.error || 'Input data frame tidak valid.' },
+        { success: false, error: validation.error || 'Invalid frame data.' },
         { status: 400 }
       );
     }
@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
     // 2. Validasi file frame PNG
     if (!fileBuffer) {
       return NextResponse.json(
-        { success: false, error: 'File asset frame PNG wajib disertakan.' },
+        { success: false, error: 'PNG frame asset is required' },
         { status: 400 }
       );
     }
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: `Ukuran file melebihi batas maksimum (${MAX_FRAME_FILE_SIZE / (1024 * 1024)} MB).`,
+          error: `File size exceeds the maximum limit of (${MAX_FRAME_FILE_SIZE / (1024 * 1024)} MB).`,
         },
         { status: 400 }
       );
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Format file tidak diizinkan. Asset frame wajib berupa file PNG valid dengan signature alpha channel transparan.',
+          error: 'Unsupported file format. The frame asset must be a valid PNG with a transparent alpha channel.',
         },
         { status: 400 }
       );
@@ -161,7 +161,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
-        message: 'Frame berhasil diunggah dan sedang menunggu peninjauan oleh Administrator.',
+        message: 'Frame uploaded successfully and is pending admin review',
         frame: savedFrame,
       },
       { status: 201 }
@@ -169,7 +169,7 @@ export async function POST(request: NextRequest) {
   } catch (err: any) {
     console.error('[POST /api/creator/frames] Error:', err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Terjadi kesalahan saat mengunggah frame.' },
+      { success: false, error: err?.message || 'An error occured while uploading the frame.' },
       { status: 500 }
     );
   }

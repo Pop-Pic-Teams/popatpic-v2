@@ -24,7 +24,7 @@ import {
  */
 export async function POST(request: Request) {
   if (isCrossOrigin(request)) {
-    return jsonError(403, 'Permintaan ditolak.');
+    return jsonError(403, 'Request denied.');
   }
 
   const parsed = validateRegisterInput(await readJson(request));
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     admin = createAdminClient();
   } catch (err) {
     console.error('[auth/register] Supabase admin client init failed:', (err as Error).message);
-    return jsonError(500, 'Layanan pendaftaran sedang tidak tersedia.');
+    return jsonError(500, 'Registration service is currently unavailable.');
   }
 
   // 1. Cek username lebih awal agar pesan error jelas (race condition tetap ditangani oleh unique index).
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 
   if (usernameCheckError) {
     console.error('[auth/register] username check failed:', usernameCheckError.code, usernameCheckError.message);
-    return jsonError(500, 'Terjadi kesalahan pada server. Silakan coba lagi.');
+    return jsonError(500, 'An error occurred on the server. Please try again.');
   }
   if (existingUsername) {
     return jsonError(409, 'Username is already taken. Please choose another.');
@@ -71,10 +71,10 @@ export async function POST(request: Request) {
       return jsonError(409, 'Email is already registered.');
     }
     if (code === 'weak_password') {
-      return jsonError(400, 'Kata sandi terlalu lemah.');
+      return jsonError(400, 'Password is too weak.');
     }
     console.error('[auth/register] createUser failed:', code, createError?.message);
-    return jsonError(500, 'Terjadi kesalahan pada server. Silakan coba lagi.');
+    return jsonError(500, 'An error occurred on the server. Please try again.');
   }
 
   const userId = created.user.id;
@@ -103,21 +103,21 @@ export async function POST(request: Request) {
       return jsonError(409, 'Username is already taken. Please choose another.');
     }
     console.error('[auth/register] profile upsert failed:', profileError?.code, profileError?.message);
-    return jsonError(500, 'Terjadi kesalahan pada server. Silakan coba lagi.');
+    return jsonError(500, 'An error occurred on the server. Please try again.');
   }
 
   const role = mapRole(profile.role);
   if (!role) {
     await rollback();
     console.error('[auth/register] unexpected role after upsert:', profile.role);
-    return jsonError(500, 'Terjadi kesalahan pada server. Silakan coba lagi.');
+    return jsonError(500, 'An error occurred on the server. Please try again.');
   }
 
   // Registrasi berhasil. Pengguna harus login secara manual di halaman login.
   return NextResponse.json(
     {
       success: true,
-      message: 'Pendaftaran berhasil! Silakan masuk dengan akun baru Anda.',
+      message: 'Registration successful! Please log in with your new account.',
     },
     { status: 201 }
   );

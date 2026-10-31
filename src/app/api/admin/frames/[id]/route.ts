@@ -25,12 +25,12 @@ export async function DELETE(
 
     return NextResponse.json({
       success: true,
-      message: 'Frame berhasil dihapus dari database.',
+      message: 'Frame successfully deleted from the database.',
     });
   } catch (err: any) {
     console.error(`[DELETE /api/admin/frames/${frameId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Gagal menghapus frame.' },
+      { success: false, error: err?.message || 'failed to delete frame.' },
       { status: 500 }
     );
   }

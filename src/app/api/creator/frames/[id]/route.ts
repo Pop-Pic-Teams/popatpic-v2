@@ -68,7 +68,7 @@ export async function PATCH(
           fileBuffer = parsed.buffer;
         } else {
           return NextResponse.json(
-            { success: false, error: 'Format data URL gambar tidak valid.' },
+            { success: false, error: 'Invalid image URL format.' },
             { status: 400 }
           );
         }
@@ -81,7 +81,7 @@ export async function PATCH(
         return NextResponse.json(
           {
             success: false,
-            error: `Ukuran file melebihi batas maksimum (${MAX_FRAME_FILE_SIZE / (1024 * 1024)} MB).`,
+            error: `File size exceeds the maximum limit of (${MAX_FRAME_FILE_SIZE / (1024 * 1024)} MB).`,
           },
           { status: 400 }
         );
@@ -90,7 +90,7 @@ export async function PATCH(
         return NextResponse.json(
           {
             success: false,
-            error: 'File asset frame wajib berupa file PNG transparan yang valid.',
+            error: 'The frame asset must be a valid transparent PNG file.',
           },
           { status: 400 }
         );
@@ -107,7 +107,7 @@ export async function PATCH(
 
     if (!validation.valid || !validation.sanitized) {
       return NextResponse.json(
-        { success: false, error: validation.error || 'Input data tidak valid.' },
+        { success: false, error: validation.error || 'Invalid input data.' },
         { status: 400 }
       );
     }
@@ -124,13 +124,13 @@ export async function PATCH(
 
     return NextResponse.json({
       success: true,
-      message: 'Frame berhasil diperbarui dan diajukan ulang untuk verifikasi admin.',
+      message: 'Frame updated successfully and resubmitted for admin verification.',
       frame: updatedFrame,
     });
   } catch (err: any) {
     console.error(`[PATCH /api/creator/frames/${frameId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Gagal memperbarui frame.' },
+      { success: false, error: err?.message || 'Failed to update frame.' },
       { status: 500 }
     );
   }

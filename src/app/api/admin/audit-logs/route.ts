@@ -19,7 +19,7 @@ export async function GET() {
   } catch (err: any) {
     console.error('[GET /api/admin/audit-logs] Error:', err);
     return NextResponse.json(
-      { success: false, error: 'Gagal memuat log audit.' },
+      { success: false, error: 'Failed to load audit logs.' },
       { status: 500 }
     );
   }

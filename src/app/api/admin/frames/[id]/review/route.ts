@@ -28,7 +28,7 @@ export async function POST(
       return NextResponse.json(
         {
           success: false,
-          error: 'Pilihan keputusan tidak valid. Opsi: approve, reject, archive, toggle_active.',
+          error: 'Invalid decision choice. Options: approve, reject, archive, toggle_active.',
         },
         { status: 400 }
       );
@@ -36,7 +36,7 @@ export async function POST(
 
     if (decision === 'reject' && (!reason || !reason.trim())) {
       return NextResponse.json(
-        { success: false, error: 'Alasan penolakan wajib diisi ketika menolak frame.' },
+        { success: false, error: 'A rejection reason is required when rejecting a frame.' },
         { status: 400 }
       );
     }
@@ -56,13 +56,13 @@ export async function POST(
 
     return NextResponse.json({
       success: true,
-      message: `Keputusan moderasi (${decision}) berhasil disimpan ke database.`,
+      message: `Moderation decision (${decision}) saved successfully.`,
       frame: updatedFrame,
     });
   } catch (err: any) {
     console.error(`[POST /api/admin/frames/${frameId}/review] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Gagal memproses moderasi frame.' },
+      { success: false, error: err?.message || 'Failed to process frame moderation.' },
       { status: 500 }
     );
   }

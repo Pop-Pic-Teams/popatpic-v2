@@ -26,7 +26,7 @@ export async function GET() {
   } catch (err: any) {
     console.error('[GET /api/admin/users] Error:', err);
     return NextResponse.json(
-      { success: false, error: 'Gagal memuat daftar pengguna dari database.' },
+      { success: false, error: 'failed to load user list from database.' },
       { status: 500 }
     );
   }
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     if (!['admin', 'creator'].includes(role)) {
       return NextResponse.json(
-        { success: false, error: 'Role tidak valid. Pilihan: admin, creator.' },
+        { success: false, error: 'Invalid role. Options: admin, creator.' },
         { status: 400 }
       );
     }
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
-        message: 'Pengguna baru berhasil dibuat.',
+        message: 'User created successfully.',
         user: createdUser,
       },
       { status: 201 }
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
   } catch (err: any) {
     console.error('[POST /api/admin/users] Error:', err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Gagal menambahkan pengguna baru.' },
+      { success: false, error: err?.message || 'Failed to add new user.' },
       { status: 400 }
     );
   }

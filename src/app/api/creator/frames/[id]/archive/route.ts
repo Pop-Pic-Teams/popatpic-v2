@@ -19,12 +19,12 @@ export async function POST(
     await archiveFrameByCreator(frameId, userContext.authUserId);
     return NextResponse.json({
       success: true,
-      message: 'Frame berhasil diarsipkan.',
+      message: 'Frame successfully archived.',
     });
   } catch (err: any) {
     console.error(`[POST /api/creator/frames/${frameId}/archive] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Gagal mengarsipkan frame.' },
+      { success: false, error: err?.message || 'Failed to archive frame.' },
       { status: 500 }
     );
   }

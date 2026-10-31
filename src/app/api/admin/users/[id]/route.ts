@@ -24,7 +24,7 @@ export async function PATCH(
 
     if (!['active', 'suspended'].includes(status)) {
       return NextResponse.json(
-        { success: false, error: 'Status tidak valid. Pilihan: active atau suspended.' },
+        { success: false, error: 'Invalid status. Options: active or suspended.' },
         { status: 400 }
       );
     }
@@ -43,13 +43,13 @@ export async function PATCH(
 
     return NextResponse.json({
       success: true,
-      message: `Status akun pengguna berhasil diubah menjadi ${status}.`,
+      message: `User status successfully changed to ${status}.`,
       user: updatedUser,
     });
   } catch (err: any) {
     console.error(`[PATCH /api/admin/users/${targetUserId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Gagal mengubah status pengguna.' },
+      { success: false, error: err?.message || 'Failed to change user status.' },
       { status: 400 }
     );
   }
@@ -82,12 +82,12 @@ export async function DELETE(
 
     return NextResponse.json({
       success: true,
-      message: 'Akun pengguna berhasil dihapus.',
+      message: 'User deleted successfully.',
     });
   } catch (err: any) {
     console.error(`[DELETE /api/admin/users/${targetUserId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Gagal menghapus pengguna.' },
+      { success: false, error: err?.message || 'Failed to delete user.' },
       { status: 400 }
     );
   }
