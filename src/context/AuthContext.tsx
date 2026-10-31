@@ -106,7 +106,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (!res.ok || !data.success) {
         return {
           success: false,
-          error: data.error || 'Username atau kata sandi tidak valid.',
+          error: data.error || 'Invalid username or password.',
         };
       }
 
@@ -127,7 +127,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('[AuthContext] login error:', err);
       return {
         success: false,
-        error: 'Terjadi kesalahan saat menghubungi server autentikasi.',
+        error: 'An error occurred while contacting the authentication server.',
       };
     }
   };
@@ -166,7 +166,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (!res.ok || !data.success) {
         return {
           success: false,
-          error: data.error || 'Pendaftaran gagal.',
+          error: data.error || 'Registration failed.',
         };
       }
 
@@ -175,7 +175,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('[AuthContext] register error:', err);
       return {
         success: false,
-        error: 'Terjadi kesalahan saat pendaftaran.',
+        error: 'An error occurred during registration.',
       };
     }
   };
