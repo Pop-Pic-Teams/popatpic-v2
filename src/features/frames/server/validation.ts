@@ -70,7 +70,7 @@ export function validateFrameInput(input: {
   if (!name || name.length < 2 || name.length > 100) {
     return {
       valid: false,
-      error: 'Nama/judul frame wajib diisi (minimal 2 dan maksimal 100 karakter).',
+      error: 'Frame name/title is required (between 2 and 100 characters).',
     };
   }
 
@@ -83,7 +83,7 @@ export function validateFrameInput(input: {
   if (![1, 2, 4, 6, 8].includes(poseCountNum)) {
     return {
       valid: false,
-      error: 'Jumlah pose tidak valid. Pilihan yang diizinkan: 1, 2, 4, 6, atau 8 pose.',
+      error: 'Invalid number of poses. Allowed options: 1, 2, 4, 6, or 8 poses.',
     };
   }
 
@@ -94,7 +94,7 @@ export function validateFrameInput(input: {
   if (!matchedCategory) {
     return {
       valid: false,
-      error: `Kategori/style "${categoryStr}" tidak valid. Pilihan: ${VALID_STYLES.join(', ')}.`,
+      error: `Invalid category/style "${categoryStr}". Options: ${VALID_STYLES.join(', ')}.`,
     };
   }
 

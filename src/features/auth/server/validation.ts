@@ -45,52 +45,52 @@ export function isValidUsername(username: string): boolean {
 
 function validatePassword(password: unknown): string | null {
   if (typeof password !== 'string' || password.length === 0) {
-    return 'Kata sandi wajib diisi.';
+    return 'Password is required.';
   }
   if (password.trim().length === 0) {
-    return 'Kata sandi tidak boleh hanya berisi spasi.';
+    return 'Password cannot consist of spaces only.';
   }
   if (password.length < PASSWORD_MIN_LENGTH) {
-    return `Kata sandi minimal ${PASSWORD_MIN_LENGTH} karakter.`;
+    return `Password must be at least ${PASSWORD_MIN_LENGTH} characters.`;
   }
   if (new TextEncoder().encode(password).length > PASSWORD_MAX_LENGTH) {
-    return `Kata sandi maksimal ${PASSWORD_MAX_LENGTH} byte.`;
+    return `Password cannot exceed ${PASSWORD_MAX_LENGTH} bytes.`;
   }
   return null;
 }
 
 export function validateRegisterInput(body: unknown): ValidationResult<RegisterInput> {
   if (!isPlainObject(body)) {
-    return { ok: false, error: 'Format data tidak valid.' };
+    return { ok: false, error: 'Invalid data format.' };
   }
 
   const { name, username, email, password } = body;
 
   if (typeof name !== 'string' || name.trim().length === 0) {
-    return { ok: false, error: 'Nama wajib diisi.' };
+    return { ok: false, error: 'Name is required.' };
   }
   const cleanName = name.trim();
   if (cleanName.length > 100) {
-    return { ok: false, error: 'Nama maksimal 100 karakter.' };
+    return { ok: false, error: 'Name cannot exceed 100 characters.' };
   }
 
   if (typeof username !== 'string' || username.trim().length === 0) {
-    return { ok: false, error: 'Username wajib diisi.' };
+    return { ok: false, error: 'Username is required.' };
   }
   const cleanUsername = normalizeUsername(username);
   if (!isValidUsername(cleanUsername)) {
     return {
       ok: false,
-      error: 'Username harus 3-30 karakter dan hanya berisi huruf, angka, titik, atau underscore.',
+      error: 'Username must be 3-30 characters and contain only letters, numbers, periods, or underscores.',
     };
   }
 
   if (typeof email !== 'string' || email.trim().length === 0) {
-    return { ok: false, error: 'Email wajib diisi.' };
+    return { ok: false, error: 'Email is required.' };
   }
   const cleanEmail = normalizeEmail(email);
   if (!isValidEmail(cleanEmail)) {
-    return { ok: false, error: 'Format email tidak valid.' };
+    return { ok: false, error: 'Invalid email format.' };
   }
 
   const passwordError = validatePassword(password);
@@ -111,32 +111,32 @@ export function validateRegisterInput(body: unknown): ValidationResult<RegisterI
 
 export function validateLoginInput(body: unknown): ValidationResult<LoginInput> {
   if (!isPlainObject(body)) {
-    return { ok: false, error: 'Format data tidak valid.' };
+    return { ok: false, error: 'Invalid data format.' };
   }
 
   const { identifier, password } = body;
 
   if (typeof identifier !== 'string' || identifier.trim().length === 0) {
-    return { ok: false, error: 'Username atau email wajib diisi.' };
+    return { ok: false, error: 'Username or email is required.' };
   }
   if (typeof password !== 'string' || password.length === 0) {
-    return { ok: false, error: 'Kata sandi wajib diisi.' };
+    return { ok: false, error: 'Password is required.' };
   }
   if (new TextEncoder().encode(password).length > PASSWORD_MAX_LENGTH) {
-    return { ok: false, error: 'Username/email atau kata sandi salah.' };
+    return { ok: false, error: 'Incorrect username/email or password.' };
   }
 
   const cleanId = identifier.trim().toLowerCase();
 
   if (cleanId.includes('@')) {
     if (!isValidEmail(cleanId)) {
-      return { ok: false, error: 'Format email tidak valid.' };
+      return { ok: false, error: 'Invalid email format.' };
     }
     return { ok: true, data: { kind: 'email', email: cleanId, password } };
   }
 
   if (!isValidUsername(cleanId)) {
-    return { ok: false, error: 'Format username tidak valid.' };
+    return { ok: false, error: 'Invalid username format.' };
   }
   return { ok: true, data: { kind: 'username', username: cleanId, password } };
 }

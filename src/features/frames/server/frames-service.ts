@@ -81,7 +81,7 @@ export async function resolveCategoryId(categoryName: string): Promise<string> {
 
   const { data, error } = await admin.from('categories').select('id, name, slug');
   if (error || !data || data.length === 0) {
-    throw new Error('Gagal mengambil daftar kategori dari database.');
+    throw new Error('Failed to fetch category list from the database.');
   }
 
   const found = data.find(
@@ -110,12 +110,12 @@ export async function uploadFramePngToStorage(
   });
 
   if (error || !data) {
-    throw new Error(`Gagal mengunggah file frame ke penyimpanan: ${error?.message || 'Storage error'}`);
+    throw new Error(`Failed to upload frame file to storage: ${error?.message || 'Storage error'}`);
   }
 
   const { data: pubData } = admin.storage.from(BUCKET_NAME).getPublicUrl(data.path);
   if (!pubData || !pubData.publicUrl) {
-    throw new Error('Gagal mendapatkan public URL untuk asset frame yang diunggah.');
+    throw new Error('Failed to get public URL for the uploaded frame asset.');
   }
 
   return pubData.publicUrl;
@@ -307,7 +307,7 @@ export async function createFrameByCreator(params: {
     .single<DbFrameRow>();
 
   if (error || !data) {
-    throw new Error(`Gagal menyimpan data frame ke database: ${error?.message || 'Database error'}`);
+    throw new Error(`Failed to save frame data to the database: ${error?.message || 'Database error'}`);
   }
 
   return mapDbFrameToTemplate(data);
@@ -343,7 +343,7 @@ export async function updateFrameByCreator(
   }
 
   if (existing.creator_id !== creatorId) {
-    throw new Error('Akses ditolak. Anda hanya dapat mengubah frame milik Anda sendiri.');
+    throw new Error('Access denied. You can only modify your own frames.');
   }
 
   const updatePayload: Record<string, any> = {
@@ -404,7 +404,7 @@ export async function updateFrameByCreator(
     .single<DbFrameRow>();
 
   if (error || !data) {
-    throw new Error(`Gagal memperbarui frame: ${error?.message || 'Database error'}`);
+    throw new Error(`Failed to update frame:${error?.message || 'Database error'}`);
   }
 
   return mapDbFrameToTemplate(data);
@@ -423,11 +423,11 @@ export async function archiveFrameByCreator(frameId: string, creatorId: string):
     .single();
 
   if (findErr || !existing) {
-    throw new Error('Frame tidak ditemukan.');
+    throw new Error('Frame not found.');
   }
 
   if (existing.creator_id !== creatorId) {
-    throw new Error('Akses ditolak. Anda hanya dapat mengarsipkan frame milik Anda sendiri.');
+    throw new Error('Access denied. You can only archive your own frames.');
   }
 
   const { error } = await admin
@@ -440,7 +440,7 @@ export async function archiveFrameByCreator(frameId: string, creatorId: string):
     .eq('id', frameId);
 
   if (error) {
-    throw new Error(`Gagal mengarsipkan frame: ${error.message}`);
+    throw new Error(`Failed to archive frame: ${error.message}`);
   }
 
   return true;
@@ -466,7 +466,7 @@ export async function moderateFrameByAdmin(params: {
     .single();
 
   if (findErr || !currentFrame) {
-    throw new Error('Frame tidak ditemukan di database.');
+    throw new Error('Frame not found in the database.');
   }
 
   let updatePayload: Record<string, any> = {
@@ -481,26 +481,26 @@ export async function moderateFrameByAdmin(params: {
     updatePayload.is_active = true;
     updatePayload.review_notes = null;
     actionName = 'APPROVE_FRAME';
-    details = `Disetujui frame "${currentFrame.name}" untuk katalog publik photobooth.`;
+    details = `Approved "${currentFrame.name}" frame for the public photobooth catalog.`;
   } else if (params.decision === 'reject') {
-    const reasonText = (params.reason || '').trim() || 'Frame tidak memenuhi standar desain atau panduan layout Pop@Pic!.';
+    const reasonText = (params.reason || '').trim() || 'Frame does not match Pop@Pic! design standards or layout guidelines.';
     updatePayload.status = 'rejected';
     updatePayload.is_active = false;
     updatePayload.review_notes = reasonText;
     actionName = 'REJECT_FRAME';
-    details = `Ditolak frame "${currentFrame.name}". Alasan: ${reasonText}`;
+    details = `Rejected frame "${currentFrame.name}". Reason: ${reasonText}`;
   } else if (params.decision === 'archive') {
     updatePayload.status = 'archived';
     updatePayload.is_active = false;
     actionName = 'ARCHIVE_FRAME';
-    details = `Diarsipkan frame "${currentFrame.name}".`;
+    details = `Archived frame "${currentFrame.name}".`;
   } else if (params.decision === 'toggle_active') {
     const newActive = !currentFrame.is_active;
     updatePayload.is_active = newActive;
     actionName = 'TOGGLE_FRAME_STATUS';
-    details = `Mengubah visibilitas publik frame "${currentFrame.name}" menjadi ${newActive ? 'Aktif' : 'Non-aktif'}.`;
+    details = `Changed public visibility of frame "${currentFrame.name}" to ${newActive ? 'Active' : 'Inactive'}.`;
   } else {
-    throw new Error('Keputusan moderasi tidak valid.');
+    throw new Error('Invalid moderation decision.');
   }
 
   const { data, error } = await admin
@@ -531,7 +531,7 @@ export async function moderateFrameByAdmin(params: {
     .single<DbFrameRow>();
 
   if (error || !data) {
-    throw new Error(`Gagal menyimpan moderasi frame: ${error?.message || 'Database error'}`);
+    throw new Error(`Failed to save frame moderation: ${error?.message || 'Database error'}`);
   }
 
   // Rekam ke tabel public.audit_logs
@@ -561,7 +561,7 @@ export async function deleteFrameByAdmin(
 
   const { error } = await admin.from('frames').delete().eq('id', frameId);
   if (error) {
-    throw new Error(`Gagal menghapus frame: ${error.message}`);
+    throw new Error(`Failed to delete frame: ${error.message}`);
   }
 
   // Rekam ke tabel audit_logs
@@ -570,7 +570,7 @@ export async function deleteFrameByAdmin(
     action: 'ARCHIVE_FRAME',
     target_type: 'frame',
     target_id: frameId,
-    details: `Admin ${adminName} menghapus frame "${frameName}".`,
+    details: `Admin ${adminName} deleted frame "${frameName}".`,
   });
 
   return true;

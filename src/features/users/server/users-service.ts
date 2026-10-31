@@ -46,12 +46,12 @@ export async function updateUserStatusAdmin(params: {
     .single<UserProfileRow>();
 
   if (findErr || !targetUser) {
-    throw new Error('Pengguna tidak ditemukan.');
+    throw new Error('User not found.');
   }
 
   // 2. Proteksi: Admin tidak boleh men-suspend dirinya sendiri
   if (params.targetUserId === params.adminId && params.newStatus === 'suspended') {
-    throw new Error('Anda tidak dapat menonaktifkan akun Administrator Anda sendiri.');
+    throw new Error('You cannot disable your own Admin account.');
   }
 
   // 3. Proteksi: Jangan men-suspend admin terakhir jika hanya ada 1 admin
@@ -63,7 +63,7 @@ export async function updateUserStatusAdmin(params: {
       .eq('account_status', 'active');
 
     if ((count || 0) <= 1) {
-      throw new Error('Tidak dapat menonaktifkan akun Administrator aktif terakhir.');
+      throw new Error('Cannot disable the last active Admin account.');
     }
   }
 
@@ -79,7 +79,7 @@ export async function updateUserStatusAdmin(params: {
     .single<UserProfileRow>();
 
   if (updateErr || !updated) {
-    throw new Error(`Gagal memperbarui status pengguna: ${updateErr?.message || 'Database error'}`);
+    throw new Error(`Failed to update user status: ${updateErr?.message || 'Database error'}`);
   }
 
   // 5. Rekam ke audit_logs
@@ -90,7 +90,7 @@ export async function updateUserStatusAdmin(params: {
     action,
     target_type: 'creator',
     target_id: params.targetUserId,
-    details: `${params.newStatus === 'suspended' ? 'Menonaktifkan (suspend)' : 'Mengaktifkan kembali'} akun ${targetLabel}.`,
+    details: `${params.newStatus === 'suspended' ? 'Suspended' : 'Reactivated'} account ${targetLabel}.`,
   });
 
   const role = mapRole(updated.role) || 'Creator';
@@ -115,12 +115,12 @@ export async function deleteUserAdmin(params: {
     .single();
 
   if (findErr || !targetUser) {
-    throw new Error('Pengguna tidak ditemukan.');
+    throw new Error('User not found.');
   }
 
   // 2. Proteksi: Admin tidak boleh menghapus dirinya sendiri
   if (params.targetUserId === params.adminId) {
-    throw new Error('Anda tidak dapat menghapus akun Anda sendiri yang sedang aktif digunakan.');
+    throw new Error('You cannot delete your own active account.');
   }
 
   // 3. Proteksi: Jangan menghapus admin terakhir
@@ -131,7 +131,7 @@ export async function deleteUserAdmin(params: {
       .eq('role', 'admin');
 
     if ((count || 0) <= 1) {
-      throw new Error('Tidak dapat menghapus Administrator terakhir dalam sistem.');
+      throw new Error('Cannot delete the last Administrator in the system.');
     }
   }
 
@@ -150,7 +150,7 @@ export async function deleteUserAdmin(params: {
     .eq('id', params.targetUserId);
 
   if (deleteProfileErr) {
-    throw new Error(`Gagal menghapus profil pengguna: ${deleteProfileErr.message}`);
+    throw new Error(`Failed to delete user profile: ${deleteProfileErr.message}`);
   }
 
   // 6. Hapus dari auth.users via Supabase Auth Admin
@@ -166,7 +166,7 @@ export async function deleteUserAdmin(params: {
     action: 'DELETE_CREATOR',
     target_type: 'creator',
     target_id: params.targetUserId,
-    details: `Admin ${params.adminName} menghapus akun kreator/pengguna "${targetLabel}".`,
+    details: `Admin ${params.adminName} deleted the creator/user account "${targetLabel}".`,
   });
 
   return true;
@@ -194,7 +194,7 @@ export async function createUserAdmin(params: {
     .single();
 
   if (existingUsername) {
-    throw new Error('Username sudah digunakan oleh akun lain.');
+    throw new Error('Username is already taken.');
   }
 
   // Buat akun di Supabase Auth (bcrypt hashing dilakukan otomatis)
@@ -209,7 +209,7 @@ export async function createUserAdmin(params: {
   });
 
   if (createAuthErr || !created.user) {
-    throw new Error(`Gagal mendaftarkan akun di auth: ${createAuthErr?.message || 'Auth error'}`);
+    throw new Error(`Failed to register account in auth: ${createAuthErr?.message || 'Auth error'}`);
   }
 
   // Simpan profil di public.users
@@ -229,7 +229,7 @@ export async function createUserAdmin(params: {
   if (profileErr || !profile) {
     // Rollback auth user
     await admin.auth.admin.deleteUser(created.user.id);
-    throw new Error(`Gagal menyimpan profil pengguna: ${profileErr?.message || 'Database error'}`);
+    throw new Error(`Failed to save user profile: ${profileErr?.message || 'Database error'}`);
   }
 
   // Rekam audit log
@@ -238,7 +238,7 @@ export async function createUserAdmin(params: {
     action: 'ACTIVATE_CREATOR',
     target_type: 'user',
     target_id: profile.id,
-    details: `Admin ${params.adminName} menambahkan pengguna baru @${profile.username} (${params.role}).`,
+    details: `Admin ${params.adminName} added a new user @${profile.username} (${params.role}).`,
   });
 
   const role = mapRole(profile.role) || 'Creator';

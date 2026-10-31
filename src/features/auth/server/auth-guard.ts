@@ -32,7 +32,7 @@ export async function getAuthenticatedUser(
     if (authErr || !authUser || !authUser.email) {
       return {
         errorResponse: NextResponse.json(
-          { success: false, error: 'Akses ditolak. Sesi autentikasi tidak ditemukan.' },
+          { success: false, error: 'Access denied. Authentication session not found.' },
           { status: 401 }
         ),
       };
@@ -48,7 +48,7 @@ export async function getAuthenticatedUser(
     if (profileErr || !profile) {
       return {
         errorResponse: NextResponse.json(
-          { success: false, error: 'Profil pengguna tidak ditemukan di database.' },
+          { success: false, error: 'User profile not found in the database.' },
           { status: 401 }
         ),
       };
@@ -58,7 +58,7 @@ export async function getAuthenticatedUser(
     if (!role) {
       return {
         errorResponse: NextResponse.json(
-          { success: false, error: 'Role pengguna tidak valid.' },
+          { success: false, error: 'Invalid user role.' },
           { status: 403 }
         ),
       };
@@ -68,7 +68,7 @@ export async function getAuthenticatedUser(
     if (profile.account_status === 'suspended') {
       return {
         errorResponse: NextResponse.json(
-          { success: false, error: 'Akun Anda sedang dinonaktifkan (suspended) oleh Administrator.' },
+          { success: false, error: 'Your account has been suspended by the Administrator.' },
           { status: 403 }
         ),
       };
@@ -78,7 +78,7 @@ export async function getAuthenticatedUser(
     if (requiredRole && role !== requiredRole) {
       return {
         errorResponse: NextResponse.json(
-          { success: false, error: `Akses terlarang. Diperlukan hak akses ${requiredRole}.` },
+          { success: false, error: `Forbidden access. The ${requiredRole} role is required.` },
           { status: 403 }
         ),
       };
@@ -95,7 +95,7 @@ export async function getAuthenticatedUser(
   } catch (err: any) {
     return {
       errorResponse: NextResponse.json(
-        { success: false, error: err?.message || 'Terjadi kesalahan autentikasi server.' },
+        { success: false, error: err?.message || 'An authentication server error occurred.' },
         { status: 500 }
       ),
     };

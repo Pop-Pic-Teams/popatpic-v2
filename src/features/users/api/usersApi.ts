@@ -24,12 +24,12 @@ export async function updateAdminUserStatus(
     });
     const data = await res.json();
     if (!res.ok || !data.success) {
-      return { success: false, error: data.error || 'Gagal mengubah status pengguna.' };
+      return { success: false, error: data.error || 'Failed to update user status.' };
     }
     return { success: true, user: data.user };
   } catch (err: any) {
     console.error('[usersApi] updateAdminUserStatus error:', err);
-    return { success: false, error: err?.message || 'Terjadi kesalahan saat mengubah status.' };
+    return { success: false, error: err?.message || 'An error occurred while updating the status.' };
   }
 }
 
@@ -42,12 +42,12 @@ export async function deleteAdminUser(
     });
     const data = await res.json();
     if (!res.ok || !data.success) {
-      return { success: false, error: data.error || 'Gagal menghapus akun pengguna.' };
+      return { success: false, error: data.error || 'Failed to delete user account.' };
     }
     return { success: true };
   } catch (err: any) {
     console.error('[usersApi] deleteAdminUser error:', err);
-    return { success: false, error: err?.message || 'Terjadi kesalahan saat menghapus akun.' };
+    return { success: false, error: err?.message || 'Something went wrong while deleting the account.' };
   }
 }
 
