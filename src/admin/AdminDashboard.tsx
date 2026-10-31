@@ -673,7 +673,7 @@ export const AdminDashboard: React.FC = () => {
                       ))
                     ) : (
                       <span className="text-xs text-[#4B2E1F]/60 italic">
-                        Tidak ada hashtag khusus (default kategori: #{selectedDetailFrame.category.toLowerCase()})
+                        No custom hashtags (default category: #{selectedDetailFrame.category.toLowerCase()})
                       </span>
                     )}
                   </div>

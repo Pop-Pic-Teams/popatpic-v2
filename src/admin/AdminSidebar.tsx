@@ -100,8 +100,8 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         <button
           onClick={() => setIsMobileOpen(true)}
           className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#3D2418] text-[#FDFFEB] border border-[#DEE6BD]/20 hover:bg-[#2A180E] transition-colors cursor-pointer shadow-xs"
-          aria-label="Buka Menu Admin"
-          title="Buka Menu Admin"
+          aria-label="Open Admin Menu"
+          title="Open Admin Menu"
         >
           <Menu className="h-5 w-5" />
         </button>
@@ -140,7 +140,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                 <button
                   onClick={() => setIsMobileOpen(false)}
                   className="rounded-lg p-1.5 text-[#FDFFEB]/70 hover:text-[#FDFFEB] hover:bg-[#3D2418] transition-colors cursor-pointer"
-                  aria-label="Tutup Menu"
+                  aria-label="Close Menu"
                 >
                   <X className="h-5 w-5" />
                 </button>
