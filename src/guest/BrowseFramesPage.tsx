@@ -174,7 +174,7 @@ export const BrowseFramesPage: React.FC = () => {
           <div className="shrink-0 self-start sm:pt-2">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#FDFFEB] border border-[#DEE6BD] text-xs sm:text-sm font-semibold text-[#4B2E1F] shadow-2xs">
               <span className="h-2.5 w-2.5 rounded-full bg-[#DEE6BD] border border-[#C5D09D]" />
-              <span>{filteredFrames.length} Frames Tersedia</span>
+              <span>{filteredFrames.length} Frames Available</span>
             </span>
           </div>
         </div>
@@ -281,7 +281,7 @@ export const BrowseFramesPage: React.FC = () => {
                 title="Add Creator Tag"
               >
                 <Plus className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">Tambah</span>
+                <span className="hidden sm:inline">Add</span>
               </button>
             </form>
           </div>

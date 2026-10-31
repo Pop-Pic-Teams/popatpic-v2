@@ -81,7 +81,7 @@ export const BoothPage: React.FC = () => {
       }
     } catch {
       setCameraError(
-        'Izin kamera ditolak atau kamera tidak terdeteksi. Silakan gunakan unggah dari galeri atau izinkan akses kamera.'
+        'Camera permission denied or camera not detected. Please upload from gallery or allow camera access.'
       );
     }
   }, [facingMode]);
@@ -212,12 +212,12 @@ export const BoothPage: React.FC = () => {
     for (const f of fileList) {
       if (!validTypes.includes(f.type)) {
         setUploadError(
-          `File "${f.name}" bukan format yang didukung. Sistem hanya menerima JPEG, PNG, atau WebP.`
+          `File "${f.name}" is not a supported format. The system only accepts JPEG, PNG, or WebP.`
         );
         return;
       }
       if (f.size > maxSizeBytes) {
-        setUploadError(`File "${f.name}" melebihi batas 10 MB.`);
+        setUploadError('File "${f.name}" exceeds the 10 MB limit.');
         return;
       }
     }
@@ -269,8 +269,8 @@ export const BoothPage: React.FC = () => {
             <button
               onClick={() => navigate('/frames')}
               className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#DEE6BD]/30 bg-[#3D2418] text-[#FDFFEB] transition-colors hover:bg-[#2A180E] cursor-pointer shadow-xs"
-              aria-label="Ganti Frame"
-              title="Kembali ke Galeri Frame"
+              aria-label="Change Frame"
+              title="Back to Frame Gallery"
             >
               <ArrowLeft className="h-4 w-4" />
             </button>
@@ -313,10 +313,10 @@ export const BoothPage: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <span className="rounded-md bg-[#DEE6BD] text-[#4B2E1F] font-semibold px-2 py-0.5 text-[10px] uppercase tracking-wider border border-[#C5D09D]">
-                Fase 2: Take Photos
+                Phase 2: Take Photos
               </span>
               <span className="text-xs text-[#4B2E1F]/70 font-medium">
-                {photos.length}/{frameCount} Foto Terisi
+                {photos.length}/{frameCount} Photos Captured
               </span>
             </div>
             <h1 className="text-lg sm:text-xl font-serif font-bold text-[#4B2E1F] mt-0.5">
@@ -330,7 +330,7 @@ export const BoothPage: React.FC = () => {
               className="inline-flex items-center gap-1.5 rounded-lg border border-[#DE9784] bg-[#F4B8A5] hover:bg-[#EAA996] px-3 py-1.5 text-xs font-semibold text-[#4B2E1F] transition-colors shadow-2xs cursor-pointer"
             >
               <Layers className="h-3.5 w-3.5" />
-              <span>Ganti Frame</span>
+              <span>Change Frame</span>
             </button>
 
             {photos.length === frameCount && (
@@ -396,7 +396,7 @@ export const BoothPage: React.FC = () => {
                     <button
                       onClick={toggleFacingMode}
                       className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] text-[#4B2E1F] hover:bg-white transition-colors cursor-pointer shadow-2xs"
-                      title="Putar Kamera Depan / Belakang"
+                      title="Switch Camera (Front / Rear)"
                     >
                       <RotateCcw className="h-3.5 w-3.5" />
                     </button>
@@ -407,7 +407,7 @@ export const BoothPage: React.FC = () => {
                           ? 'border-[#4B2E1F] bg-[#4B2E1F] text-[#FDFFEB]'
                           : 'border-[#DEE6BD] bg-[#FDFFEB] text-[#4B2E1F] hover:bg-white'
                       }`}
-                      title={soundEnabled ? 'Suara Shutter Aktif' : 'Suara Shutter Senyap'}
+                      title={soundEnabled ? 'Shutter Sound On' : 'Shutter Sound Off'}
                     >
                       {soundEnabled ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
                     </button>
@@ -445,7 +445,7 @@ export const BoothPage: React.FC = () => {
                           onClick={() => setPhotoSource('gallery')}
                           className="rounded-lg bg-[#FDFFEB] hover:bg-white px-4 py-2 text-xs font-bold text-[#4B2E1F] shadow-sm cursor-pointer transition-colors"
                         >
-                          Beralih ke Unggah File
+                          Switch to File Upload
                         </button>
                       </div>
                     )}
@@ -464,7 +464,7 @@ export const BoothPage: React.FC = () => {
                       <span className="rounded-lg bg-[#4B2E1F]/90 backdrop-blur-md px-2.5 py-1 text-xs font-semibold text-[#FDFFEB] shadow-xs">
                         {isShooting
                           ? `Pose ${currentShotIndex + 1} dari ${frameCount}`
-                          : `${frameCount} Pose Siap Difoto`}
+                          : `${frameCount} Poses Ready to Shoot`}
                       </span>
                     </div>
                   </>
@@ -474,16 +474,16 @@ export const BoothPage: React.FC = () => {
                       <Upload className="h-6 w-6 text-[#4B2E1F]" />
                     </div>
                     <h3 className="text-lg font-serif font-bold text-[#4B2E1F] mb-0.5">
-                      Pilih Foto dari Perangkat Anda
+                      Choose Photo from Your Device
                     </h3>
                     <p className="text-[11px] text-[#4B2E1F]/70 max-w-sm mb-3">
-                      Format: JPEG, PNG, WebP (Maksimum 10 MB per foto).
+                      Format: JPEG, PNG, WebP (Max 10 MB per photo).
                     </p>
                     <button
                       onClick={() => fileInputRef.current?.click()}
                       className="rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] px-5 py-2 text-xs font-semibold text-[#FDFFEB] shadow-xs transition-colors cursor-pointer"
                     >
-                      Pilih Berkas Foto ({photos.length}/{frameCount})
+                      Select Photo File ({photos.length}/{frameCount})
                     </button>
                     {uploadError && (
                       <p className="text-xs text-red-600 mt-2 font-semibold">{uploadError}</p>
@@ -509,7 +509,7 @@ export const BoothPage: React.FC = () => {
                       className="inline-flex items-center gap-1.5 rounded-lg border border-[#DEE6BD] bg-[#FDFFEB] px-3 py-1.5 text-xs font-semibold text-[#4B2E1F] hover:bg-white transition-colors cursor-pointer shadow-2xs"
                     >
                       <Upload className="h-3.5 w-3.5 text-[#4B2E1F]" />
-                      <span>Unggah dari Galeri</span>
+                      <span>Upload from Gallery</span>
                     </button>
                   )}
                 </div>
@@ -533,10 +533,11 @@ export const BoothPage: React.FC = () => {
                       <Camera className="h-4 w-4 text-[#FDFFEB]" />
                       <span>
                         {isShooting
-                          ? 'Mengambil Foto...'
-                          : photos.length === frameCount
-                          ? `Ambil Ulang (${frameCount} Pose)`
-                          : `Mulai Foto (${frameCount} Pose)`}
+                        ? 'Capturing...'
+                        : photos.length === frameCount
+                        ? `Retake (${frameCount} Poses)`
+                        : `Start Photo (${frameCount} Poses)`}
+
                       </span>
                     </button>
                   ) : (
@@ -545,7 +546,7 @@ export const BoothPage: React.FC = () => {
                       className="flex items-center gap-2 rounded-xl bg-[#4B2E1F] hover:bg-[#3D2418] px-6 py-2.5 text-xs sm:text-sm font-semibold text-[#FDFFEB] border border-[#4B2E1F] shadow-sm transition-all cursor-pointer"
                     >
                       <Upload className="h-4 w-4 text-[#FDFFEB]" />
-                      <span>Pilih Berkas Foto</span>
+                      <span>Select Photo File</span>
                     </button>
                   )}
                 </div>
@@ -559,16 +560,16 @@ export const BoothPage: React.FC = () => {
                 <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#DEE6BD] shrink-0">
                   <div>
                     <h2 className="text-xs sm:text-sm font-serif font-bold text-[#4B2E1F]">
-                      Hasil Slot ({photos.length}/{frameCount})
+                      `Slot Results (${photos.length}/${frameCount})`
                     </h2>
                     <span className="text-[10px] text-[#4B2E1F]/70">
-                      Pose Foto Terisi
+                      Poses Captured
                     </span>
                   </div>
                   {photos.length === frameCount && (
                     <span className="inline-flex items-center gap-1 rounded bg-[#DEE6BD] text-[#4B2E1F] border border-[#C5D09D] px-1.5 py-0.5 text-[10px] font-bold">
                       <CheckCircle className="h-3 w-3 text-[#4B2E1F]" />
-                      <span>Lengkap</span>
+                      <span>Complete</span>
                     </span>
                   )}
                 </div>
@@ -613,9 +614,9 @@ export const BoothPage: React.FC = () => {
                                   setPhotos(updated);
                                 }}
                                 className="inline-flex items-center gap-1 rounded bg-white text-red-600 hover:bg-red-50 px-1.5 py-0.5 text-[9px] font-semibold shadow-xs cursor-pointer transition-colors"
-                                title="Hapus Foto"
+                                title="Delete Photo"
                               >
-                                <span>Hapus</span>
+                                <span>Delete</span>
                               </button>
                             )}
                           </div>
@@ -641,7 +642,7 @@ export const BoothPage: React.FC = () => {
                                 }}
                                 className="inline-flex items-center gap-1 rounded-md bg-white text-red-600 hover:bg-red-50 px-2 py-1 text-[10px] font-bold shadow-xs cursor-pointer"
                               >
-                                <span>Hapus</span>
+                                <span>Delete</span>
                               </button>
                             )}
                           </div>

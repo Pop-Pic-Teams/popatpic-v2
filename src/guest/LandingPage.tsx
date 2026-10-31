@@ -391,21 +391,21 @@ export const LandingPage: React.FC = () => {
                   {/* Keterangan / Deskripsi */}
                   <div className="mt-5">
                     <h4 className="text-xs font-semibold text-[#4B2E1F]/70 uppercase tracking-wider">
-                      Keterangan & Detail Desain
+                      Description & Design Details
                     </h4>
                     <p className="mt-1.5 text-xs md:text-sm text-[#4B2E1F]/80 leading-relaxed">
-                      {inspectingFrame.desc || 'Desain frame photobooth berkualitas tinggi siap digunakan untuk mengabadikan momen spesial kamu bersama teman dan keluarga.'}
+                      {inspectingFrame.desc || 'High-quality photobooth frame designs, ready to capture your special moments with friends and family.'}
                     </p>
                   </div>
 
                   <div className="mt-4 grid grid-cols-2 gap-2 text-[11px] text-[#4B2E1F]/70 bg-[#FDFFEB] p-3 rounded-lg border border-[#B8C8DB]">
                     <div>
-                      <span className="text-[#4B2E1F]/60 block">Resolusi:</span>
+                      <span className="text-[#4B2E1F]/60 block">Resolution :</span>
                       <strong className="text-[#4B2E1F]">4000 × 5900 px</strong>
                     </div>
                     <div>
-                      <span className="text-[#4B2E1F]/60 block">Slots Terkalibrasi:</span>
-                      <strong className="text-[#4B2E1F]">{inspectingFrame.slots.length} Foto Cutout</strong>
+                      <span className="text-[#4B2E1F]/60 block">Calibrated Slots:</span>
+                      <strong className="text-[#4B2E1F]">{inspectingFrame.slots.length} Photo Cutouts</strong>
                     </div>
                   </div>
                 </div>
@@ -421,10 +421,10 @@ export const LandingPage: React.FC = () => {
                     className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#4B2E1F] hover:bg-[#3D2418] py-3 px-6 text-sm font-semibold text-[#FDFFEB] border border-[#4B2E1F] shadow-xs transition-colors cursor-pointer"
                   >
                     <Camera className="h-4 w-4 text-[#FDFFEB]" />
-                    <span>Pakai Frame & Mulai Foto Sekarang</span>
+                    <span>Use Frame & Start Photo Now</span>
                   </button>
                   <p className="text-[11px] text-[#4B2E1F]/70 text-center">
-                    Langsung masuk ke tahap pemotretan (Fase 2: Foto) dengan frame ini.
+                    Go straight to the photo session (Phase 2: Take Photos) with this frame.
                   </p>
                 </div>
               </div>
