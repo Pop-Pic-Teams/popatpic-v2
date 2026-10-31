@@ -21,9 +21,9 @@ export const HashtagInput: React.FC<HashtagInputProps> = ({
   tags,
   onChange,
   maxTags = 12,
-  placeholder = 'Ketik hashtag (cth: wisuda, lucu, retro)...',
-  label = 'Hashtags / Kata Kunci Bebas',
-  helperText = 'Tekan koma, spasi, atau Enter untuk menambahkan tag. Creator bebas menginput kata kunci.',
+  placeholder = 'Type hashtags (e.g., graduation, cute, retro)...',
+  label = 'Hashtags / Keywords',
+  helperText = 'Press comma, space, or Enter to add tags. Feel free to enter any keywords.',
 }) => {
   const [inputValue, setInputValue] = useState('');
 
