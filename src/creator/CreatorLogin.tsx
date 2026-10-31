@@ -42,10 +42,10 @@ export const CreatorLogin: React.FC = () => {
           }
         }, 500);
       } else {
-        setErrorMessage(res.error || 'Username atau kata sandi tidak valid.');
+        setErrorMessage(res.error || 'Invalid username or password.');
       }
     } catch {
-      setErrorMessage('Terjadi kesalahan saat menghubungi server otentikasi.');
+      setErrorMessage('An error occurred while contacting the authentication server.');
     } finally {
       setIsLoading(false);
     }
@@ -64,7 +64,7 @@ export const CreatorLogin: React.FC = () => {
         signupUsername || undefined
       );
       if (res.success) {
-        setSuccessMessage('Pendaftaran berhasil! Silakan masuk dengan akun yang baru Anda buat.');
+        setSuccessMessage('Registration successful! Please sign in with your newly created account.');
         const registeredIdentifier = signupUsername.trim() || signupEmail.trim();
         setTimeout(() => {
           setIdentifier(registeredIdentifier);
@@ -73,10 +73,10 @@ export const CreatorLogin: React.FC = () => {
           setSignupPassword('');
         }, 1000);
       } else {
-        setErrorMessage(res.error || 'Pendaftaran gagal.');
+        setErrorMessage(res.error || 'Registration failed.');
       }
     } catch {
-      setErrorMessage('Terjadi kesalahan saat pendaftaran.');
+      setErrorMessage('An error occurred during registration.');
     } finally {
       setIsLoading(false);
     }
