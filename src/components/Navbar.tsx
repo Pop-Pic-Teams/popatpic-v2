@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from '../utils/navigation';
 import { Sparkles, LogIn, LogOut, Palette, Shield, ChevronDown } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -11,7 +11,57 @@ export const Navbar: React.FC = () => {
   const { currentUser, logout } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const isHome = location.pathname === '/';
+const [currentHash, setCurrentHash] = useState('');
+
+  useEffect(() => {
+    const checkActiveSection = () => {
+      if (location.pathname !== '/') {
+        setCurrentHash('');
+        return;
+      }
+
+      // 1. Cek dari hash URL
+      if (window.location.hash === '#about') {
+        setCurrentHash('#about');
+        return;
+      }
+
+      // 2. Cek dari posisi scroll elemen #about di layar
+      const aboutElement = document.getElementById('about');
+      if (aboutElement) {
+        const rect = aboutElement.getBoundingClientRect();
+        if (rect.top <= 350 && rect.bottom >= 100) {
+          setCurrentHash('#about');
+          return;
+        }
+      }
+
+      setCurrentHash('');
+    };
+
+    checkActiveSection();
+
+    // Jika mendarat dari rute lain dengan hash #about, scroll ke elemen setelah render
+    if (location.pathname === '/' && window.location.hash === '#about') {
+      const timer = setTimeout(() => {
+        const el = document.getElementById('about');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+
+    window.addEventListener('scroll', checkActiveSection);
+    window.addEventListener('hashchange', checkActiveSection);
+    return () => {
+      window.removeEventListener('scroll', checkActiveSection);
+      window.removeEventListener('hashchange', checkActiveSection);
+    };
+  }, [location.pathname]);
+
+  const isAbout = location.pathname === '/' && currentHash === '#about';
+  const isHome = location.pathname === '/' && !isAbout;
 
   return (
     <header className="fixed top-0 z-50 w-full border-b border-[#3D2418] bg-[#4B2E1F] backdrop-blur-md">
@@ -29,15 +79,24 @@ export const Navbar: React.FC = () => {
         {/* Public Desktop Nav Links (For Guest) */}
         <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-[#FDFFEB]/80">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              setCurrentHash('');
+              if (window.location.hash) window.history.pushState(null, '', '/');
+              navigate('/');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className={`transition-colors hover:text-[#FDFFEB] cursor-pointer ${
               isHome ? 'text-[#FDFFEB] font-bold border-b-2 border-[#FDFFEB] pb-0.5' : 'text-[#FDFFEB]/80'
             }`}
           >
             Home
           </button>
+
           <button
-            onClick={() => navigate('/frames')}
+            onClick={() => {
+              setCurrentHash('');
+              navigate('/frames');
+            }}
             className={`transition-colors hover:text-[#FDFFEB] cursor-pointer ${
               location.pathname === '/frames' || location.pathname === '/browse-frames'
                 ? 'text-[#FDFFEB] font-bold border-b-2 border-[#FDFFEB] pb-0.5'
@@ -46,15 +105,29 @@ export const Navbar: React.FC = () => {
           >
             Frames
           </button>
+
           <a
             href="/#about"
             onClick={(e) => {
-              if (location.pathname === '/') {
-                e.preventDefault();
-                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+              e.preventDefault();
+              setCurrentHash('#about');
+
+              if (location.pathname !== '/') {
+                // Berpindah ke rute '/' sambil menyertakan hash '#about'
+                window.location.href = '/#about';
+              } else {
+                window.history.pushState(null, '', '/#about');
+                const aboutEl = document.getElementById('about');
+                if (aboutEl) {
+                  aboutEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
               }
             }}
-            className="transition-colors hover:text-[#FDFFEB] text-[#FDFFEB]/80 cursor-pointer"
+            className={`transition-colors hover:text-[#FDFFEB] cursor-pointer ${
+              isAbout
+                ? 'text-[#FDFFEB] font-bold border-b-2 border-[#FDFFEB] pb-0.5'
+                : 'text-[#FDFFEB]/80'
+            }`}
           >
             About
           </a>

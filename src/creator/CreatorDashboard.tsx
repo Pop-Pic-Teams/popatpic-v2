@@ -1396,6 +1396,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
                       <option value={2}>2 Poses (Duo Strip)</option>
                       <option value={4}>4 Poses (Classic Strip)</option>
                       <option value={6}>6 Poses (Montage Grid)</option>
+                      <option value={8}>8 Poses (Dense Grid Strip)</option>
                     </select>
                   </div>
 
@@ -1519,6 +1520,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
                   { poses: 2, name: 'Duo Cut Strip', desc: 'Dual vertical couple layout' },
                   { poses: 4, name: 'Classic Strip', desc: 'Standard 4-cut photobooth strip' },
                   { poses: 6, name: 'Montage Grid', desc: 'Dynamic 6-cut party grid' },
+                  { poses: 8, name: 'Dense Grid Strip', desc: 'Compact 8-pose full photo grid'},
                 ].map((item) => (
                   <div
                     key={item.poses}

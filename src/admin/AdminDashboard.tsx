@@ -186,18 +186,31 @@ export const AdminDashboard: React.FC = () => {
     setTimeout(() => setNotification(null), 2500);
   };
 
+  const handleUnarchiveFrame = async (frame: FrameTemplate) => {
+    if (confirm(`Are you sure you want to restore "${frame.name}" from archived status?`)) {
+      const res = await adminReviewFrameApi(frame.id, 'approve');
+      if (!res.success) {
+        alert(res.error || 'Failed to unarchive frame.');
+        return;
+      }
+      await refreshData();
+      setNotification(`Frame "${frame.name}" unarchived and restored to active status.`);
+      setTimeout(() => setNotification(null), 3000);
+    }
+  };
+
   const handleDeleteFrame = async (frame: FrameTemplate) => {
-    if (confirm(`Apakah Anda yakin ingin menghapus frame "${frame.name}" secara permanen?`)) {
+    if (confirm(`Are you sure you want to permanently delete the frame "${frame.name}" ?`)) {
       const res = await adminDeleteFrameApi(frame.id);
       if (!res.success) {
-        alert(res.error || 'Gagal menghapus frame.');
+        alert(res.error || 'Failed to delete the frame.');
         return;
       }
       if (selectedDetailFrame?.id === frame.id) {
         setSelectedDetailFrame(null);
       }
       await refreshData();
-      setNotification(`Frame "${frame.name}" berhasil dihapus secara permanen.`);
+      setNotification(`Frame "${frame.name}" was successfully deleted.`);
       setTimeout(() => setNotification(null), 3000);
     }
   };
@@ -464,6 +477,26 @@ export const AdminDashboard: React.FC = () => {
                     >
                       <Archive className="h-4 w-4" />
                       <span>Archive</span>
+                    </button>
+
+                    <button
+                      onClick={() => handleDeleteFrame(selectedDetailFrame)}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3.5 py-2 text-xs font-semibold text-red-700 hover:bg-red-100 transition-colors cursor-pointer shadow-xs"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      <span>Delete Frame</span>
+                    </button>
+                  </>
+                )}
+
+                {selectedDetailFrame.status === 'archived' && (
+                  <>
+                    <button
+                      onClick={() => handleUnarchiveFrame(selectedDetailFrame)}
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3.5 py-2 text-xs font-semibold text-white transition-colors cursor-pointer shadow-xs"
+                    >
+                      <Archive className="h-4 w-4 rotate-180" />
+                      <span>Unarchive Frame</span>
                     </button>
 
                     <button
@@ -1260,6 +1293,17 @@ export const AdminDashboard: React.FC = () => {
                                   <Archive className="h-3.5 w-3.5" />
                                 </button>
                               </>
+                            )}
+
+                            {f.status === 'archived' && (
+                              <button
+                                onClick={() => handleUnarchiveFrame(f)}
+                                className="h-7 w-7 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+                                title="Unarchive Frame"
+                                aria-label="Unarchive Frame"
+                              >
+                                <Archive className="h-3.5 w-3.5 rotate-180" />
+                              </button>
                             )}
 
                             {f.status === 'rejected' && f.rejection_reason && (
