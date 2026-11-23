@@ -20,6 +20,7 @@ import type { PhotoFilter, FrameSlot } from '../types/photobooth';
 import { composePhotoboothImage } from '../utils/canvas';
 import { playChimeSound } from '../utils/audio';
 import { PhotoSessionStepper } from '../components/PhotoSessionStepper';
+import { uploadResultPhoto } from '../features/photos/api/photosApi';
 
 export const ResultPage: React.FC = () => {
   const location = useLocation();
@@ -31,6 +32,41 @@ export const ResultPage: React.FC = () => {
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
   const [copiedImage, setCopiedImage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // QR Code: URL publik Cloudinary agar foto bisa diunduh dari HP
+  const [qrDownloadUrl, setQrDownloadUrl] = useState<string | null>(null);
+  const [qrShareUrl, setQrShareUrl] = useState<string | null>(null);
+  const [qrStatus, setQrStatus] = useState<'idle' | 'uploading' | 'ready'>('idle');
+  const uploadTokenRef = useRef(0);
+  const uploadAbortRef = useRef<AbortController | null>(null);
+
+  const startQrUpload = useCallback(async () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    uploadAbortRef.current?.abort();
+    const controller = new AbortController();
+    uploadAbortRef.current = controller;
+
+    const token = ++uploadTokenRef.current;
+    setQrStatus('uploading');
+    setQrDownloadUrl(null);
+    setQrShareUrl(null);
+
+    const res = await uploadResultPhoto(canvas, controller.signal);
+    if (token !== uploadTokenRef.current || controller.signal.aborted) return;
+
+    if (res.success && res.downloadUrl) {
+      setQrDownloadUrl(res.downloadUrl);
+      setQrShareUrl(res.url || res.downloadUrl);
+      setQrStatus('ready');
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      uploadAbortRef.current?.abort();
+    };
+  }, []);
 
   const rawState = location.state || {};
   const rawFrameImage = rawState.frameImage || '';
@@ -82,6 +118,7 @@ export const ResultPage: React.FC = () => {
 
       if (dataUrl) {
         setDownloadUrl(dataUrl);
+        void startQrUpload();
 
         const sourceCanvas = canvasRef.current;
         let storedImageUrl = dataUrl;
@@ -130,7 +167,7 @@ export const ResultPage: React.FC = () => {
     } finally {
       setIsProcessing(false);
     }
-  }, [photos, frameImage, slots, figmaWidth, selectedFilter, frameName, frameCount]);
+  }, [photos, frameImage, slots, figmaWidth, selectedFilter, frameName, frameCount, startQrUpload]);
 
   useEffect(() => {
     renderComposition();
@@ -189,7 +226,7 @@ export const ResultPage: React.FC = () => {
     const shareData = {
       title: 'Pop@Pic! Photo Results',
       text: `Check out my Pop@Pic! photobooth strip using the ${frameName} frame.`,
-      url: window.location.href,
+      url: qrShareUrl || window.location.href,
     };
 
     if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
@@ -201,7 +238,7 @@ export const ResultPage: React.FC = () => {
       }
     }
 
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(qrShareUrl || window.location.href);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
   };
@@ -226,7 +263,6 @@ export const ResultPage: React.FC = () => {
     );
   }
 
-  const qrTargetUrl = window.location.origin;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FDFFEB] text-[#4B2E1F] font-sans pb-16">
@@ -470,17 +506,24 @@ export const ResultPage: React.FC = () => {
               </p>
 
               <div className="rounded-xl border border-[#B8C8DB] bg-white p-2.5 inline-block shadow-2xs">
-                <QRCodeSVG
-                  value={qrTargetUrl}
-                  size={130}
-                  level="M"
-                  includeMargin={true}
-                />
+                {qrStatus === 'ready' && qrDownloadUrl ? (
+                  <QRCodeSVG
+                    value={qrDownloadUrl}
+                    size={130}
+                    level="M"
+                    includeMargin={true}
+                  />
+                ) : (
+                  <div className="h-[130px] w-[130px] flex flex-col items-center justify-center gap-2 text-center">
+                    <div className="h-6 w-6 border-2 border-[#4B2E1F] border-t-transparent rounded-full animate-spin" />
+                    <span className="text-[10px] font-semibold text-[#4B2E1F]/70">Generating QR...</span>
+                  </div>
+                )}
               </div>
 
               <div className="mt-3 flex items-center gap-1.5 text-[11px] font-bold text-[#4B2E1F] bg-[#FDFFEB] px-3 py-1 rounded-lg border border-[#DEE6BD]">
                 <CheckCircle className="h-3.5 w-3.5 text-[#4B2E1F]" />
-                <span>Direct Transfer Ready</span>
+                <span>{qrStatus === 'ready' ? 'Direct Transfer Ready' : 'Preparing Transfer...'}</span>
               </div>
             </div>
 
