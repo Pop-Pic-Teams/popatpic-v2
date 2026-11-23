@@ -28,16 +28,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Remix Pop@Pic! Photobooth',
+  title: 'Pop@Pic! Photobooth',
   description: 'Interactive digital photobooth web application with custom aesthetic frames, live webcam capture, photo filters, and instant QR sharing.',
   openGraph: {
-    title: 'Remix Pop@Pic! Photobooth',
+    title: 'Pop@Pic! Photobooth',
     description: 'Interactive digital photobooth web application with custom aesthetic frames, live webcam capture, photo filters, and instant QR sharing.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Remix Pop@Pic! Photobooth',
+    title: 'Pop@Pic! Photobooth',
     description: 'Interactive digital photobooth web application with custom aesthetic frames, live webcam capture, photo filters, and instant QR sharing.',
   },
 };
