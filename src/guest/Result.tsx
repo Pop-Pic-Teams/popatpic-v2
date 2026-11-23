@@ -108,15 +108,19 @@ export const ResultPage: React.FC = () => {
 
         // SRS F-G016: Menyimpan metadata hasil foto dan URL file foto
         const recordId = `photo_${Date.now()}`;
-        recordGuestPhoto({
-          id: recordId,
-          frame_id: frameName,
-          frame_name: frameName,
-          image_url: storedImageUrl,
-          pose_count: frameCount,
-          filter_applied: selectedFilter.name,
-          created_at: new Date().toISOString(),
-        });
+        try {
+          recordGuestPhoto({
+            id: recordId,
+            frame_id: frameName,
+            frame_name: frameName,
+            image_url: storedImageUrl,
+            pose_count: frameCount,
+            filter_applied: selectedFilter.name,
+            created_at: new Date().toISOString(),
+          });
+        } catch (storageError) {
+          console.warn('Unable to save guest photo metadata:', storageError);
+        }
       } else {
         setErrorMessage('Gagal memproses penggabungan foto.');
       }
@@ -307,7 +311,7 @@ export const ResultPage: React.FC = () => {
         </div>
 
         {/* Phase Header Bar */}
-        <div className="mb-3 flex flex-shrink-0 items-center justify-between gap-4 border-b border-[#DEE6BD] pb-2">
+        <div className="mb-3 flex shrink-0 items-center justify-between gap-4 border-b border-[#DEE6BD] pb-2">
           <div>
             <div className="flex items-center gap-2">
               <span className="rounded-md bg-[#DEE6BD] text-[#4B2E1F] font-semibold px-2 py-0.5 text-[10px] uppercase tracking-wider border border-[#C5D09D]">
@@ -363,7 +367,7 @@ export const ResultPage: React.FC = () => {
         {/* Section: 2 Columns */}
         <section className="flex flex-1 flex-col gap-5 lg:flex-row items-start">
           {/* LEFT: PREVIEW RESULT (Dikecilkan sedikit agar lebih seimbang) */}
-          <div className="flex flex-1 flex-col rounded-2xl border border-[#B8C8DB] bg-[#D2DDEA] p-3 sm:p-4 shadow-sm min-h-[460px] lg:min-h-[580px] xl:min-h-[620px] items-center justify-center relative">
+          <div className="flex flex-1 flex-col rounded-2xl border border-[#B8C8DB] bg-[#D2DDEA] p-3 sm:p-4 shadow-sm min-h-115 lg:min-h-145 xl:min-h-155 items-center justify-center relative">
             {isProcessing && (
               <div className="absolute inset-0 bg-[#FDFFEB]/85 backdrop-blur-xs flex flex-col items-center justify-center rounded-2xl z-20">
                 <div className="h-8 w-8 border-3 border-[#4B2E1F] border-t-transparent rounded-full animate-spin mb-2" />
@@ -376,7 +380,7 @@ export const ResultPage: React.FC = () => {
             <div className="relative flex h-full w-full items-center justify-center p-1 sm:p-2">
               <canvas
                 ref={canvasRef}
-                className="max-h-[520px] lg:max-h-[600px] xl:max-h-[650px] h-auto w-auto max-w-full rounded-xl border border-[#B8C8DB] shadow-lg object-contain transition-all"
+                className="max-h-130 lg:max-h-150 xl:max-h-162.5 h-auto w-auto max-w-full rounded-xl border border-[#B8C8DB] shadow-lg object-contain transition-all"
               />
             </div>
 
@@ -398,7 +402,7 @@ export const ResultPage: React.FC = () => {
           </div>
 
           {/* RIGHT: DOWNLOAD ACTIONS AND QR SHARING (Ukuran pas tanpa space kosong) */}
-          <div className="w-full lg:w-[460px] xl:w-[500px] shrink-0 flex flex-col gap-4 rounded-2xl border border-[#B8C8DB] bg-[#D2DDEA] p-5 sm:p-6 shadow-sm">
+          <div className="w-full lg:w-115 xl:w-125 shrink-0 flex flex-col gap-4 rounded-2xl border border-[#B8C8DB] bg-[#D2DDEA] p-5 sm:p-6 shadow-sm">
             {/* Card Title */}
             <div className="flex items-center justify-between border-b border-[#B8C8DB] pb-3">
               <div>

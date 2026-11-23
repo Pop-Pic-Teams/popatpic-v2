@@ -593,7 +593,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
                 </div>
 
                 {/* Stage Preview Container */}
-                <div className="relative aspect-[4000/5900] w-full max-w-md mx-auto overflow-hidden rounded-xl bg-stone-900 border border-[#DEE6BD] p-2 flex items-center justify-center shadow-inner">
+                <div className="relative aspect-4000/5900 w-full max-w-md mx-auto overflow-hidden rounded-xl bg-stone-900 border border-[#DEE6BD] p-2 flex items-center justify-center shadow-inner">
                   {/* Mockup Underlay (Portraits behind frame cutouts) */}
                   {showMockupPhotos && selectedDetailFrame.slots && (
                     <div className="absolute inset-2 z-0">
@@ -1079,7 +1079,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
               /* TABLE VIEW with Sticky Right Action Column */
               <div className="rounded-xl border border-[#DEE6BD] bg-white shadow-xs overflow-hidden">
                 <div className="overflow-x-auto relative">
-                  <table className="w-full text-left text-xs border-collapse min-w-[650px]">
+                  <table className="w-full text-left text-xs border-collapse min-w-162.5">
                     <thead className="bg-[#FDFFEB] text-[#4B2E1F]/70 uppercase tracking-wider border-b border-[#DEE6BD]">
                       <tr>
                         <th className="py-3.5 px-4">Preview</th>
@@ -1118,7 +1118,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
                             >
                               {frame.name}
                             </button>
-                            <div className="text-[10px] text-[#4B2E1F]/60 line-clamp-1 max-w-[220px]">
+                            <div className="text-[10px] text-[#4B2E1F]/60 line-clamp-1 max-w-55">
                               {frame.desc}
                             </div>
                             {frame.tags && frame.tags.length > 0 && (
@@ -1244,7 +1244,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
                       {/* Frame image preview */}
                       <button
                         onClick={() => setSelectedDetailFrame(frame)}
-                        className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-[#FDFFEB] border border-[#DEE6BD] p-2 flex items-center justify-center mb-3 cursor-pointer group/img block"
+                        className="relative aspect-3/4 w-full overflow-hidden rounded-lg bg-[#FDFFEB] border border-[#DEE6BD] p-2 flex items-center justify-center mb-3 cursor-pointer group/img flex"
                       >
                         <img
                           src={frame.image}
@@ -1428,7 +1428,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
                   </label>
                   <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-[#DEE6BD] p-5 hover:border-[#4B2E1F] transition-colors bg-[#FDFFEB]">
                     {frameImageBase64 ? (
-                      <div className="relative aspect-[3/4] w-32 overflow-hidden rounded-md border border-[#DEE6BD] bg-white p-1">
+                      <div className="relative aspect-3/4 w-32 overflow-hidden rounded-md border border-[#DEE6BD] bg-white p-1">
                         <img
                           src={frameImageBase64}
                           alt="Preview Frame"
