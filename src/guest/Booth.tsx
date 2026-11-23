@@ -29,8 +29,8 @@ export const BoothPage: React.FC = () => {
 
   const rawFrameImage = location.state?.frameImage || pixelFramePng;
   const frameImage: string =
-    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in (rawFrameImage as Record<string, any>)
-      ? (rawFrameImage as { src: string }).src
+    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in rawFrameImage
+      ? String((rawFrameImage as { src: unknown }).src || '')
       : String(rawFrameImage || '');
   const frameCount: number = location.state?.frameCount || 4;
   const slots: FrameSlot[] = location.state?.slots || getStandardSlots(frameCount);
@@ -88,7 +88,7 @@ export const BoothPage: React.FC = () => {
 
   useEffect(() => {
     if (photoSource === 'camera') {
-      startCamera();
+      void Promise.resolve().then(startCamera);
     } else {
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((track) => track.stop());

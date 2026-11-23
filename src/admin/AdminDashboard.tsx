@@ -22,15 +22,9 @@ import {
   Minus,        // <-- Tambahkan ini
   BarChart3,
   PieChart,
-  Calendar,
   ArrowLeft,
-  Filter,
   Sparkles,
-  Download,
-  Layers,
   Info,
-  ChevronRight,
-  RefreshCw,
   Hash,
   Home,
 } from 'lucide-react';

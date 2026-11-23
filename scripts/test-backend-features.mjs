@@ -88,7 +88,7 @@ async function runEndToEndTests() {
     assertTest('2. Mendapatkan Public URL permanen dari Storage', Boolean(assetUrl && assetUrl.includes('frames/')));
 
     // 3. Simpan Frame ke Database dengan status awal pending_review
-    const { data: insertedFrame, error: insertErr } = await client
+    const { data: insertedFrame } = await client
       .from('frames')
       .insert({
         creator_id: creatorUser.id,
@@ -128,7 +128,7 @@ async function runEndToEndTests() {
     assertTest('6. Frame pending tidak muncul di katalog publik', !isLeaked);
 
     // 2. Admin menyetujui frame (Approve)
-    const { data: approvedFrame, error: approveErr } = await client
+    const { data: approvedFrame } = await client
       .from('frames')
       .update({
         status: 'approved',
@@ -145,7 +145,7 @@ async function runEndToEndTests() {
     assertTest('8. Frame yang disetujui menjadi aktif (is_active = true)', approvedFrame?.is_active === true);
 
     // 3. Rekam audit log persetujuan
-    const { data: logEntry, error: logErr } = await client
+    const { data: logEntry } = await client
       .from('audit_logs')
       .insert({
         admin_id: adminUser.id,
@@ -182,7 +182,7 @@ async function runEndToEndTests() {
   console.log('\n--- PENGUJIAN FITUR 3: KELOLA PENGGUNA OLEH ADMIN ---');
   try {
     // 1. Ambil daftar pengguna dari database
-    const { data: allUsers, error: usersErr } = await client
+    const { data: allUsers } = await client
       .from('users')
       .select('id, email, full_name, username, role, account_status, created_at');
 
@@ -193,7 +193,7 @@ async function runEndToEndTests() {
     assertTest('12. Tidak ada password atau hash password yang bocor', !hasPassword);
 
     // 3. Pengujian suspend akun kreator
-    const { data: suspendedUser, error: suspErr } = await client
+    const { data: suspendedUser } = await client
       .from('users')
       .update({ account_status: 'suspended' })
       .eq('id', creatorUser.id)

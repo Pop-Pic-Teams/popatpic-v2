@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from '../utils/navigation';
-import { Sparkles, ArrowRight, Camera, QrCode, Sliders, ShieldCheck, X } from 'lucide-react';
+import { Sparkles, ArrowRight, Camera, QrCode, Sliders, X } from 'lucide-react';
 import { fetchPublicFrames } from '../features/frames/api/framesApi';
 import type { FrameTemplate } from '../types/photobooth';
 

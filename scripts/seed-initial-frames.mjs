@@ -66,7 +66,7 @@ function getStandardSlots(poseCount) {
 
 async function uploadAsset(fileName, localPath) {
   const fileBuf = fs.readFileSync(localPath);
-  const { data, error } = await client.storage.from('frames').upload(fileName, fileBuf, {
+  const { error } = await client.storage.from('frames').upload(fileName, fileBuf, {
     contentType: 'image/png',
     upsert: true,
   });

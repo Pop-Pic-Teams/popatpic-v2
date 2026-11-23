@@ -92,10 +92,10 @@ export async function getAuthenticatedUser(
         role,
       },
     };
-  } catch (err: any) {
+  } catch (err: unknown) {
     return {
       errorResponse: NextResponse.json(
-        { success: false, error: err?.message || 'An authentication server error occurred.' },
+        { success: false, error: err instanceof Error ? err.message : 'An authentication server error occurred.' },
         { status: 500 }
       ),
     };

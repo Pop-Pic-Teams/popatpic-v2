@@ -24,14 +24,12 @@ import {
   Grid,
   List,
   Info,
-  BookOpen,
   Image as ImageIcon,
   Home,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import {
   getLayoutGuideDownload,
-  getStandardSlots,
   getGuestPhotos
 } from '../data/frames';
 import {
@@ -67,12 +65,10 @@ export const CreatorDashboard: React.FC = () => {
 
   // Filter & Search in frames view
   const [statusFilter, setStatusFilter] = useState<'all' | 'approved' | 'pending_review' | 'rejected' | 'archived'>('all');
-  const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [displayMode, setDisplayMode] = useState<'table' | 'grid'>('table');
 
   // Modal states for upload / revision
-  const [showUploadModal, setShowUploadModal] = useState(false);
   const [editingFrame, setEditingFrame] = useState<FrameTemplate | null>(null);
 
   // Form states
@@ -321,7 +317,6 @@ export const CreatorDashboard: React.FC = () => {
     setFrameDesc('');
     setFrameTags(['graduation', 'cute', 'aesthetic']);
     setFrameImageBase64(null);
-    setShowUploadModal(false);
     await refreshFrames();
     setTimeout(() => setNotification(null), 4000);
   };
@@ -410,20 +405,18 @@ const handleUnarchive = async (frame: FrameTemplate) => {
   const approvedFrames = frames.filter((f) => f.status === 'approved');
   const pendingFrames = frames.filter((f) => f.status === 'pending_review');
   const rejectedFrames = frames.filter((f) => f.status === 'rejected');
-  const archivedFrames = frames.filter((f) => f.status === 'archived');
   // const totalCapturesEstimate = approvedFrames.length * 280;
 
   // Filtered frames list
   const filteredFrames = frames.filter((frame) => {
     const matchesStatus = statusFilter === 'all' || frame.status === statusFilter;
-    const matchesCategory = categoryFilter === 'all' || frame.category === categoryFilter;
     const cleanQ = searchQuery.trim().toLowerCase().replace(/^#+/, '');
     const matchesSearch =
       cleanQ === '' ||
       frame.name.toLowerCase().includes(cleanQ) ||
       frame.desc.toLowerCase().includes(cleanQ) ||
       (frame.tags && frame.tags.some((t) => t.toLowerCase().replace(/^#+/, '').includes(cleanQ)));
-    return matchesStatus && matchesCategory && matchesSearch;
+    return matchesStatus && matchesSearch;
   });
 
   // Creator Usage Trend Data (Demo)

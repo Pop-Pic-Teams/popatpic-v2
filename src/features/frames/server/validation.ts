@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import type { FrameStyle, FrameSlot } from '../../../types/photobooth';
+import type { FrameStyle } from '../../../types/photobooth';
 
 export const MAX_FRAME_FILE_SIZE = 15 * 1024 * 1024; // 15MB
 export const ALLOWED_MIME_TYPES = ['image/png'];

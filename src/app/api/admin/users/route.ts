@@ -23,7 +23,7 @@ export async function GET() {
       success: true,
       users,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[GET /api/admin/users] Error:', err);
     return NextResponse.json(
       { success: false, error: 'failed to load user list from database.' },
@@ -84,10 +84,10 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[POST /api/admin/users] Error:', err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Failed to add new user.' },
+      { success: false, error: err instanceof Error ? err.message : 'Failed to add new user.' },
       { status: 400 }
     );
   }

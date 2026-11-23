@@ -31,7 +31,6 @@ export const CreatorSidebar: React.FC<CreatorSidebarProps> = ({
   currentView,
   onSelectView,
   framesCount,
-  pendingCount,
   isCollapsed = false,
   onToggleCollapse,
 }) => {

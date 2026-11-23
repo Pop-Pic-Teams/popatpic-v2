@@ -80,15 +80,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, [loadUsersFromDb]);
 
-  // Muat data user ketika currentUser berubah menjadi Admin
-  useEffect(() => {
-    if (currentUser?.role === 'Admin') {
-      loadUsersFromDb();
-    } else {
-      setUsers([]);
-    }
-  }, [currentUser, loadUsersFromDb]);
-
   // Login handler terhubung langsung ke backend /api/auth/login
   const login = async (
     identifier: string,

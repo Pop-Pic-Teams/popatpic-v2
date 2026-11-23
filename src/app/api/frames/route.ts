@@ -13,7 +13,7 @@ export async function GET() {
       success: true,
       frames,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[GET /api/frames] Error:', err);
     return NextResponse.json(
       { success: false, error: 'Failed to load public frames.' },

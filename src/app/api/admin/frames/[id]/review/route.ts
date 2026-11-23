@@ -59,10 +59,10 @@ export async function POST(
       message: `Moderation decision (${decision}) saved successfully.`,
       frame: updatedFrame,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(`[POST /api/admin/frames/${frameId}/review] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Failed to process frame moderation.' },
+      { success: false, error: err instanceof Error ? err.message : 'Failed to process frame moderation.' },
       { status: 500 }
     );
   }

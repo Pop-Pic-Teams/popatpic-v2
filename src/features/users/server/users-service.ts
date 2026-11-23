@@ -1,5 +1,5 @@
 import { createAdminClient } from '../../../utils/supabase/admin';
-import type { User, UserRole, CreatorAccountStatus } from '../../../types/photobooth';
+import type { User, CreatorAccountStatus } from '../../../types/photobooth';
 import { mapRole, toPublicUser, type UserProfileRow } from '../../auth/server/shared';
 
 /**
@@ -19,7 +19,7 @@ export async function getAllUsersAdmin(): Promise<User[]> {
   }
 
   return data
-    .map((row: any) => {
+    .map((row: UserProfileRow) => {
       const role = mapRole(row.role);
       if (!role) return null;
       return toPublicUser(row as UserProfileRow, role);
@@ -156,8 +156,12 @@ export async function deleteUserAdmin(params: {
   // 6. Hapus dari auth.users via Supabase Auth Admin
   try {
     await admin.auth.admin.deleteUser(params.targetUserId);
-  } catch (authErr: any) {
-    console.warn(`[deleteUserAdmin] Warning deleting from auth.users: ${authErr?.message}`);
+  } catch (authErr: unknown) {
+    console.warn(
+      `[deleteUserAdmin] Warning deleting from auth.users: ${
+        authErr instanceof Error ? authErr.message : 'Unknown error'
+      }`
+    );
   }
 
   // 7. Rekam audit log

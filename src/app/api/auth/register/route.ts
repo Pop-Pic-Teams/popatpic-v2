@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '../../../../utils/supabase/server';
 import { createAdminClient } from '../../../../utils/supabase/admin';
 import { validateRegisterInput } from '../../../../features/auth/server/validation';
 import {
@@ -8,7 +7,6 @@ import {
   jsonError,
   mapRole,
   readJson,
-  toPublicUser,
   type UserProfileRow,
 } from '../../../../features/auth/server/shared';
 

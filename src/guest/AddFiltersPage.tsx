@@ -8,10 +8,7 @@ import {
   RotateCcw,
   CheckCircle,
   Sparkles,
-  Camera,
-  Layers,
   ChevronRight,
-  Sliders,
 } from 'lucide-react';
 import { PHOTO_FILTERS } from '../data/frames';
 import type { PhotoFilter, FrameSlot } from '../types/photobooth';
@@ -26,8 +23,8 @@ export const AddFiltersPage: React.FC = () => {
   const rawState = location.state || {};
   const rawFrameImage = rawState.frameImage || '';
   const resolvedFrameImage: string =
-    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in (rawFrameImage as Record<string, any>)
-      ? (rawFrameImage as { src: string }).src
+    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in rawFrameImage
+      ? String((rawFrameImage as { src: unknown }).src || '')
       : String(rawFrameImage || '');
 
   const {

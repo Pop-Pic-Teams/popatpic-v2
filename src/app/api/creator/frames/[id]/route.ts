@@ -25,11 +25,11 @@ export async function PATCH(
     const contentType = request.headers.get('content-type') || '';
     let rawName: string | undefined;
     let rawDesc: string | undefined;
-    let rawPoseCount: any;
+    let rawPoseCount: unknown;
     let rawCategory: string | undefined;
-    let rawTags: any;
+    let rawTags: unknown;
     let fileBuffer: Buffer | undefined;
-    let rawStatus: any;
+    let rawStatus: unknown;
 
     if (contentType.includes('multipart/form-data')) {
       const formData = await request.formData();
@@ -127,10 +127,10 @@ export async function PATCH(
       message: 'Frame updated successfully and resubmitted for admin verification.',
       frame: updatedFrame,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(`[PATCH /api/creator/frames/${frameId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Failed to update frame.' },
+      { success: false, error: err instanceof Error ? err.message : 'Failed to update frame.' },
       { status: 500 }
     );
   }

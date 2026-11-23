@@ -16,7 +16,7 @@ export async function GET() {
       success: true,
       logs,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[GET /api/admin/audit-logs] Error:', err);
     return NextResponse.json(
       { success: false, error: 'Failed to load audit logs.' },

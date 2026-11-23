@@ -9,7 +9,7 @@ export function loadImage(src: string): Promise<HTMLImageElement | null> {
       console.warn('Failed to load image:', src);
       resolve(null);
     };
-    const resolvedSrc = typeof src === 'object' && (src as any)?.src ? (src as any).src : src;
+    const resolvedSrc = typeof src === 'string' ? src : String(src);
     img.src = resolvedSrc;
   });
 }

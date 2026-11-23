@@ -25,7 +25,7 @@ export async function GET() {
       success: true,
       frames,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[GET /api/creator/frames] Error:', err);
     return NextResponse.json(
       { success: false, error: 'Failed to load creator frames' },
@@ -47,9 +47,9 @@ export async function POST(request: NextRequest) {
     const contentType = request.headers.get('content-type') || '';
     let rawName: string | undefined;
     let rawDesc: string | undefined;
-    let rawPoseCount: any;
+    let rawPoseCount: unknown;
     let rawCategory: string | undefined;
-    let rawTags: any;
+    let rawTags: unknown;
     let fileBuffer: Buffer | null = null;
 
     if (contentType.includes('multipart/form-data')) {
@@ -166,10 +166,10 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[POST /api/creator/frames] Error:', err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'An error occured while uploading the frame.' },
+      { success: false, error: err instanceof Error ? err.message : 'An error occured while uploading the frame.' },
       { status: 500 }
     );
   }

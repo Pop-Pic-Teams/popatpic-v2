@@ -27,10 +27,10 @@ export async function DELETE(
       success: true,
       message: 'Frame successfully deleted from the database.',
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(`[DELETE /api/admin/frames/${frameId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'failed to delete frame.' },
+      { success: false, error: err instanceof Error ? err.message : 'failed to delete frame.' },
       { status: 500 }
     );
   }

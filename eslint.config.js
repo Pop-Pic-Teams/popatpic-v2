@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import babelParser from '@babel/eslint-parser';
 
-export default [
+const eslintConfig = [
   js.configs.recommended,
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
@@ -28,3 +28,5 @@ export default [
     ignores: ['node_modules/**', 'dist/**', 'build/**', '.git/**'],
   },
 ];
+
+export default eslintConfig;

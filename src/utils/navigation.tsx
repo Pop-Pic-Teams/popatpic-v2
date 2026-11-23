@@ -64,15 +64,13 @@ export const Navigate: React.FC<NavigateProps> = ({ to, state, replace }) => {
   const router = useRouter();
   const { setNavState } = useSession();
   const navigatedRef = useRef(false);
-  const stateRef = useRef(state);
-  stateRef.current = state;
 
   useEffect(() => {
     if (navigatedRef.current) return;
     navigatedRef.current = true;
 
-    if (stateRef.current) {
-      setNavState(stateRef.current);
+    if (state) {
+      setNavState(state);
     }
 
     if (replace) {
@@ -80,7 +78,7 @@ export const Navigate: React.FC<NavigateProps> = ({ to, state, replace }) => {
     } else {
       router.push(to);
     }
-  }, [to, replace, router, setNavState]);
+  }, [to, replace, router, setNavState, state]);
 
   return null;
 };

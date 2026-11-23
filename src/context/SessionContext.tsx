@@ -1,11 +1,12 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import type { FrameSlot } from '../types/photobooth';
 
 export interface PhotoSessionState {
   photos?: string[];
-  frameImage?: string;
-  slots?: any[];
+  frameImage?: string | { src: string };
+  slots?: FrameSlot[];
   figmaWidth?: number;
   frameCount?: number;
   frameName?: string;
@@ -13,8 +14,8 @@ export interface PhotoSessionState {
   filterId?: string;
   initialFilterId?: string;
   currentPhase?: number;
-  from?: any;
-  [key: string]: any;
+  from?: string;
+  [key: string]: unknown;
 }
 
 interface SessionContextType {

@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useNavigate, useLocation } from '../utils/navigation';
-import { Sparkles, LogIn, LogOut, Palette, Shield, ChevronDown } from 'lucide-react';
+import { LogIn, LogOut, Palette, Shield, ChevronDown } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export const Navbar: React.FC = () => {
@@ -106,15 +107,14 @@ const [currentHash, setCurrentHash] = useState('');
             Frames
           </button>
 
-          <a
+          <Link
             href="/#about"
             onClick={(e) => {
               e.preventDefault();
               setCurrentHash('#about');
 
               if (location.pathname !== '/') {
-                // Berpindah ke rute '/' sambil menyertakan hash '#about'
-                window.location.href = '/#about';
+                navigate('/#about');
               } else {
                 window.history.pushState(null, '', '/#about');
                 const aboutEl = document.getElementById('about');
@@ -130,7 +130,7 @@ const [currentHash, setCurrentHash] = useState('');
             }`}
           >
             About
-          </a>
+          </Link>
 
           {/* Conditional links for authenticated users */}
           {currentUser?.role === 'Creator' && (

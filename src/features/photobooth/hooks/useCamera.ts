@@ -22,8 +22,8 @@ export const useCamera = () => {
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
       }
-    } catch (err: any) {
-      setError(err?.message || 'Could not access web camera.');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Could not access web camera.');
     } finally {
       setIsLoading(false);
     }

@@ -19,7 +19,7 @@ export interface DbFrameRow {
   name: string;
   description?: string | null;
   pose_count: number;
-  slot_config: any;
+  slot_config: FrameSlot[];
   tags: string[];
   asset_url: string;
   thumbnail_url?: string | null;
@@ -346,7 +346,7 @@ export async function updateFrameByCreator(
     throw new Error('Access denied. You can only modify your own frames.');
   }
 
-  const updatePayload: Record<string, any> = {
+  const updatePayload: Record<string, unknown> = {
     updated_at: new Date().toISOString(),
   };
 
@@ -469,7 +469,7 @@ export async function moderateFrameByAdmin(params: {
     throw new Error('Frame not found in the database.');
   }
 
-  let updatePayload: Record<string, any> = {
+  const updatePayload: Record<string, unknown> = {
     updated_at: new Date().toISOString(),
     reviewed_by: params.adminId,
   };
@@ -601,10 +601,19 @@ export async function getAuditLogsForAdmin(): Promise<AuditLog[]> {
     return [];
   }
 
-  return data.map((item: any) => ({
+  return data.map((item: {
+    id: string;
+    admin_id: string;
+    action: string;
+    target_type: string;
+    target_id: string;
+    details: string | null;
+    created_at: string;
+    users?: Array<{ full_name: string | null; username: string | null }> | null;
+  }) => ({
     id: item.id,
     adminId: item.admin_id,
-    adminName: item.users?.full_name || item.users?.username || 'Administrator',
+    adminName: item.users?.[0]?.full_name || item.users?.[0]?.username || 'Administrator',
     action: item.action as AuditLog['action'],
     targetType: item.target_type as AuditLog['targetType'],
     targetId: item.target_id,

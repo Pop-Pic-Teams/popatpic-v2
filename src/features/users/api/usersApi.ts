@@ -27,9 +27,9 @@ export async function updateAdminUserStatus(
       return { success: false, error: data.error || 'Failed to update user status.' };
     }
     return { success: true, user: data.user };
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[usersApi] updateAdminUserStatus error:', err);
-    return { success: false, error: err?.message || 'An error occurred while updating the status.' };
+    return { success: false, error: err instanceof Error ? err.message : 'An error occurred while updating the status.' };
   }
 }
 
@@ -45,9 +45,9 @@ export async function deleteAdminUser(
       return { success: false, error: data.error || 'Failed to delete user account.' };
     }
     return { success: true };
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[usersApi] deleteAdminUser error:', err);
-    return { success: false, error: err?.message || 'Something went wrong while deleting the account.' };
+    return { success: false, error: err instanceof Error ? err.message : 'Something went wrong while deleting the account.' };
   }
 }
 

@@ -14,8 +14,10 @@ import monochromeFramePng from '../assets/frames/monochrome-frame.png';
 import tapeFramePng from '../assets/frames/tape-frame.png';
 
 
-const resolveImgSrc = (img: any): string =>
-  typeof img === 'object' && img?.src ? img.src : String(img || '');
+const resolveImgSrc = (img: unknown): string =>
+  typeof img === 'object' && img !== null && 'src' in img && typeof img.src === 'string'
+    ? img.src
+    : String(img || '');
 
 // Generate dynamic SVG frame data URL with Poppins typography
 function createSvgFrameDataUrl(

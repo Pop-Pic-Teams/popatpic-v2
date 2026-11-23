@@ -21,10 +21,10 @@ export async function POST(
       success: true,
       message: 'Frame successfully archived.',
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(`[POST /api/creator/frames/${frameId}/archive] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Failed to archive frame.' },
+      { success: false, error: err instanceof Error ? err.message : 'Failed to archive frame.' },
       { status: 500 }
     );
   }

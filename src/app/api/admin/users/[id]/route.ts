@@ -46,10 +46,10 @@ export async function PATCH(
       message: `User status successfully changed to ${status}.`,
       user: updatedUser,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(`[PATCH /api/admin/users/${targetUserId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Failed to change user status.' },
+      { success: false, error: err instanceof Error ? err.message : 'Failed to change user status.' },
       { status: 400 }
     );
   }
@@ -84,10 +84,10 @@ export async function DELETE(
       success: true,
       message: 'User deleted successfully.',
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(`[DELETE /api/admin/users/${targetUserId}] Error:`, err);
     return NextResponse.json(
-      { success: false, error: err?.message || 'Failed to delete user.' },
+      { success: false, error: err instanceof Error ? err.message : 'Failed to delete user.' },
       { status: 400 }
     );
   }

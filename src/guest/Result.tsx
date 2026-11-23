@@ -13,7 +13,6 @@ import {
   RotateCcw,
   Check,
   CheckCircle,
-  User,
   Home,
 } from 'lucide-react';
 import { PHOTO_FILTERS, recordGuestPhoto } from '../data/frames';
@@ -36,8 +35,8 @@ export const ResultPage: React.FC = () => {
   const rawState = location.state || {};
   const rawFrameImage = rawState.frameImage || '';
   const resolvedFrameImage: string =
-    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in (rawFrameImage as Record<string, any>)
-      ? (rawFrameImage as { src: string }).src
+    typeof rawFrameImage === 'object' && rawFrameImage && 'src' in rawFrameImage
+      ? String((rawFrameImage as { src: unknown }).src || '')
       : String(rawFrameImage || '');
 
   const {
@@ -60,9 +59,8 @@ export const ResultPage: React.FC = () => {
     creatorName?: string;
   }) || {};
 
-  const [selectedFilter, setSelectedFilter] = useState<PhotoFilter>(
+  const selectedFilter: PhotoFilter =
     PHOTO_FILTERS.find((f) => f.id === filterId) || PHOTO_FILTERS[0]
-  );
 
   // Render composite image on HTML5 Canvas (SRS F-G014, F-G015)
   const renderComposition = useCallback(async () => {
