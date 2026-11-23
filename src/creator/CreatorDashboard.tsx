@@ -232,20 +232,30 @@ export const CreatorDashboard: React.FC = () => {
 
   // Handle Download Layout Guidelines Asset
   const handleDownloadTemplateGuide = (poses: number) => {
-    const svgData = getLayoutGuideDownload(poses);
-    const link = document.createElement('a');
-    link.href = svgData;
-    link.download = `PopAtPic_Layout_Guide_${poses}_Poses.svg`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    setNotification({
-      type: 'success',
-      message: `${poses}-Pose SVG template guide downloaded. Use this as a reference canvas in Photoshop, Illustrator, or Figma.`,
-    });
-    setTimeout(() => setNotification(null), 4000);
+  const fileMap: Record<number, string> = {
+    1: '/templates/1-pose.svg',
+    2: '/templates/2-poses.svg',
+    4: '/templates/4-poses.svg',
+    6: '/templates/6-poses.svg',
+    8: '/templates/8-poses.svg',
   };
+
+  const fileUrl = fileMap[poses];
+  if (!fileUrl) return;
+
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = `PopAtPic_Layout_Guide_${poses}_Poses.svg`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  setNotification({
+    type: 'success',
+    message: `${poses}-Pose SVG template guide downloaded. Use this as a reference canvas in Photoshop, Illustrator, or Figma.`,
+  });
+  setTimeout(() => setNotification(null), 4000);
+};
 
   const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -1481,7 +1491,7 @@ const handleUnarchive = async (frame: FrameTemplate) => {
         {/* VIEW 4: DESIGN GUIDELINES & SPECIFICATIONS               */}
         {/* ========================================================= */}
         {currentView === 'guidelines' && !selectedDetailFrame && (
-          <div className="max-w-4xl space-y-6">
+          <div className="w-full space-y-6">
             <div>
               <h1 className="text-2xl md:text-3xl font-serif font-normal text-[#4B2E1F]">
                 Creator Design <span className="italic text-[#4B2E1F]">Guidelines</span>
