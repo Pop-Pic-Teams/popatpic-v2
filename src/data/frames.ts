@@ -758,7 +758,34 @@ export function recordGuestPhoto(record: GuestPhotoRecord): void {
   if (typeof window === 'undefined') return;
   const existing = getGuestPhotos();
   const updated = [record, ...existing.slice(0, 49)];
-  localStorage.setItem(STORAGE_KEY_PHOTOS, JSON.stringify(updated));
+
+  try {
+    localStorage.setItem(STORAGE_KEY_PHOTOS, JSON.stringify(updated));
+  } catch (error) {
+    const reducedExisting = existing
+      .slice(0, 19)
+      .map((photo) => ({ ...photo, image_url: '' }));
+    const reducedRecord = { ...record, image_url: '' };
+
+    try {
+      localStorage.setItem(
+        STORAGE_KEY_PHOTOS,
+        JSON.stringify([reducedRecord, ...reducedExisting])
+      );
+    } catch {
+      try {
+        localStorage.removeItem(STORAGE_KEY_PHOTOS);
+        localStorage.setItem(
+          STORAGE_KEY_PHOTOS,
+          JSON.stringify([reducedRecord])
+        );
+      } catch (fallbackError) {
+        console.warn('Guest photo metadata could not be saved:', fallbackError);
+      }
+    }
+
+    console.warn('Guest photo storage quota reached; saved metadata without a large image:', error);
+  }
 }
 
 // Admin: Delete frame permanently

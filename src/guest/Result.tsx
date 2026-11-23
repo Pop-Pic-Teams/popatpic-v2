@@ -83,13 +83,36 @@ export const ResultPage: React.FC = () => {
       if (dataUrl) {
         setDownloadUrl(dataUrl);
 
+        const sourceCanvas = canvasRef.current;
+        let storedImageUrl = dataUrl;
+
+        if (sourceCanvas) {
+          const thumbnailCanvas = document.createElement('canvas');
+          const maxWidth = 600;
+          const scale = Math.min(1, maxWidth / sourceCanvas.width);
+          thumbnailCanvas.width = Math.max(1, Math.round(sourceCanvas.width * scale));
+          thumbnailCanvas.height = Math.max(1, Math.round(sourceCanvas.height * scale));
+
+          const thumbnailContext = thumbnailCanvas.getContext('2d');
+          if (thumbnailContext) {
+            thumbnailContext.drawImage(
+              sourceCanvas,
+              0,
+              0,
+              thumbnailCanvas.width,
+              thumbnailCanvas.height
+            );
+            storedImageUrl = thumbnailCanvas.toDataURL('image/jpeg', 0.72);
+          }
+        }
+
         // SRS F-G016: Menyimpan metadata hasil foto dan URL file foto
         const recordId = `photo_${Date.now()}`;
         recordGuestPhoto({
           id: recordId,
           frame_id: frameName,
           frame_name: frameName,
-          image_url: dataUrl,
+          image_url: storedImageUrl,
           pose_count: frameCount,
           filter_applied: selectedFilter.name,
           created_at: new Date().toISOString(),
