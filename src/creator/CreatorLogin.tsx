@@ -33,7 +33,7 @@ export const CreatorLogin: React.FC = () => {
     try {
       const res = await login(identifier, password);
       if (res.success) {
-        setSuccessMessage('Otentikasi berhasil!');
+        setSuccessMessage('Authentication successful!');
         setTimeout(() => {
           if (res.role === 'Admin') {
             navigate('/admin-dashboard');
